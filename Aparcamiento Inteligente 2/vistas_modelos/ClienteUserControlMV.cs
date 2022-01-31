@@ -27,6 +27,9 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         public ClienteUserControlMV()
         {
+            clientesBD = new ClienteBD();
+            Clientes = new ObservableCollection<Cliente>();
+            Clientes = clientesBD.ClientesBDSimulacion();
 
             servicioDialogos = new DialogosNavegacion();
 
