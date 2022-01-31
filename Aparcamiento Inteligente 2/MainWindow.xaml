@@ -19,7 +19,7 @@
                 Header="Clientes"
                 Margin="0"
                 Width="120">
-                
+                <vistas:ClienteUserControl></vistas:ClienteUserControl>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
                 Header="ParKing"
