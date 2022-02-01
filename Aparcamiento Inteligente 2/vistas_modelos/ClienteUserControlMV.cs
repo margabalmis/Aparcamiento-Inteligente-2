@@ -31,7 +31,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             //Cargar datos clientes
             clientesBD = new ClienteBD();
             Clientes = new ObservableCollection<Cliente>();
-            Clientes = clientesBD.ClientesBDSimulacion();
+            Clientes = new DBServicio().ClientesGetAll();
             //Cargar datos vehiculos
             vehiculosBD = new VehiculosBD();
             VehiculosAsociadosCliente = new ObservableCollection<Vehiculo>();

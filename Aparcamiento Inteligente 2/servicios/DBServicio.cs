@@ -15,12 +15,41 @@ namespace Aparcamiento_Inteligente_2.servicios
 
         public DBServicio(string path)
         {
-            this.path = path;
+            this.path = "Data Source={0}" + path;
+        }
+
+        public DBServicio()
+        {
+            this.path = string.Format("Data Source=db/parking.db");
         }
 
         public ObservableCollection<Cliente> ClientesGetAll()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Cliente> result = new ObservableCollection<Cliente>();
+            using (SqliteConnection conexion = Conectar())
+            {
+                SqliteCommand comando = new SqliteCommand("SELECT * FROM clientes", conexion);
+                SqliteDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    { 
+                        //public Cliente(int id_cliente, string nombre, string documento, string foto, int edad, string genero, string telefono)
+                        result.Add(new Cliente(
+                            (int)lector["id_cliente"],
+                            (string)lector["nombre"],
+                            (string)lector["documento"],
+                            (string)lector["foto"],
+                            (int)lector["edad"],
+                            (string)lector["genero"],
+                            (string)lector["telefono"]
+                        ));
+                    }
+                }
+            }
+
+            return result;
         }
 
         public ObservableCollection<Vehiculo> VehiculosGetAll()
@@ -38,9 +67,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             throw new NotImplementedException();
         }
 
-        private SqliteConnection conectar()
-        {
-            return new SqliteConnection("Data Source=" + path);
-        }
+        private SqliteConnection Conectar() => new SqliteConnection(path);
+
     }
 }
