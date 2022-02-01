@@ -1,4 +1,5 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,21 @@ namespace Aparcamiento_Inteligente_2.servicios
         public ObservableCollection<Vehiculo> VehiculosGetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Marcas> MarcasGetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Estacionamiento> EstacionamientosGetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        private SqliteConnection conectar()
+        {
+            return new SqliteConnection("Data Source=" + path);
         }
     }
 }
