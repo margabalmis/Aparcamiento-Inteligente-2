@@ -8,16 +8,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 
 namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
+
     class ClienteUserControlMV : ObservableRecipient
     {
 
+        //Servicios
         ClienteBD clientesBD;
         VehiculosBD vehiculosBD;
-
         private readonly DialogosNavegacion servicioDialogos;
+
+
         public RelayCommand DialogoNuevoCliente { get; }
         public RelayCommand DialogoEditarCliente { get; }
         public RelayCommand DialogoEliminarCliente { get; }
@@ -37,7 +41,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             VehiculosAsociadosCliente = new ObservableCollection<Vehiculo>();
             VehiculosAsociadosCliente = vehiculosBD.VehiculosBDSimulacion();
 
-
+            //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();
 
             DialogoNuevoCliente = new RelayCommand(NuevoCliente);
@@ -59,33 +63,34 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void EliminarVehiculo()
         {
-            throw new NotImplementedException();
+            servicioDialogos.DialogoEliminarVehiculo();
         }
 
         private void EditarVehiculo()
         {
-            throw new NotImplementedException();
+            servicioDialogos.DialogoEditarVehiculo();
         }
 
         private void NuevoVehiculo()
         {
-            throw new NotImplementedException();
+            servicioDialogos.DialogoAñadirVehiculo();
         }
 
         private void EliminarCliente()
         {
-            throw new NotImplementedException();
+            servicioDialogos.DialogoEliminarCliente();
         }
 
         private void EditarCliente()
         {
-            throw new NotImplementedException();
+            servicioDialogos.DialogoEditarCliente();
         }
 
         private void NuevoCliente()
         {
 
-            //WeakReferenceMessenger.Default.Send(new NuevoClienteMesage(Nuev));
+            servicioDialogos.DialogoAñadirCliente();
+
         }
 
         

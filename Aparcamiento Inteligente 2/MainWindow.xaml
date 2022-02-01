@@ -25,13 +25,13 @@
                 Header="ParKing"
                 Margin="0"
                 Width="120">
-                
+                <vistas:EstacionamientosUserControl></vistas:EstacionamientosUserControl>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
                 Header="Vehículos"
                 Margin="0"
                 Width="120">
-                
+                <vistas:VehiculoUserControl></vistas:VehiculoUserControl>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>
     </Grid>
