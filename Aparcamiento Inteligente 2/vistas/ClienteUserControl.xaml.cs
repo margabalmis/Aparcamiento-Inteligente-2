@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aparcamiento_Inteligente_2.vistas_modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,12 @@ namespace Aparcamiento_Inteligente_2.vistas
     /// </summary>
     public partial class ClienteUserControl : UserControl
     {
-        private readonly ClienteUserControl vm;
+        private readonly ClienteUserControlMV vm;
 
         public ClienteUserControl()
         {
             InitializeComponent();
-            vm = new ClienteUserControl();
+            vm = new ClienteUserControlMV();
             this.DataContext = vm;
         }
     }
