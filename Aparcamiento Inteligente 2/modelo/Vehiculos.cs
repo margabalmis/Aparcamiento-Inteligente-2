@@ -9,12 +9,25 @@ namespace Aparcamiento_Inteligente_2.modelo
 {
     class Vehiculo : ObservableObject
     {
-        private int id_vehiculos;
+        public Vehiculo() { }
+
+        public Vehiculo(int id_vehiculo, int id_cliente, string matricula, int id_marcas, string modelo, string tipo)
+        {
+            Id_vehiculo = id_vehiculo;
+            Id_cliente = id_cliente;
+            Matricula = matricula;
+            Id_marca = id_marcas;
+            Modelo = modelo;
+            Tipo = tipo;
+
+        }
+
+        private int id_vehiculo;
 
         public int Id_vehiculo
         {
-            get { return id_vehiculos; }
-            set { SetProperty(ref id_vehiculos, value); }
+            get { return id_vehiculo; }
+            set { SetProperty(ref id_vehiculo, value); }
         }
 
         private int id_cliente;
@@ -32,12 +45,12 @@ namespace Aparcamiento_Inteligente_2.modelo
             get { return matricula; }
             set { SetProperty(ref matricula, value); }
         }
-        private int id_marcas;
+        private int id_marca;
 
-        public int Id_marcas
+        public int Id_marca
         {
-            get { return id_marcas; }
-            set { SetProperty(ref id_marcas, value); }
+            get { return id_marca; }
+            set { SetProperty(ref id_marca, value); }
         }
 
         private string modelo;
@@ -49,6 +62,8 @@ namespace Aparcamiento_Inteligente_2.modelo
         }
 
         private string tipo;
+
+
 
         public string Tipo
         {

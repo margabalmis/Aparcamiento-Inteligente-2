@@ -191,6 +191,7 @@
     <Compile Include="servicios\DialogosNavegacion.cs" />
     <Compile Include="servicios\FaceAPI.cs" />
     <Compile Include="servicios\Nube.cs" />
+    <Compile Include="servicios\VehiculosBD.cs" />
     <Compile Include="vistas\VehiculoUserControl.xaml.cs">
       <DependentUpon>VehiculoUserControl.xaml</DependentUpon>
     </Compile>
