@@ -1,8 +1,6 @@
-﻿using Aparcamiento_Inteligente_2.modelo;
-using Aparcamiento_Inteligente_2.vistas_modelos;
+﻿using Aparcamiento_Inteligente_2.vistas_modelos;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,29 +11,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Aparcamiento_Inteligente_2.vistas
 {
     /// <summary>
-    /// Lógica de interacción para VehiculoUserControl.xaml
+    /// Lógica de interacción para EliminarVehiculoWindow.xaml
     /// </summary>
-    public partial class VehiculoUserControl : UserControl
+    public partial class EliminarVehiculoWindow : Window
     {
-        private readonly VehiculoUserControlMV vm;
-
-        public VehiculoUserControl()
+        readonly EliminarVehiculoWindowMV vm;
+        public EliminarVehiculoWindow()
         {
             InitializeComponent();
-            vm = new VehiculoUserControlMV();
+            vm = new EliminarVehiculoWindowMV();
             this.DataContext = vm;
         }
 
-        private ObservableCollection<Vehiculo> vehiculosAsociadosCliente;
-
-       
-
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
-
 }

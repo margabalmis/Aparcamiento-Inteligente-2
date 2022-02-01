@@ -187,6 +187,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="convertidores\DataGridToCliente.cs" />
+    <Compile Include="convertidores\DataGridToParking.cs" />
+    <Compile Include="convertidores\DataGridToVehiculo.cs" />
     <Compile Include="modelo\Cliente.cs" />
     <Compile Include="modelo\Estacionamiento.cs" />
     <Compile Include="modelo\Marcas.cs" />
@@ -196,6 +199,12 @@
     <Compile Include="servicios\FaceAPI.cs" />
     <Compile Include="servicios\Nube.cs" />
     <Compile Include="servicios\VehiculosBD.cs" />
+    <Compile Include="vistas\EliminarVehiculoWindow.xaml.cs">
+      <DependentUpon>EliminarVehiculoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\EstacionamientosUserControl.xaml.cs">
+      <DependentUpon>EstacionamientosUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vistas\VehiculoUserControl.xaml.cs">
       <DependentUpon>VehiculoUserControl.xaml</DependentUpon>
     </Compile>
@@ -203,6 +212,8 @@
     <Compile Include="vistas_modelos\ClienteUserControlMV.cs" />
     <Compile Include="vistas_modelos\EditarClienteWindowMV.cs" />
     <Compile Include="vistas_modelos\EliminarClienteWindowMV.cs" />
+    <Compile Include="vistas_modelos\EliminarVehiculoWindowMV.cs" />
+    <Compile Include="vistas_modelos\EstacionamientosMV.cs" />
     <Compile Include="vistas_modelos\VehiculoUserControlMV.cs" />
     <Page Include="ParkingUserControl.xaml">
       <SubType>Designer</SubType>
@@ -265,6 +276,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="vistas\EliminarVehiculoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\EstacionamientosUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="vistas\VehiculoUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

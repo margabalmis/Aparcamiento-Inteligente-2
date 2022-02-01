@@ -24,7 +24,21 @@ namespace Aparcamiento_Inteligente_2.servicios
             EliminarClienteWindow nuevaVentana = new EliminarClienteWindow();
             nuevaVentana.ShowDialog();
         }
-
+        internal void DialogoAñadirVehiculo()
+        {
+            AñadirVehiculoWindow nuevaVentana = new AñadirVehiculoWindow();
+            nuevaVentana.Show();
+        }
+        internal void DialogoEditarVehiculo()
+        {
+            EditarVehiculoWindow nuevaVentana = new EditarVehiculoWindow();
+            nuevaVentana.Show();
+        }
+        internal void DialogoEliminarVehiculo()
+        {
+            EliminarVehiculoWindow nuevaVentana = new EliminarVehiculoWindow();
+            nuevaVentana.ShowDialog();
+        }
 
     }
 }
