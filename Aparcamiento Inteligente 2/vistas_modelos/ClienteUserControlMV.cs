@@ -15,6 +15,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
 
         ClienteBD clientesBD;
+        VehiculosBD vehiculosBD;
 
         private readonly DialogosNavegacion servicioDialogos;
         public RelayCommand DialogoNuevoCliente { get; }
@@ -27,9 +28,15 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         public ClienteUserControlMV()
         {
+            //Cargar datos clientes
             clientesBD = new ClienteBD();
             Clientes = new ObservableCollection<Cliente>();
             Clientes = clientesBD.ClientesBDSimulacion();
+            //Cargar datos vehiculos
+            vehiculosBD = new VehiculosBD();
+            VehiculosAsociadosCliente = new ObservableCollection<Vehiculo>();
+            VehiculosAsociadosCliente = vehiculosBD.VehiculosBDSimulacion();
+
 
             servicioDialogos = new DialogosNavegacion();
 
@@ -40,7 +47,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoNuevoVehiculo = new RelayCommand(NuevoVehiculo);
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
-
 
         }
 
@@ -94,16 +100,9 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         public ObservableCollection<Vehiculo> VehiculosAsociadosCliente
         {
-            //recuperar los vehículos que estan asociados al Id_cliente
+            
             get
-            {
-                int id_cliente = ClienteSeleccionado.Id_cliente;
-
-
-
-
-                return vehiculosAsociadosCliente;
-            }
+            {   return vehiculosAsociadosCliente;}
             set { SetProperty(ref vehiculosAsociadosCliente, value); }
         }
         private Vehiculo vehiculoSeleccionado;
