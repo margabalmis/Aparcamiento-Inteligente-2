@@ -9,12 +9,12 @@ namespace Aparcamiento_Inteligente_2.modelo
 {
     class Marcas : ObservableObject
     {
-        private int id_marcas;
+        private int id_marca;
 
         public int Id_marcas
         {
-            get { return id_marcas; }
-            set { SetProperty(ref id_marcas, value); }
+            get { return id_marca; }
+            set { SetProperty(ref id_marca, value); }
         }
 
         private string marca;
@@ -23,6 +23,12 @@ namespace Aparcamiento_Inteligente_2.modelo
         {
             get { return marca; }
             set { SetProperty(ref marca, value); }
+        }
+
+        public Marcas(int id_marcas, string marca)
+        {
+            Id_marcas = id_marcas;
+            Marca = marca;
         }
     }
 

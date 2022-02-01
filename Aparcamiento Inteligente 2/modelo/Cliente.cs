@@ -25,6 +25,18 @@ namespace Aparcamiento_Inteligente_2.modelo
 
         }
 
+        //Constructor usado para insertar en la base de datos
+        public Cliente(string nombre, string documento, string foto, int edad, string genero, string telefono)
+        {
+            Id_cliente = 0;
+            Nombre = nombre;
+            Documento = documento;
+            Foto = foto;
+            Edad = edad;
+            Genero = genero;
+            Telefono = telefono;
+        }
+
         private int id_cliente;
 
         public int Id_cliente
