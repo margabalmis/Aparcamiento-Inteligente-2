@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
+using System.Windows;
 
 namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
@@ -17,8 +18,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
 
         //Servicios
-        ClienteBD clientesBD;
-        VehiculosBD vehiculosBD;
         DBServicio baseDatos;
         private readonly DialogosNavegacion servicioDialogos;
 
@@ -35,14 +34,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         {
             //Cargar datos clientes
             baseDatos = new DBServicio();
-            clientesBD = new ClienteBD();
             Clientes = new ObservableCollection<Cliente>();
             Clientes = baseDatos.ClientesGetAll();
 
             //Cargar datos vehiculos
-            vehiculosBD = new VehiculosBD();
             VehiculosAsociadosCliente = new ObservableCollection<Vehiculo>();
-            VehiculosAsociadosCliente = vehiculosBD.VehiculosBDSimulacion();
 
             //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();
@@ -105,7 +101,13 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public Cliente ClienteSeleccionado
         {
             get { return clienteSeleccionado; }
-            set { SetProperty(ref clienteSeleccionado, value); }
+            set {
+                _ = SetProperty(ref clienteSeleccionado, value);
+                if (clienteSeleccionado != null)
+                {
+                    VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+                }
+            }
         }
         private ObservableCollection<Vehiculo> vehiculosAsociadosCliente;
 

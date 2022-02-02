@@ -61,7 +61,7 @@
         <syncfusion:SfDataGrid
             x:Name="ClientesdataGrid"
             ItemsSource="{Binding Path=Clientes}"
-            SelectedItems="{Binding Path=ClienteSeleccionado, Converter={StaticResource toCliente}}"
+            SelectedItem="{Binding Path=ClienteSeleccionado, Converter={StaticResource toCliente}}"
             AutoGenerateColumns="True"
             AllowFiltering="True"
             Grid.Row="0"
