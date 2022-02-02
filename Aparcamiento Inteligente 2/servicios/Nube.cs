@@ -23,6 +23,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             //Leemos la imagen y la subimos al contenedor
             Stream streamImagen = File.OpenRead(path);
             string nombreImagen = Path.GetFileName(path);
+            _ = clienteContenedor.DeleteBlobIfExists(nombreImagen);
             _ = clienteContenedor.UploadBlob(nombreImagen, streamImagen);
 
             //Una vez subida, obtenemos la URL para referenciarla

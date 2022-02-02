@@ -70,10 +70,13 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         public void AñadirCliente()
         {
-            string blobURL = Nube.SubirImagen(Foto);
-            var ageGender = FaceAPI.GetAgeGender(blobURL);
-            DBServicio db = new DBServicio();
-            db.ClienteInsertOne(new Cliente(Nombre,Documento,blobURL,ageGender.age,ageGender.gender,Telefono));
+            if (Nombre != null && Documento != null && Foto != null && Telefono != null)
+            {
+                string blobURL = Nube.SubirImagen(Foto);
+                var ageGender = FaceAPI.GetAgeGender(blobURL);
+                DBServicio db = new DBServicio();
+                db.ClienteInsertOne(new Cliente(Nombre, Documento, blobURL, ageGender.age, ageGender.gender, Telefono));
+            }
 
         }
 
