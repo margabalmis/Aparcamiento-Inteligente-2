@@ -23,5 +23,9 @@ namespace Aparcamiento_Inteligente_2.vistas
         {
             InitializeComponent();
         }
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

@@ -7,7 +7,9 @@
         mc:Ignorable="d"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
-    Title="AñadirVehiculoWindow" Height="450" Width="800">
+    Title="AñadirVehiculoWindow" Height="450" Width="800"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
     <Window.Resources>
         <!--StackPanel-->
         <Style
@@ -89,6 +91,7 @@
                 Margin="16,0,0,0">Tipo</TextBlock>
             <StackPanel>
                 <RadioButton
+                    IsChecked="True"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Coche</RadioButton>
                 <RadioButton
@@ -100,8 +103,8 @@
         <StackPanel
             Style="{StaticResource ParaBotones}"
             HorizontalAlignment="Right">
-            <Button>Cancelar</Button>
-            <Button>Aceptar</Button>
+            <Button IsCancel="True">Cancelar</Button>
+            <Button IsDefault="True" Click="AceptarButton_Click">Aceptar</Button>
         </StackPanel>
     </StackPanel>
 </Window>
