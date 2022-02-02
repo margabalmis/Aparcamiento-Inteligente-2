@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aparcamiento_Inteligente_2.modelo
 {
-    class Vehiculo : ObservableObject
+    class Vehiculo : ObservableRecipient
     {
         public Vehiculo() { }
 
@@ -19,7 +19,6 @@ namespace Aparcamiento_Inteligente_2.modelo
             Id_marca = id_marcas;
             Modelo = modelo;
             Tipo = tipo;
-
         }
 
         private int id_vehiculo;

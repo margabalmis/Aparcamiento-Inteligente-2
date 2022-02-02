@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Aparcamiento_Inteligente_2.servicios
 {
@@ -38,6 +39,11 @@ namespace Aparcamiento_Inteligente_2.servicios
         {
             EliminarVehiculoWindow nuevaVentana = new EliminarVehiculoWindow();
             nuevaVentana.ShowDialog();
+        }
+        internal void MessageBoxFinalizarEstacionamiento()
+        {
+            MessageBox.Show("¿Quieres eliminar el estacionamiento?", 
+                "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
         }
 
     }

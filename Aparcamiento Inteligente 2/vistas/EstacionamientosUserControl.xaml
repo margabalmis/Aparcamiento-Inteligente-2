@@ -8,17 +8,54 @@
              d:DesignHeight="450" d:DesignWidth="800"
             xmlns:syncfusion="http://schemas.syncfusion.com/wpf">
     <UserControl.Resources>
+        <!--Botones-->
+        <Style
+            TargetType="{x:Type Button}">
+            <Setter
+                Property="Margin"
+                Value="0,40" />
+            <Setter
+                Property="Width"
+                Value="140" />
+        </Style>
+
+        <!--TextBlock-->
+        <Style
+            TargetType="{x:Type TextBlock}">
+            <Setter
+                Property="Margin"
+                Value="0,40" />
+            <Setter
+                Property="Width"
+                Value="140" />
+        </Style>
 
     </UserControl.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="200" />
+        </Grid.ColumnDefinitions>
         
         <!--Vehículos-->
         <syncfusion:SfDataGrid
             x:Name="ParkingDataGrid"
             AutoGenerateColumns="True"
-            ItemsSource="{Binding Path=Parking}"
+            ItemsSource="{Binding Path=Estacionamientos}"
+            SelectedItem="{Binding Path=EstacionamientoSeleccionado}"
             AllowFiltering="True" />
 
+        <!--Botones Vehículos-->
+        <StackPanel
+            Grid.Column="1">
+            <Button
+                x:Name="FinalizarEstacionamientoButton"
+                Command="{Binding Path=FinalizarEstacionamiento}">Finalizar Estacionamiento</Button>
+            <TextBlock>Precio:</TextBlock>
+            <TextBlock x:Name="TotalAPagarPorEstacionamiento"></TextBlock>
+        </StackPanel>
     </Grid>
 </UserControl>
