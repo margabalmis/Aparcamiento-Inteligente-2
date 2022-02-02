@@ -19,6 +19,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         //Servicios
         ClienteBD clientesBD;
         VehiculosBD vehiculosBD;
+        DBServicio baseDatos;
         private readonly DialogosNavegacion servicioDialogos;
 
 
@@ -33,9 +34,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public ClienteUserControlMV()
         {
             //Cargar datos clientes
+            baseDatos = new DBServicio();
             clientesBD = new ClienteBD();
             Clientes = new ObservableCollection<Cliente>();
-            Clientes = new DBServicio().ClientesGetAll();
+            Clientes = baseDatos.ClientesGetAll();
+
             //Cargar datos vehiculos
             vehiculosBD = new VehiculosBD();
             VehiculosAsociadosCliente = new ObservableCollection<Vehiculo>();
@@ -89,7 +92,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         private void NuevoCliente()
         {
 
-            servicioDialogos.DialogoAñadirCliente();
+            if (servicioDialogos.DialogoAñadirCliente() == true)
+            {
+                Clientes = baseDatos.ClientesGetAll();
+            }
 
         }
 

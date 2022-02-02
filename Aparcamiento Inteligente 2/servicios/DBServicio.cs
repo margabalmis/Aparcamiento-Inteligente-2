@@ -151,7 +151,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("INSERT INTO clientes ( nombre, documento, foto, edad, genero, telefono) " +
+            SqliteCommand comando = new SqliteCommand("INSERT INTO clientes (nombre, documento, foto, edad, genero, telefono) " +
                 "VALUES ( @nombre, @documento, @foto, @edad, @genero, @telefono);", conexion);
             _ = comando.Parameters.Add("@nombre", SqliteType.Text);
             _ = comando.Parameters.Add("@documento", SqliteType.Text);
@@ -185,7 +185,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("INSERT INTO vehiculos (id_cliente, matricula, id_marca, modelo, tipo) VALUES (@id_cliente, @matricula, @id_marca, @modelo, @tipo) ", conexion);
+            SqliteCommand comando = new SqliteCommand("INSERT INTO vehiculos (id_cliente, matricula, id_marca, modelo, tipo) VALUES (@id_cliente, @matricula, @id_marca, @modelo, @tipo);", conexion);
             comando.Parameters.Add("@id_cliente", SqliteType.Integer);
             comando.Parameters.Add("@matricula", SqliteType.Text);
             comando.Parameters.Add("@id_marca", SqliteType.Integer);
@@ -215,7 +215,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("INSERT INTO marcas (marca) VALUES (@marca)", conexion);
+            SqliteCommand comando = new SqliteCommand("INSERT INTO marcas (marca) VALUES (@marca);", conexion);
             comando.Parameters.Add("@marca", SqliteType.Text);
 
 
@@ -238,7 +238,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (id_vehiculo, matricula, entrada, salida, importe, tipo) VALUES (@id_vehiculo, @matricula, @entrada, @salida, @importe, @tipo) ", conexion);
+            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (id_vehiculo, matricula, entrada, salida, importe, tipo) VALUES (@id_vehiculo, @matricula, @entrada, @salida, @importe, @tipo);", conexion);
             comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
             comando.Parameters.Add("@matricula", SqliteType.Text);
             comando.Parameters.Add("@entrada", SqliteType.Text);
@@ -279,7 +279,7 @@ namespace Aparcamiento_Inteligente_2.servicios
                     "edad = @edad," +
                     "genero = @genero," +
                     "telefono = @telefono " +
-                    "WHERE id_cliente = @id_cliente", conexion);
+                    "WHERE id_cliente = @id_cliente;", conexion);
 
             _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
             _ = comando.Parameters.Add("@nombre", SqliteType.Text);
@@ -320,7 +320,7 @@ namespace Aparcamiento_Inteligente_2.servicios
                     "id_marca = @edid_marcaad," +
                     "modelo = @modelo," +
                     "tipo = @tipo " +
-                    "WHERE id_vehiculo = @id_vehiculo", conexion);
+                    "WHERE id_vehiculo = @id_vehiculo;", conexion);
 
             _ = comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
             _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
@@ -355,7 +355,7 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             SqliteCommand comando = new SqliteCommand("UPDATE marcas SET  " +
                     "marca = @marca " +
-                    "WHERE id_marca = @id_marca", conexion);
+                    "WHERE id_marca = @id_marca;", conexion);
 
             _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
             _ = comando.Parameters.Add("@marca", SqliteType.Text);
@@ -388,7 +388,7 @@ namespace Aparcamiento_Inteligente_2.servicios
                     "salida = @salida," +
                     "importe = @importe, " +
                     "tipo = @tipo " +
-                    "WHERE id_estacionamiento = @id_estacionamiento", conexion);
+                    "WHERE id_estacionamiento = @id_estacionamiento;", conexion);
 
             comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
             comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
@@ -417,21 +417,18 @@ namespace Aparcamiento_Inteligente_2.servicios
         }
         #endregion
         #region DeleteOne()
-       /* public bool ClienteDeleteOne(Cliente cliente)
+        public bool ClienteDeleteOne(Cliente cliente)
         {
             bool result = false;
 
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("DELETE FROM clientes WHERE id_marca = @id_marca", conexion);
+            SqliteCommand comando = new SqliteCommand("DELETE FROM clientes WHERE id_cliente = @id_cliente;", conexion);
 
             _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
-            _ = comando.Parameters.Add("@marca", SqliteType.Text);
 
-
-            comando.Parameters["@id_marca"].Value = marca.Id_marcas;
-0            comando.Parameters["@marca"].Value = marca.Marca;
+            comando.Parameters["@id_marca"].Value = cliente.Id_cliente;
 
             if (comando.ExecuteNonQuery() == 1)
             {
@@ -441,7 +438,8 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Close();
 
             return result;
-        }*/
+        }
+
         #endregion
         private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 

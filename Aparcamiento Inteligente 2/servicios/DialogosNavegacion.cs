@@ -10,10 +10,11 @@ namespace Aparcamiento_Inteligente_2.servicios
 {
     class DialogosNavegacion
     {
-        internal void DialogoAñadirCliente()
+        internal bool? DialogoAñadirCliente()
         {
             AñadirClienteWindow nuevaVentana = new AñadirClienteWindow();
             nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
         }
         internal void DialogoEditarCliente()
         {
