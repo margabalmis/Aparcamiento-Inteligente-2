@@ -106,9 +106,9 @@
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv
                 SizeMode="Normal"
-                Label="Icono"
-                Margin="14,8,8,20" />
-            <!--SmallIcon ="image\usersmall.png"-->
+                Label=""
+                Margin="14,8,8,20"
+                SmallIcon="/img/add.ico" />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Stretch">

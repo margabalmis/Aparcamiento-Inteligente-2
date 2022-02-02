@@ -33,6 +33,7 @@
         </Style>
 
         <!--Botones-->
+        <!--Botones-->
         <Style
             TargetType="{x:Type Button}">
             <Setter
@@ -46,10 +47,10 @@
                 Value="140" />
             <Setter
                 Property="Background"
-                Value="#c0dcfc"></Setter>
+                Value="#4064cf"></Setter>
             <Setter
                 Property="Foreground"
-                Value="#000"></Setter>
+                Value="#FFF1EFE5"></Setter>
             <Setter
                 Property="Margin"
                 Value="8"></Setter>
