@@ -7,7 +7,7 @@
         xmlns:vistas="clr-namespace:Aparcamiento_Inteligente_2.vistas"
     mc:Ignorable="d"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    Title="MainWindow" Height="450" Width="800">
+    Title="MainWindow" Height="700" Width="800" MinHeight="500" MinWidth="600">
     <Grid>
         <syncfusion:TabControlExt
             Name="tabControl"
@@ -18,19 +18,22 @@
             <syncfusion:TabItemExt
                 Header="Clientes"
                 Margin="0"
-                Width="120">
+                Width="120"
+                Height="25">
                 <vistas:ClienteUserControl></vistas:ClienteUserControl>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
                 Header="ParKing"
                 Margin="0"
-                Width="120">
+                Width="120"
+                Height="25">
                 <vistas:EstacionamientosUserControl></vistas:EstacionamientosUserControl>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
                 Header="Vehículos"
                 Margin="0"
-                Width="120">
+                Width="120"
+                Height="25">
                 <vistas:VehiculoUserControl></vistas:VehiculoUserControl>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>

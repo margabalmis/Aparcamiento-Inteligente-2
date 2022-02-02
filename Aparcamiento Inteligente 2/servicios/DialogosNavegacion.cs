@@ -27,7 +27,7 @@ namespace Aparcamiento_Inteligente_2.servicios
         internal void DialogoAñadirVehiculo()
         {
             AñadirVehiculoWindow nuevaVentana = new AñadirVehiculoWindow();
-            nuevaVentana.Show();
+            nuevaVentana.ShowDialog();
         }
         internal void DialogoEditarVehiculo()
         {
