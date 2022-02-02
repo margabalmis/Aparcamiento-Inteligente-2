@@ -16,30 +16,35 @@ namespace Aparcamiento_Inteligente_2.servicios
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }
-        internal void DialogoEditarCliente()
+        internal bool? DialogoEditarCliente()
         {
             EditarClienteWindow nuevaVentana = new EditarClienteWindow();
-            nuevaVentana.Show();
+            nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
         }
-        internal void DialogoEliminarCliente()
+        internal bool? DialogoEliminarCliente()
         {
             EliminarClienteWindow nuevaVentana = new EliminarClienteWindow();
             nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
         }
-        internal void DialogoAñadirVehiculo()
+        internal bool? DialogoAñadirVehiculo()
         {
             AñadirVehiculoWindow nuevaVentana = new AñadirVehiculoWindow();
             nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
         }
-        internal void DialogoEditarVehiculo()
+        internal bool? DialogoEditarVehiculo()
         {
             EditarVehiculoWindow nuevaVentana = new EditarVehiculoWindow();
-            nuevaVentana.Show();
+            nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
         }
-        internal void DialogoEliminarVehiculo()
+        internal bool? DialogoEliminarVehiculo()
         {
             EliminarVehiculoWindow nuevaVentana = new EliminarVehiculoWindow();
             nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
         }
         internal void MessageBoxFinalizarEstacionamiento()
         {

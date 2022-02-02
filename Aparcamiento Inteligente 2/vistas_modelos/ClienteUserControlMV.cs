@@ -2,6 +2,7 @@
 using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,6 +51,13 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoNuevoVehiculo = new RelayCommand(NuevoVehiculo);
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
+
+            //Comunicación vistas modelo
+            WeakReferenceMessenger.Default.Register<ClienteUserControlMV, ClienteSeleccionadoMessage>
+                (this, (r, m) =>
+                {
+                    m.Reply(r.ClienteSeleccionado);
+                });
 
         }
 

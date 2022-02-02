@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aparcamiento_Inteligente_2.modelo
 {
-    class Cliente : ObservableRecipient
+    class Cliente : ObservableObject
     {
 
         public Cliente() { }

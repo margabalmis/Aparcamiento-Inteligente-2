@@ -221,6 +221,7 @@
     <Compile Include="modelo\Estacionamiento.cs" />
     <Compile Include="modelo\Marcas.cs" />
     <Compile Include="modelo\Vehiculo.cs" />
+    <Compile Include="servicios\ComunicacionVMs.cs" />
     <Compile Include="servicios\DBServicio.cs" />
     <Compile Include="servicios\DialogosNavegacion.cs" />
     <Compile Include="servicios\FaceAPI.cs" />
