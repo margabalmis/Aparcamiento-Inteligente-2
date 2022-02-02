@@ -27,5 +27,10 @@ namespace Aparcamiento_Inteligente_2.vistas
             vm = new AñadirClienteWindowMV();
             this.DataContext = vm;
         }
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
+        {
+            vm.AñadirCliente();
+            DialogResult = true;
+        }
     }
 }

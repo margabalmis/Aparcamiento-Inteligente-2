@@ -31,14 +31,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref nombre, value); }
         }
 
-        private string apellido;
-
-        public string Apellido
-        {
-            get { return apellido; }
-            set { SetProperty(ref apellido, value); }
-        }
-
         private string documento;
 
         public string Documento

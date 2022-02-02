@@ -6,7 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aparcamiento_Inteligente_2.vistas"
         mc:Ignorable="d"
-        Title="AñadirClienteWindow" Height="450" Width="800">
+        Title="AñadirClienteWindow" Height="450" Width="800"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
     <Window.Resources>
         <!--StackPanel-->
         <Style
@@ -39,36 +41,47 @@
                 Property="Width"
                 Value="140" />
         </Style>
+        <!--Check imagen seleccionada-->
+        <Style TargetType="Image" x:Key="check">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Source" Value="/img/check.jpg"/>
+            <Setter Property="Visibility" Value="Visible"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Foto}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
 
     <StackPanel>
         <inputLayout:SfTextInputLayout
             Hint="Nombre">
-            <TextBox />
+            <TextBox Text="{Binding Path=Nombre,Mode=TwoWay}"/>
         </inputLayout:SfTextInputLayout>
         <inputLayout:SfTextInputLayout
             Margin="0,0,0,8"
             HelperText="formato del documento"
             Hint="Documento">
-            <TextBox />
+            <TextBox Text="{Binding Path=Documento,Mode=TwoWay}"/>
         </inputLayout:SfTextInputLayout>
         <inputLayout:SfTextInputLayout
             Hint="Telefono">
-            <TextBox />
+            <TextBox Text="{Binding Path=Telefono,Mode=TwoWay}"/>
         </inputLayout:SfTextInputLayout>
         <TextBlock
             Margin="16,0,0,0">Foto</TextBlock>
         <StackPanel
             Style="{StaticResource ParaBotones}">
-            <Button>Abrir Imagen</Button>
-            <Image></Image>
+            <Button Command="{Binding Path=ImagenCommand}">Abrir Imagen</Button>
+            <Image  Style="{StaticResource check}"></Image>
         </StackPanel>
         <StackPanel
             Style="{StaticResource ParaBotones}"
             HorizontalAlignment="Right">
-            <Button>Cancelar</Button>
-            <Button>Aceptar</Button>
+            <Button IsCancel="True">Cancelar</Button>
+            <Button Click="AceptarButton_Click" IsDefault="True" >Aceptar</Button>
         </StackPanel>
     </StackPanel>
 </Window>

@@ -15,7 +15,7 @@ namespace Aparcamiento_Inteligente_2.servicios
         const string ENDPOINT = "https://faceaparcamiento.cognitiveservices.azure.com/";
         const string URL = ENDPOINT + "face/v1.0/detect";
 
-        public static (double age, string gender) GetAgeGender(string url)
+        public static (int age, string gender) GetAgeGender(string url)
         {
             var cliente = new RestClient("https://faceaparcamiento.cognitiveservices.azure.com/face/v1.0");
             var request = new RestRequest("detect", Method.POST);
@@ -36,7 +36,7 @@ namespace Aparcamiento_Inteligente_2.servicios
 
 
 
-            return (jt.Value<double>("age"), jt.Value<string>("gender"));
+            return (jt.Value<int>("age"), jt.Value<string>("gender"));
 
         }
     }
