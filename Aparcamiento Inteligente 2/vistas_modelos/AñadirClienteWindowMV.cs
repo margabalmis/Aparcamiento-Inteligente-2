@@ -1,5 +1,8 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
+using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         public AñadirClienteWindowMV()
         {
+            ImagenCommand = new RelayCommand(AbrirImagen);
         }
 
         private Cliente nuevoCliente;
@@ -30,14 +34,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         {
             get { return nombre; }
             set { SetProperty(ref nombre, value); }
-        }
-
-        private string apellido;
-
-        public string Apellido
-        {
-            get { return apellido; }
-            set { SetProperty(ref apellido, value); }
         }
 
         private string documento;
@@ -63,6 +59,25 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get { return telefono; }
             set { SetProperty(ref telefono, value); }
         }
+        public RelayCommand ImagenCommand { get; }
+        private void AbrirImagen()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Foto=openFileDialog.FileName;
+            }
+        }
+        public void AñadirCliente()
+        {
+            string blobURL = Nube.SubirImagen(Foto);
+            var ageGender = FaceAPI.GetAgeGender(blobURL);
+            DBServicio db = new DBServicio();
+            db.ClienteInsertOne(new Cliente(Nombre,Documento,blobURL,ageGender.age,ageGender.gender,Telefono));
+
+        }
+
+
 
 
 
