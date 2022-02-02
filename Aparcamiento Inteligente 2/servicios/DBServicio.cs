@@ -426,9 +426,9 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             SqliteCommand comando = new SqliteCommand("DELETE FROM clientes WHERE id_cliente = @id_cliente;", conexion);
 
-            _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
+            _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
 
-            comando.Parameters["@id_marca"].Value = cliente.Id_cliente;
+            comando.Parameters["@id_cliente"].Value = cliente.Id_cliente;
 
             if (comando.ExecuteNonQuery() == 1)
             {
@@ -440,6 +440,144 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        public bool VehiculoDeleteOne(Vehiculo vehiculo)
+        {
+            bool result = false;
+
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("DELETE FROM vehiculos WHERE id_vehiculo = @id_vehiculo;", conexion);
+
+            _ = comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
+
+            comando.Parameters["@id_vehiculo"].Value = vehiculo.Id_vehiculo;
+
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                result = true;
+            }
+
+            conexion.Close();
+
+            return result;
+        }
+
+        public bool MarcasDeleteOne(Marcas marcas)
+        {
+            bool result = false;
+
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("DELETE FROM marcas WHERE id_marca = @id_marca;", conexion);
+
+            _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
+
+            comando.Parameters["@id_marca"].Value = marcas.Id_marcas;
+
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                result = true;
+            }
+
+            conexion.Close();
+
+            return result;
+        }
+
+        public bool EstacionamientoDeleteOne(Estacionamiento estacionamiento)
+        {
+            bool result = false;
+
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("DELETE FROM estacionamientos WHERE id_estacionamiento = @id_estacionamiento;", conexion);
+
+            _ = comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
+
+            comando.Parameters["@id_estacionamiento"].Value = estacionamiento.Id_estacionamiento;
+
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                result = true;
+            }
+
+            conexion.Close();
+
+            return result;
+        }
+        #endregion
+        #region Finds()
+        // Devuelve los vehiculos asociados al cliente 
+        public ObservableCollection<Vehiculo> VehiculosFindByCliente(Cliente cliente)
+        {
+            ObservableCollection<Vehiculo> result = new ObservableCollection<Vehiculo>();
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE id_cliente = @id_cliente", conexion);
+            
+            _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
+
+            comando.Parameters["@id_cliente"].Value = cliente.Id_cliente;
+
+
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    
+                    result.Add(
+                        new Vehiculo(
+                            Convert.ToInt32(lector["id_vehiculo"]),
+                            Convert.ToInt32(lector["id_cliente"]),
+                            (string)lector["matricula"],
+                            Convert.ToInt32(lector["id_marca"]),
+                            (string)lector["modelo"],
+                            (string)lector["tipo"]
+                    ));
+                }
+            }
+
+            conexion.Close();
+            return result;
+        }
+
+        // Devuelve los estacionamientos en curso
+        public ObservableCollection<Estacionamiento> EstacionamientosFindOngoing()
+        {
+            ObservableCollection<Estacionamiento> result = new ObservableCollection<Estacionamiento>();
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE salida IS NULL OR salida = ''", conexion);
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    //public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, string entrada, string salida, float importe, string tipo)
+                    result.Add(
+                        new Estacionamiento(
+                            Convert.ToInt32(lector["id_estacionamiento"]),
+                            Convert.ToInt32(lector["id_vehiculo"]),
+                            (string)lector["matricula"],
+                            (string)lector["entrada"],
+                            (string)lector["salida"],
+                            (float)Convert.ToDouble(lector["importe"]),
+                            (string)lector["tipo"]
+                    ));
+                }
+            }
+
+            conexion.Close();
+            return result;
+        }
         #endregion
         private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 
