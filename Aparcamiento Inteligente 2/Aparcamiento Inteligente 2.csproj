@@ -221,12 +221,10 @@
     <Compile Include="modelo\Estacionamiento.cs" />
     <Compile Include="modelo\Marcas.cs" />
     <Compile Include="modelo\Vehiculo.cs" />
-    <Compile Include="servicios\ClienteBD.cs" />
     <Compile Include="servicios\DBServicio.cs" />
     <Compile Include="servicios\DialogosNavegacion.cs" />
     <Compile Include="servicios\FaceAPI.cs" />
     <Compile Include="servicios\Nube.cs" />
-    <Compile Include="servicios\VehiculosBD.cs" />
     <Compile Include="vistas\EliminarVehiculoWindow.xaml.cs">
       <DependentUpon>EliminarVehiculoWindow.xaml</DependentUpon>
     </Compile>

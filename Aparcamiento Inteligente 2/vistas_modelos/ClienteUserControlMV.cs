@@ -87,12 +87,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void NuevoCliente()
         {
-
             if (servicioDialogos.DialogoAñadirCliente() == true)
             {
                 Clientes = baseDatos.ClientesGetAll();
             }
-
         }
 
         

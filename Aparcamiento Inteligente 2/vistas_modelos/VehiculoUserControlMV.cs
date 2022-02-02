@@ -15,7 +15,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
 
         //Servicios
-        VehiculosBD vehiculosBD;
+        private readonly DBServicio baseDatos;
         private readonly DialogosNavegacion servicioDialogos;
 
         public RelayCommand DialogoEliminarVehiculo { get; }
@@ -27,9 +27,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
             //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();
+            baseDatos = new DBServicio();
 
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
+            Vehiculos = baseDatos.VehiculosGetAll();
 
         }
 
