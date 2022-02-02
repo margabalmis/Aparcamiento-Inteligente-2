@@ -13,10 +13,18 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
     class EstacionamientosMV : ObservableRecipient
     {
-        public RelayCommand FinalizarEstacionamiento { get; }
+        //Servicios
+        DBServicio baseDatos;
         readonly DialogosNavegacion servicioDialogos;
+
+        public RelayCommand FinalizarEstacionamiento { get; }
         public EstacionamientosMV() 
         {
+            //Cargar datos Estacionamientos
+            baseDatos = new DBServicio();
+            Estacionamientos = new ObservableCollection<Estacionamiento>();
+            //Estacionamientos = baseDatos.EstacionamientosGetAll();
+
             //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();
             FinalizarEstacionamiento = new RelayCommand(FinEstacionamiento);

@@ -41,8 +41,32 @@
                 Property="Margin"
                 Value="8" />
             <Setter
+                Property="Template"
+                Value="{DynamicResource ButtonControlTemplate}" />
+            <Setter
                 Property="Width"
                 Value="140" />
+            <Setter
+                Property="Background"
+                Value="#c0dcfc"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="#000"></Setter>
+            <Setter
+                Property="Margin"
+                Value="8"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+            <Setter
+                Property="Padding"
+                Value="4"></Setter>
+            <Setter
+                Property="Width"
+                Value="140"></Setter>
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
         </Style>
     </Window.Resources>
 
