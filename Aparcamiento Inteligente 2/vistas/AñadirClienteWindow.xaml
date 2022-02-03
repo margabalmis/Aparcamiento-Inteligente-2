@@ -82,7 +82,7 @@
     <StackPanel>
         <inputLayout:SfTextInputLayout
             Hint="Nombre">
-            <TextBox Text="{Binding Path=ClienteSeleccionado.Nombre}"/>
+            <TextBox Text="{Binding Path=Nombre,Mode=TwoWay}"/>
         </inputLayout:SfTextInputLayout>
         <inputLayout:SfTextInputLayout
             Margin="0,0,0,8"
