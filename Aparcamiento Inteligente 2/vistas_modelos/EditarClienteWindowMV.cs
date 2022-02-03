@@ -1,4 +1,5 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
+using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
@@ -14,7 +15,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public EditarClienteWindowMV()
         {
             //ClienteSeleccionado = new Cliente();
-            ClienteSeleccionado = WeakReferenceMessenger.Default.Send<Cliente>();
+            ClienteSeleccionado = WeakReferenceMessenger.Default.Send<ClienteSeleccionadoMessage>();
           
         }
 
