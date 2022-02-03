@@ -2,6 +2,7 @@
 using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,6 +34,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             Vehiculos = baseDatos.VehiculosGetAll();
 
+            WeakReferenceMessenger.Default.Register<VehiculoUserControlMV, VehiculoSeleccionadoMessage>
+                (this, (r, m) =>
+                {
+                    m.Reply(r.VehiculoSeleccionado);
+                });
         }
 
         private void EditarVehiculo()

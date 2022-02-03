@@ -238,6 +238,7 @@
     <Compile Include="vistas_modelos\AñadirClienteWindowMV.cs" />
     <Compile Include="vistas_modelos\ClienteUserControlMV.cs" />
     <Compile Include="vistas_modelos\EditarClienteWindowMV.cs" />
+    <Compile Include="vistas_modelos\EditarVehiculoMV.cs" />
     <Compile Include="vistas_modelos\EliminarClienteWindowMV.cs" />
     <Compile Include="vistas_modelos\EliminarVehiculoWindowMV.cs" />
     <Compile Include="vistas_modelos\EstacionamientosMV.cs" />

@@ -81,11 +81,11 @@
             Hint="Documento"
             Margin="0,0,0,8"
             HelperText="formato del documento">
-            <TextBox />
+            <TextBox Text="{Binding Path=ClienteSeleccionado.Documento}"/>
         </inputLayout:SfTextInputLayout>
         <inputLayout:SfTextInputLayout
             Hint="Telefono">
-            <TextBox />
+            <TextBox Text="{Binding Path=ClienteSeleccionado.Telefono}"/>
         </inputLayout:SfTextInputLayout>
         <TextBlock
             Margin="16,0,0,0">Foto</TextBlock>

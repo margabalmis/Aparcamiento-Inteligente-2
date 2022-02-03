@@ -60,6 +60,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref telefono, value); }
         }
         public RelayCommand ImagenCommand { get; }
+        
+        
+        
+        //Pasar a serviciosDialogo
         private void AbrirImagen()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

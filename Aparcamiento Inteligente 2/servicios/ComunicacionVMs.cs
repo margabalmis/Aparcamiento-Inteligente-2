@@ -12,4 +12,8 @@ namespace Aparcamiento_Inteligente_2.servicios
     {
 
     }
+    class VehiculoSeleccionadoMessage : RequestMessage<Vehiculo>
+    {
+
+    }
 }
