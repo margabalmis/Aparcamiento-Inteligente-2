@@ -99,7 +99,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             {
                 while (lector.Read())
                 {
-                    //public Marcas(int id_marca, string marca)
                     result.Add((string)lector["marca"]);
                 }
             }
@@ -604,6 +603,31 @@ namespace Aparcamiento_Inteligente_2.servicios
             }
 
             conexion.Close();
+            return result;
+        }
+
+        public int MarcasFindId(string marca)
+        {
+            int result = 0;
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM marcas WHERE marca = @marca", conexion);
+
+            _ = comando.Parameters.Add("@marca", SqliteType.Text);
+
+            comando.Parameters["@marca"].Value = marca;
+
+
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                result = Convert.ToInt32(lector["id_cliente"]);
+            }
+
+            conexion.Close();
+
             return result;
         }
         #endregion
