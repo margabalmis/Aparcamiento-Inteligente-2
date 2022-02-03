@@ -546,7 +546,39 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Close();
             return result;
         }
+        public Cliente VehiculoFindCliente(Vehiculo vehiculo)
+        {
+            Cliente result =  null;
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
 
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM clientes WHERE id_cliente = @id_cliente", conexion);
+
+            _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
+
+            comando.Parameters["@id_cliente"].Value = vehiculo.Id_cliente;
+
+
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                    result= 
+                         new Cliente(
+                            Convert.ToInt32(lector["id_cliente"]),
+                            (string)lector["nombre"],
+                            (string)lector["documento"],
+                            (string)lector["foto"],
+                            Convert.ToInt32(lector["edad"]),
+                            (string)lector["genero"],
+                            (string)lector["telefono"]
+                    );
+            }
+
+            conexion.Close();
+
+            return result;
+        }
         // Devuelve los estacionamientos en curso
         public ObservableCollection<Estacionamiento> EstacionamientosFindOngoing()
         {
