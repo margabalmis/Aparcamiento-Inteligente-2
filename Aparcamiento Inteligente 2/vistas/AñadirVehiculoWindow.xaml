@@ -102,7 +102,7 @@
             <inputLayout:SfTextInputLayout
                 Width="240"
                 Hint="Marca">
-                <ComboBox ItemsSource="{Binding Path=Marca.}"/>
+                <ComboBox ItemsSource="{Binding Path=Marca.marca}"/>
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv
                 SizeMode="Normal"
