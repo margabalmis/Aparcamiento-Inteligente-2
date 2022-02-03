@@ -1,4 +1,4 @@
-﻿using Aparcamiento_Inteligente_2.modelo;
+﻿using AcessoParcking.modelo;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aparcamiento_Inteligente_2.servicios
+namespace AcessoParcking.servicios
 {
     class DBServicio
     {
@@ -86,9 +86,9 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-        public List<string> MarcasGetAll()
+        public ObservableCollection<Marcas> MarcasGetAll()
         {
-            List<string> result = new List<string>();
+            ObservableCollection<Marcas> result = new ObservableCollection<Marcas>();
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
@@ -100,7 +100,11 @@ namespace Aparcamiento_Inteligente_2.servicios
                 while (lector.Read())
                 {
                     //public Marcas(int id_marca, string marca)
-                    result.Add((string)lector["marca"]);
+                    result.Add(
+                        new Marcas(
+                            Convert.ToInt32(lector["id_marca"]),
+                            (string)lector["marca"]
+                    ));
                 }
             }
 
