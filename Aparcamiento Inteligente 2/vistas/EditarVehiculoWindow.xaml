@@ -90,19 +90,20 @@
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Hint="Matricula">
-                <TextBox />
+                <TextBox Text="{Binding Path=VehiculoSeleccionado.Matricula}" />
             </inputLayout:SfTextInputLayout>
         </StackPanel>
         <StackPanel
             Orientation="Horizontal">
             <inputLayout:SfTextInputLayout
                 Hint="Modelo">
-                <TextBox />
+                <TextBox Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Width="240"
                 Hint="Marca">
-                <ComboBox />
+                <ComboBox ItemsSource="{Binding Path=Marcas.}"
+                          SelectedItem="{Binding Path=MarcaSeleccionada}"/>
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv
                 SizeMode="Normal"

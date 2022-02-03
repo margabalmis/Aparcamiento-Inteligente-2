@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aparcamiento_Inteligente_2.vistas_modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace Aparcamiento_Inteligente_2.vistas
     /// </summary>
     public partial class EditarVehiculoWindow : Window
     {
+        EditarVehiculoMV vm;
         public EditarVehiculoWindow()
         {
             InitializeComponent();
+            vm = new EditarVehiculoMV();
+            this.DataContext = vm;
         }
     }
 }
