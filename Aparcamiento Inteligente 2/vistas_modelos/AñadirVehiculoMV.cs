@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
-    class EditarVehiculoMV : ObservableRecipient
+    class AñadirVehiculoMV : ObservableRecipient
     {
         DBServicio baseDatos;
-        public EditarVehiculoMV() 
+        public AñadirVehiculoMV()
         {
             VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
 

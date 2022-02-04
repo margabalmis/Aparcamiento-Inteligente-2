@@ -27,5 +27,9 @@ namespace Aparcamiento_Inteligente_2.vistas
             vm = new EditarVehiculoMV();
             this.DataContext = vm;
         }
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

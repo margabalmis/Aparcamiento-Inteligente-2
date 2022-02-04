@@ -8,6 +8,35 @@
     mc:Ignorable="d"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     Title="Aparcamiento" Height="800" Width="1320" >
+
+    <Window.Resources>
+        
+        
+        <!--Tab -->
+        <Style
+            TargetType="{x:Type syncfusion:TabItemExt}">
+            <Setter
+                Property="Background"
+                Value="#c0dcfc"></Setter>
+            <Setter
+                Property="Width"
+                Value="120"></Setter>
+            <Setter
+                Property="Height"
+                Value="25"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="#000"></Setter>
+            <Setter
+                Property="Margin"
+                Value="8,0"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+
+        </Style>    
+    </Window.Resources>
+    
     <Grid>
         <syncfusion:TabControlExt
             Name="tabControl"
@@ -16,24 +45,15 @@
             Name="tabControlExt"
             CloseButtonType="Hide">
             <syncfusion:TabItemExt
-                Header="Clientes"
-                Margin="0"
-                Width="120"
-                Height="25">
+                Header="Clientes">
                 <vistas:ClienteUserControl></vistas:ClienteUserControl>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
-                Header="ParKing"
-                Margin="0"
-                Width="120"
-                Height="25">
+                Header="ParKing">
                 <vistas:EstacionamientosUserControl></vistas:EstacionamientosUserControl>
             </syncfusion:TabItemExt>
-            <syncfusion:TabItemExt
-                Header="Vehículos"
-                Margin="0"
-                Width="120"
-                Height="25">
+            <syncfusion:TabItemExt 
+                Header="Vehículos">
                 <vistas:VehiculoUserControl></vistas:VehiculoUserControl>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>

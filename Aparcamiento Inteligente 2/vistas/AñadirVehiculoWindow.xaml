@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aparcamiento_Inteligente_2.vistas"
         mc:Ignorable="d"
+    xmlns:convertidores="clr-namespace:Aparcamiento_Inteligente_2.convertidores"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
     Title="Añadir Vehiculo" Height="450" Width="800"
         ResizeMode="NoResize"
         ShowInTaskbar="False">
     <Window.Resources>
+
+        <!--Conversores-->
+        <convertidores:MarcasToIEnumerable
+            x:Key="toIEnumerable"></convertidores:MarcasToIEnumerable>
+
+
+
         <!--StackPanel-->
         <Style
             TargetType="{x:Type StackPanel}">
@@ -33,7 +41,6 @@
         </Style>
 
         <!--Botones-->
-        <!--Botones-->
         <Style
             TargetType="{x:Type Button}">
             <Setter
@@ -47,10 +54,10 @@
                 Value="140" />
             <Setter
                 Property="Background"
-                Value="#4064cf"></Setter>
+                Value="#c0dcfc"></Setter>
             <Setter
                 Property="Foreground"
-                Value="#FFF1EFE5"></Setter>
+                Value="#000"></Setter>
             <Setter
                 Property="Margin"
                 Value="8"></Setter>
@@ -86,29 +93,37 @@
             Orientation="Horizontal">
             <inputLayout:SfTextInputLayout
                 Hint="Cliente">
-                <TextBox />
+                <TextBox
+                    Text="{Binding Path=Propietario.Nombre}" />
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Hint="Matricula">
-                <TextBox />
+                <TextBox
+                    Text="{Binding Path=VehiculoSeleccionado.Matricula}" />
             </inputLayout:SfTextInputLayout>
         </StackPanel>
         <StackPanel
             Orientation="Horizontal">
             <inputLayout:SfTextInputLayout
                 Hint="Modelo">
-                <TextBox />
+                <TextBox Text="{Binding Path=VehiculoSeleccionado.Modelo}"/>
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Width="240"
                 Hint="Marca">
-                <ComboBox ItemsSource="{Binding Path=Marca.marca}"/>
+                <ComboBox 
+                    ItemsSource="{Binding Path=Marcas.Marca, Converter={StaticResource toIEnumerable}}"
+                    SelectedItem="{Binding Path= MarcaSeleccionada}"/>
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv
+                Background="#c0dcfc"
                 SizeMode="Normal"
-                Label="Icono"
-                Margin="14,8,8,20" />
-            <!--SmallIcon ="image\usersmall.png"-->
+                Label=""
+                Margin="0,0,0,16"
+                SmallIcon="/img/add.ico"
+                Width="48"
+                Height="34" />
+            
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Stretch">

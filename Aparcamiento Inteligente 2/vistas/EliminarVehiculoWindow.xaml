@@ -46,8 +46,26 @@
     </Window.Resources>
     <StackPanel
         Margin="16">
-        <TextBlock
-            Margin="16">Eliminar...</TextBlock>
+        <StackPanel>
+            <TextBlock
+                Margin="16">Eliminar:</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Margin=" 5,16"
+                    Text="{Binding Path=VehiculoSeleccionado.Matricula}"
+                    ></TextBlock>
+                <TextBlock
+                    Margin=" 5,16"
+                    Text="{Binding Path=VehiculoSeleccionado.Marca}"
+                    ></TextBlock>
+                <TextBlock
+                    Margin=" 5,16"
+                    Text="{Binding Path=VehiculoSeleccionado.Modelo}"
+                   ></TextBlock>
+            </StackPanel>
+            
+        </StackPanel>
+        
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Center">
