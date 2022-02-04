@@ -58,6 +58,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
                 {
                     m.Reply(r.ClienteSeleccionado);
                 });
+            WeakReferenceMessenger.Default.Register<ClienteUserControlMV, VehiculoSeleccionadoMessage>
+               (this, (r, m) =>
+               {
+                   m.Reply(r.VehiculoSeleccionado);
+               });
 
         }
 
