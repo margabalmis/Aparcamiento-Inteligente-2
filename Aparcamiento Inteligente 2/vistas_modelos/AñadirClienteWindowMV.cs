@@ -13,10 +13,12 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
     class AñadirClienteWindowMV : ObservableRecipient
     {
-
+        //Servicios
+        private readonly DialogosNavegacion servicioDialogos;
 
         public AñadirClienteWindowMV()
         {
+            servicioDialogos = new DialogosNavegacion();
             ImagenCommand = new RelayCommand(AbrirImagen);
         }
 
@@ -60,17 +62,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref telefono, value); }
         }
         public RelayCommand ImagenCommand { get; }
-        
-        
-        
-        //Pasar a serviciosDialogo
+
         private void AbrirImagen()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
-                Foto=openFileDialog.FileName;
-            }
+            Foto = servicioDialogos.DialogoAbrirImagen();
+
         }
         public void AñadirCliente()
         {

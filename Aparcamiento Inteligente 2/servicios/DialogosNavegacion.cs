@@ -1,4 +1,5 @@
 ﻿using Aparcamiento_Inteligente_2.vistas;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,17 @@ namespace Aparcamiento_Inteligente_2.servicios
         {
             MessageBox.Show("¿Quieres eliminar el estacionamiento?", 
                 "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+        }
+        internal string DialogoAbrirImagen()
+        {
+            string foto = null;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foto = openFileDialog.FileName;
+            }
+            return foto;
+
         }
 
     }

@@ -68,6 +68,20 @@
                 Property="FontSize"
                 Value="14"></Setter>
         </Style>
+
+
+        <!--Check imagen seleccionada-->
+        <Style TargetType="Image" x:Key="check">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Source" Value="/img/check.jpg"/>
+            <Setter Property="Visibility" Value="Visible"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Foto}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
     </Window.Resources>
 
 
@@ -91,8 +105,8 @@
             Margin="16,0,0,0">Foto</TextBlock>
         <StackPanel
             Style="{StaticResource ParaBotones}">
-            <Button>Abrir Imagen</Button>
-            <Image></Image>
+            <Button Command="{Binding Path=ImagenCommand}">Abrir Imagen</Button>
+            <Image  Style="{StaticResource check}"></Image>
         </StackPanel>
         <StackPanel
             Style="{StaticResource ParaBotones}"
@@ -100,7 +114,8 @@
             <Button
                 IsCancel="True">Cancelar</Button>
             <Button 
-                IsDefault="True">Aceptar</Button>
+                x:Name="AceptarButton"
+                IsDefault="True" Click="AceptarButton_Click">Aceptar</Button>
         </StackPanel>
     </StackPanel>
 </Window>

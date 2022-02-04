@@ -19,7 +19,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
 
         //Servicios
-        DBServicio baseDatos;
+        readonly DBServicio baseDatos;
         private readonly DialogosNavegacion servicioDialogos;
 
 

@@ -12,16 +12,20 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
     class EditarClienteWindowMV : ObservableRecipient
     {
+        //Servicios
+        readonly DBServicio baseDatos;
         public EditarClienteWindowMV()
         {
+            baseDatos = new DBServicio();
+            //Comunicación
             ClienteSeleccionado = WeakReferenceMessenger.Default.Send<ClienteSeleccionadoMessage>();
           
         }
 
-
-
-
-
+        internal void EditarCliente()
+        {
+            baseDatos.ClienteUpateOne(ClienteSeleccionado);
+        }
 
         private Cliente clienteSeleccionado;
 
@@ -31,38 +35,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref clienteSeleccionado, value); }
         }
 
-        private string nombre;
-
-        public string Nombre
-        {
-            get { return nombre; }
-            set { SetProperty(ref nombre, value); }
-        }
-
-        private string documento;
-
-        public string Documento
-        {
-            get { return documento; }
-            set { SetProperty(ref documento, value); }
-        }
-        private string foto;
-
-        public string Foto
-        {
-            get { return foto; }
-            set { SetProperty(ref foto, value); }
-        }
-
-        private string telefono;
-
-        public string Telefono
-        {
-            get { return telefono; }
-            set { SetProperty(ref telefono, value); }
-        }
-
-        
 
 
     }
