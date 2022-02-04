@@ -48,11 +48,14 @@
         <StackPanel
             Margin="16"
             Orientation="Horizontal">
-        <TextBlock
-            Margin="16">Eliminar</TextBlock>
             <TextBlock
-            Margin="16" 
+            Margin="16">Eliminar a:</TextBlock>
+            <TextBlock
+            Margin=" 5,16" 
                 Text="{Binding Path=ClienteSeleccionado.Nombre}"></TextBlock>
+            <TextBlock
+            Margin="5, 16" 
+                Text="{Binding Path=ClienteSeleccionado.Documento}"></TextBlock>
         </StackPanel>
    
         <StackPanel
