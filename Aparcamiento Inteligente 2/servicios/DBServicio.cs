@@ -610,33 +610,60 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Close();
             return result;
         }
-
-        public int MarcasFindId(string marca)
+        public string MarcasFindMarca(int marca)
         {
-            int result = 0;
+            string result = "";
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM marcas WHERE marca = @marca", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT marca FROM marcas WHERE id_marca = @id_marca", conexion);
 
-            _ = comando.Parameters.Add("@marca", SqliteType.Text);
+            _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
 
-            comando.Parameters["@marca"].Value = marca;
+            comando.Parameters["@id_marca"].Value = marca;
 
 
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
             {
-                result = Convert.ToInt32(lector["id_cliente"]);
+                result = (string)(lector["marca"]);
             }
 
             conexion.Close();
 
             return result;
         }
-        #endregion
-        private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 
-    }
+
+
+
+        public int MarcasFindId(string marca)
+            {
+                int result = 0;
+                SqliteConnection conexion = new SqliteConnection(Path);
+                conexion.Open();
+
+                SqliteCommand comando = new SqliteCommand("SELECT * FROM marcas WHERE marca = @marca", conexion);
+
+                _ = comando.Parameters.Add("@marca", SqliteType.Text);
+
+                comando.Parameters["@marca"].Value = marca;
+
+
+                SqliteDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    result = Convert.ToInt32(lector["id_cliente"]);
+                }
+
+                conexion.Close();
+
+                return result;
+            }
+            #endregion
+            private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
+
+        }
 }

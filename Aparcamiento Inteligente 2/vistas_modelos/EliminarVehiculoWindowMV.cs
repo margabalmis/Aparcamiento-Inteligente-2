@@ -12,9 +12,16 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
     class EliminarVehiculoWindowMV : ObservableRecipient
     {
+        //Servicios
+        readonly DBServicio baseDatos;
         public EliminarVehiculoWindowMV()
-        { 
+        {
+
+            //Cargar datos clientes
+            baseDatos = new DBServicio();
+
             VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+            marca = baseDatos.MarcasFindMarca(VehiculoSeleccionado.Id_marca);
 
         }
         private Vehiculo vehiculoSeleccionado;
@@ -23,6 +30,14 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         {
             get { return vehiculoSeleccionado; }
             set { SetProperty(ref vehiculoSeleccionado, value); }
+        }
+
+        private string marca;
+
+        public string Maraca
+        {
+            get { return marca; }
+            set { SetProperty(ref marca, value); }
         }
 
     }
