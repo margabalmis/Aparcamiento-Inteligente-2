@@ -217,7 +217,6 @@
     <Compile Include="convertidores\DataGridToCliente.cs" />
     <Compile Include="convertidores\DataGridToParking.cs" />
     <Compile Include="convertidores\DataGridToVehiculo.cs" />
-    <Compile Include="convertidores\MarcasToIEnumerable.cs" />
     <Compile Include="convertidores\TipoVheiculoToCheck.cs" />
     <Compile Include="modelo\Cliente.cs" />
     <Compile Include="modelo\Estacionamiento.cs" />

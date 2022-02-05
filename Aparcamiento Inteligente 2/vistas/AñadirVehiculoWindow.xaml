@@ -13,9 +13,6 @@
         ShowInTaskbar="False">
     <Window.Resources>
 
-        <!--Conversores-->
-        <convertidores:MarcasToIEnumerable
-            x:Key="toIEnumerable"></convertidores:MarcasToIEnumerable>
 
 
 

@@ -34,6 +34,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             Vehiculos = baseDatos.VehiculosGetAll();
 
+            //Comunicación vistas modelo
             WeakReferenceMessenger.Default.Register<VehiculoUserControlMV, VehiculoSeleccionadoMessage>
                 (this, (r, m) =>
                 {

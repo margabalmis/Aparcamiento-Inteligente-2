@@ -16,12 +16,34 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         DBServicio baseDatos;
         public EditarVehiculoMV() 
         {
-            VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+            
 
             // Cargar datos Marcas
             baseDatos = new DBServicio();
             Marcas = new ObservableCollection<Marcas>();
             Marcas = baseDatos.MarcasGetAll();
+
+            //Pasar al Combobox
+            MarcasNombre = new ObservableCollection<string>();
+            llenarListaNombreMarcas(Marcas);
+
+
+            VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+
+            //Cliente Propietario
+            Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
+
+            
+
+        }
+
+
+        private void llenarListaNombreMarcas(ObservableCollection<Marcas> marcas)
+        {
+            foreach (Marcas m in Marcas) 
+            {
+                MarcasNombre.Add(m.Marca);
+            }
         }
 
         private Vehiculo vehiculoSeleccionado;
@@ -56,8 +78,16 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get { return marcas; }
             set { SetProperty(ref marcas, value); }
         }
+        
+        private ObservableCollection<string> marcasNombre;
 
+        public ObservableCollection<string> MarcasNombre
+        {
+            get { return marcasNombre; }
+            set { SetProperty(ref marcasNombre, value); }
+        }
 
+        
 
     }
 }
