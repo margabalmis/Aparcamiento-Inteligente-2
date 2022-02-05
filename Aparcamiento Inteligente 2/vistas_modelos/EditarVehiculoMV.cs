@@ -21,7 +21,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             // Cargar datos Marcas
             baseDatos = new DBServicio();
             Marcas = new ObservableCollection<Marcas>();
-            //Marcas = baseDatos.MarcasGetAll();
+            Marcas = baseDatos.MarcasGetAll();
         }
 
         private Vehiculo vehiculoSeleccionado;

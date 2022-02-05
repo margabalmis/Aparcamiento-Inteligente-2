@@ -119,7 +119,7 @@
                 x:Name="VehiculosAsociadosDataGrid"
                 AutoGenerateColumns="True"
                 ItemsSource="{Binding Path=VehiculosAsociadosCliente}"
-                SelectedItems="{Binding Path=VehiculoSeleccionado, Converter={StaticResource toCliente}}" />
+                SelectedItems="{Binding Path=VehiculoSeleccionado, Converter={StaticResource toVehiculo}}" />
         </DockPanel>
 
 
