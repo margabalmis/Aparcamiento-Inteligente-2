@@ -12,8 +12,9 @@ namespace Aparcamiento_Inteligente_2.servicios
     {
 
     }
-    class VehiculoSeleccionadoMessage : RequestMessage<Vehiculo>
+    class VehiculoSeleccionadoMessage : ValueChangedMessage<Vehiculo>
     {
-
+        public VehiculoSeleccionadoMessage(Vehiculo vehiculoSeleccionado) : base(vehiculoSeleccionado) { }
     }
+
 }

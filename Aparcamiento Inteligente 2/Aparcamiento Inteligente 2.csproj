@@ -214,10 +214,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="convertidores\CheckedToCoche.cs" />
+    <Compile Include="convertidores\CheckedToMoto.cs" />
     <Compile Include="convertidores\DataGridToCliente.cs" />
     <Compile Include="convertidores\DataGridToParking.cs" />
     <Compile Include="convertidores\DataGridToVehiculo.cs" />
-    <Compile Include="convertidores\TipoVheiculoToCheck.cs" />
     <Compile Include="modelo\Cliente.cs" />
     <Compile Include="modelo\Estacionamiento.cs" />
     <Compile Include="modelo\Marcas.cs" />
@@ -227,6 +228,12 @@
     <Compile Include="servicios\DialogosNavegacion.cs" />
     <Compile Include="servicios\FaceAPI.cs" />
     <Compile Include="servicios\Nube.cs" />
+    <Compile Include="vistas\AñadirMarcaW.xaml.cs">
+      <DependentUpon>AñadirMarcaW.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\AñadirVehiculoWindow.xaml.cs">
+      <DependentUpon>AñadirVehiculoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vistas\EliminarVehiculoWindow.xaml.cs">
       <DependentUpon>EliminarVehiculoWindow.xaml</DependentUpon>
     </Compile>
@@ -237,6 +244,7 @@
       <DependentUpon>VehiculoUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="vistas_modelos\AñadirClienteWindowMV.cs" />
+    <Compile Include="vistas_modelos\AñadirMarcaWindowMV.cs" />
     <Compile Include="vistas_modelos\AñadirVehiculoMV.cs" />
     <Compile Include="vistas_modelos\ClienteUserControlMV.cs" />
     <Compile Include="vistas_modelos\EditarClienteWindowMV.cs" />
@@ -249,15 +257,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="vistas\AñadirMarcaW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\AñadirVehiculoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="vistas\EliminarClienteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vistas\AñadirClienteWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="vistas\AñadirVehiculoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -289,9 +301,6 @@
     </Compile>
     <Compile Include="vistas\AñadirClienteWindow.xaml.cs">
       <DependentUpon>AñadirClienteWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="vistas\AñadirVehiculoWindow.xaml.cs">
-      <DependentUpon>AñadirVehiculoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="vistas\ClienteUserControl.xaml.cs">
       <DependentUpon>ClienteUserControl.xaml</DependentUpon>

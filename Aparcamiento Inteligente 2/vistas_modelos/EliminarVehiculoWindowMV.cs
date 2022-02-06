@@ -20,7 +20,13 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             //Cargar datos clientes
             baseDatos = new DBServicio();
 
-            VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+            //Recibir mensaje
+            WeakReferenceMessenger.Default.Register<VehiculoSeleccionadoMessage>
+                (this, (r, m) =>
+                {
+                    VehiculoSeleccionado = m.Value;
+                });
+
             marca = baseDatos.MarcasFindMarca(VehiculoSeleccionado.Id_marca);
 
         }

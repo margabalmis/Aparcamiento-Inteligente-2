@@ -89,7 +89,8 @@
             AutoGenerateColumns="True"
             AllowFiltering="True"
             Grid.Row="0"
-            Grid.Column="0" />
+            Grid.Column="0"
+            SelectionChanged="ClientesdataGrid_SelectionChanged" />
         <!--Botones Clientes-->
         <StackPanel
             Grid.Row="0"
@@ -119,7 +120,7 @@
                 x:Name="VehiculosAsociadosDataGrid"
                 AutoGenerateColumns="True"
                 ItemsSource="{Binding Path=VehiculosAsociadosCliente}"
-                SelectedItems="{Binding Path=VehiculoSeleccionado, Converter={StaticResource toVehiculo}}" />
+                SelectedItem="{Binding Path=VehiculoSeleccionado, Converter={StaticResource toVehiculo}}" />
         </DockPanel>
 
 

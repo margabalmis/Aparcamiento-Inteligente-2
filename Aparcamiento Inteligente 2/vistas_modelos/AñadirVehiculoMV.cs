@@ -16,7 +16,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         DBServicio baseDatos;
         public AñadirVehiculoMV()
         {
-            VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
 
             // Cargar datos Marcas
             baseDatos = new DBServicio();
@@ -33,6 +32,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
 
         private Cliente propietario;
+
+        internal void AñadirVehiculo()
+        {
+            throw new NotImplementedException();
+        }
 
         public Cliente Propietario
         {

@@ -11,28 +11,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Aparcamiento_Inteligente_2.vistas
 {
     /// <summary>
-    /// Lógica de interacción para ClienteUserControl.xaml
+    /// Lógica de interacción para AñadirMarcaW.xaml
     /// </summary>
-    public partial class ClienteUserControl : UserControl
+    public partial class AñadirMarcaW : Window
     {
-        private readonly ClienteUserControlMV vm;
-
-        public ClienteUserControl()
+        AñadirMarcaWindowMV vm;
+        public AñadirMarcaW()
         {
             InitializeComponent();
-            vm = new ClienteUserControlMV();
+            vm = new AñadirMarcaWindowMV();
             this.DataContext = vm;
         }
-
-        private void ClientesdataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            vm.AñadirMarca();
+            DialogResult = true;
         }
     }
 }

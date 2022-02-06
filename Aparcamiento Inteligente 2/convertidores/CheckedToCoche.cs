@@ -8,16 +8,28 @@ using System.Windows.Data;
 
 namespace Aparcamiento_Inteligente_2.convertidores
 {
-    class TipoVheiculoToCheck : IValueConverter
+    class CheckedToCoche : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            string tipo = (string)value;
+            if (tipo == "coche")
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            bool coche = (bool)value;
+            if (coche)
+            {
+                return "coche";
+            }
+            else
+                return null;
         }
     }
 }

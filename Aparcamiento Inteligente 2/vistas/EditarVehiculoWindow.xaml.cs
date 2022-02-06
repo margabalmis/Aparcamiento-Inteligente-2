@@ -31,5 +31,10 @@ namespace Aparcamiento_Inteligente_2.vistas
         {
             DialogResult = true;
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

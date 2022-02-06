@@ -1,21 +1,17 @@
-﻿<Window x:Class="Aparcamiento_Inteligente_2.vistas.AñadirVehiculoWindow"
+﻿<Window x:Class="Aparcamiento_Inteligente_2.vistas.AñadirMarcaW"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Aparcamiento_Inteligente_2.vistas"
-        mc:Ignorable="d"
-    xmlns:convertidores="clr-namespace:Aparcamiento_Inteligente_2.convertidores"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:local="clr-namespace:Aparcamiento_Inteligente_2.vistas"
+    mc:Ignorable="d"
     xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
-    Title="Añadir Vehiculo"
-    Height="450"
-    Width="800"
+    Title="Añadir Marca"
+    Height="250"
+    Width="480"
     ResizeMode="NoResize"
     ShowInTaskbar="False">
     <Window.Resources>
-
-
 
 
         <!--StackPanel-->
@@ -82,7 +78,7 @@
                 Value="8" />
             <Setter
                 Property="Width"
-                Value="320" />
+                Value="380" />
         </Style>
     </Window.Resources>
 
@@ -91,53 +87,11 @@
         <StackPanel
             Orientation="Horizontal">
             <inputLayout:SfTextInputLayout
-                Hint="Cliente">
-                <TextBox
-                    Text="{Binding Path=Propietario.Nombre}" />
-            </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout
-                Hint="Matricula">
-                <TextBox
-                    Text="{Binding Path=VehiculoSeleccionado.Matricula}" />
-            </inputLayout:SfTextInputLayout>
-        </StackPanel>
-        <StackPanel
-            Orientation="Horizontal">
-            <inputLayout:SfTextInputLayout
-                Hint="Modelo">
-                <TextBox
-                    Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
-            </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout
-                Width="240"
                 Hint="Marca">
-                <ComboBox
-                    ItemsSource="{Binding Path=Marcas.Marca, Converter={StaticResource toIEnumerable}}"
-                    SelectedItem="{Binding Path= MarcaSeleccionada}" />
+                <TextBox
+                    Text="{Binding Path=NuevaMarca.Marca}" />
             </inputLayout:SfTextInputLayout>
-            <syncfusion:ButtonAdv
-                Background="#c0dcfc"
-                SizeMode="Normal"
-                Label=""
-                Margin="0,0,0,16"
-                SmallIcon="/img/add.ico"
-                Width="48"
-                Height="34" />
 
-        </StackPanel>
-        <StackPanel
-            HorizontalAlignment="Stretch">
-            <TextBlock
-                Margin="16,0,0,0">Tipo</TextBlock>
-            <StackPanel>
-                <RadioButton
-                    IsChecked="True"
-                    Margin="10,5,0,0"
-                    GroupName="TipoVehiculo">Coche</RadioButton>
-                <RadioButton
-                    Margin="10,5,0,0"
-                    GroupName="TipoVehiculo">Moto</RadioButton>
-            </StackPanel>
         </StackPanel>
 
         <StackPanel
@@ -146,8 +100,7 @@
             <Button
                 IsCancel="True">Cancelar</Button>
             <Button
-                IsDefault="True"
-                Click="AceptarButton_Click">Aceptar</Button>
+                IsDefault="True">Aceptar</Button>
         </StackPanel>
     </StackPanel>
 </Window>

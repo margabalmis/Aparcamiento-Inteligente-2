@@ -35,6 +35,12 @@ namespace Aparcamiento_Inteligente_2.servicios
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }
+        internal bool? DialogoAñadirMarca()
+        {
+            AñadirMarcaW nuevaVentana = new AñadirMarcaW();
+            nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
+        }
         internal bool? DialogoEditarVehiculo()
         {
             EditarVehiculoWindow nuevaVentana = new EditarVehiculoWindow();

@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Aparcamiento_Inteligente_2.vistas"
+    xmlns:convertidores="clr-namespace:Aparcamiento_Inteligente_2.convertidores"
     mc:Ignorable="d"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
@@ -15,7 +16,12 @@
     ResizeMode="NoResize"
     ShowInTaskbar="False">
     <Window.Resources>
-        <!--StackPanel-->
+
+        <!--Convertidores-->
+        <convertidores:CheckedToCoche x:Key="toCoche"></convertidores:CheckedToCoche>
+        <convertidores:CheckedToMoto x:Key="toMoto"></convertidores:CheckedToMoto>
+
+            <!--StackPanel-->
         <Style
             TargetType="{x:Type StackPanel}">
             <Setter
@@ -112,6 +118,7 @@
                     SelectedItem="{Binding Path=MarcaSeleccionada.Marca}" />
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv
+                Command="{Binding Path=AñadirMarcaDialogo}"
                 Background="#c0dcfc"
                 SizeMode="Normal"
                 Label=""
@@ -127,9 +134,12 @@
             <StackPanel>
                 <RadioButton
                     Margin="10,5,0,0"
-                    GroupName="TipoVehiculo">Coche</RadioButton>
+                    GroupName="TipoVehiculo"
+                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo, Converter={StaticResource toCoche}}">
+                    Coche</RadioButton>
                 <RadioButton
                     Margin="10,5,0,0"
+                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo, Converter= {StaticResource toMoto}}"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>
         </StackPanel>

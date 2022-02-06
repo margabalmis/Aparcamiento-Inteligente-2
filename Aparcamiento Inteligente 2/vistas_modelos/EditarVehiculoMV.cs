@@ -1,6 +1,7 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
 using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
@@ -14,28 +15,50 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     class EditarVehiculoMV : ObservableRecipient
     {
         DBServicio baseDatos;
+        DialogosNavegacion navegacion;
         public EditarVehiculoMV() 
         {
-            
-
             // Cargar datos Marcas
             baseDatos = new DBServicio();
             Marcas = new ObservableCollection<Marcas>();
             Marcas = baseDatos.MarcasGetAll();
 
+            navegacion = new DialogosNavegacion();
+
+            AñadirMarcaDialogo = new RelayCommand(DialogoAñadirMarca);
+
             //Pasar al Combobox
             MarcasNombre = new ObservableCollection<string>();
             llenarListaNombreMarcas(Marcas);
 
+            //Recibir mensaje
+            WeakReferenceMessenger.Default.Register<VehiculoSeleccionadoMessage>
+                (this, (r, m) => 
+                {
+                    VehiculoSeleccionado = m.Value;
+                    //Cliente Propietario
+                    if (VehiculoSeleccionado != null)
+                    {
+                        Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
+                    }
 
-            VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+                });
 
             //Cliente Propietario
-            Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
+            if (VehiculoSeleccionado != null)
+            {
+                Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
+            }
 
-            
 
         }
+
+        private void DialogoAñadirMarca()
+        {
+            navegacion.DialogoAñadirMarca();
+        }
+
+        public RelayCommand AñadirMarcaDialogo { get; }
 
 
         private void llenarListaNombreMarcas(ObservableCollection<Marcas> marcas)

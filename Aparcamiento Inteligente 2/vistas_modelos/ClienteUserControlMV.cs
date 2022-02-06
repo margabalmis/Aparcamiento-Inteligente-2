@@ -52,12 +52,15 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
 
-            //Comunicación vistas modelo
+          
+            //Comunicación vistas modelo 
             WeakReferenceMessenger.Default.Register<ClienteUserControlMV, ClienteSeleccionadoMessage>
                 (this, (r, m) =>
                 {
                     m.Reply(r.ClienteSeleccionado);
                 });
+
+            VehiculoSeleccionado = null;
             
 
         }
@@ -124,12 +127,20 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get {   return vehiculosAsociadosCliente;}
             set { SetProperty(ref vehiculosAsociadosCliente, value); }
         }
+
         private Vehiculo vehiculoSeleccionado;
 
         public Vehiculo VehiculoSeleccionado
         {
-            get { return vehiculoSeleccionado; }
-            set { SetProperty(ref vehiculoSeleccionado, value); }
+            get 
+            {
+                return vehiculoSeleccionado;}
+            set 
+            {
+                
+                SetProperty(ref vehiculoSeleccionado, value);
+                WeakReferenceMessenger.Default.Send(new VehiculoSeleccionadoMessage(vehiculoSeleccionado));
+            }
         }
     }
 }
