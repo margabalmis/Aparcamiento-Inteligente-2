@@ -15,7 +15,7 @@ namespace AcessoParcking.servicios
 
         public DBServicio(string path)
         {
-            Path = "Data Source" + AbsolutePath(path);
+            Path = path;
         }
 
         public DBServicio()

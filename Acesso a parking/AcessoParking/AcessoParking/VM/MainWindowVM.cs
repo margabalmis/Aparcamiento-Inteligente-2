@@ -1,4 +1,6 @@
-﻿using AcessoParking.Servicios;
+﻿using AcessoParcking.modelo;
+using AcessoParcking.servicios;
+using AcessoParking.Servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
@@ -12,6 +14,7 @@ namespace AcessoParking.VM
     class MainWindowVM: ObservableObject
     {
         private readonly ServicioNavegacion navegacion;
+        private readonly DBServicio baseDatos;
 
         public MainWindowVM()
         {
@@ -19,6 +22,7 @@ namespace AcessoParking.VM
             EntraParkingCommand = new RelayCommand(CrearEstacionamiento);
 
             navegacion = new ServicioNavegacion();
+            baseDatos = new DBServicio("C:\\parking");
         }
 
         private void AbrirImagen()
@@ -41,7 +45,9 @@ namespace AcessoParking.VM
 
         public void CrearEstacionamiento()
         {
-            throw new NotSupportedException();
+           Estacionamiento test = new Estacionamiento(0, 21, "knowledge base", "07-02-2022-14:51", "07-02-2022-14:56", 3.20f, "coche");
+
+            baseDatos.EstacionamientoInsertOne(test);
         }
     }
 }
