@@ -31,25 +31,20 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             MarcasNombre = new ObservableCollection<string>();
             llenarListaNombreMarcas(Marcas);
 
-            //Recibir mensaje
-            WeakReferenceMessenger.Default.Register<VehiculoSeleccionadoMessage>
-                (this, (r, m) => 
-                {
-                    VehiculoSeleccionado = m.Value;
-                    //Cliente Propietario
-                    if (VehiculoSeleccionado != null)
-                    {
-                        Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
-                    }
-
-                });
+            //Comunicacion
+             VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
 
             //Cliente Propietario
             if (VehiculoSeleccionado != null)
             {
                 Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
             }
+            WeakReferenceMessenger.Default.Register<VehiculoSeleccionadoMessageDifuson>
+                (this, (r, m) => 
+                {
+                    VehiculoSeleccionado = m.Value;
 
+                });
 
         }
 

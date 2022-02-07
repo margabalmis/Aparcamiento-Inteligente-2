@@ -59,8 +59,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
                 {
                     m.Reply(r.ClienteSeleccionado);
                 });
-
-            VehiculoSeleccionado = null;
+            WeakReferenceMessenger.Default.Register<ClienteUserControlMV, VehiculoSeleccionadoMessage>
+                (this, (r, m) =>
+                {
+                    m.Reply(r.VehiculoSeleccionado);
+                });
             
 
         }
@@ -74,6 +77,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void EliminarVehiculo()
         {
+
             servicioDialogos.DialogoEliminarVehiculo();
         }
 
@@ -139,7 +143,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             {
                 
                 SetProperty(ref vehiculoSeleccionado, value);
-                WeakReferenceMessenger.Default.Send(new VehiculoSeleccionadoMessage(vehiculoSeleccionado));
+               
             }
         }
     }

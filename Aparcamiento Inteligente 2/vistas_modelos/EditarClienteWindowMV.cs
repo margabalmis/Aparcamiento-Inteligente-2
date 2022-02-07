@@ -24,6 +24,11 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             //Comunicación
             ClienteSeleccionado = WeakReferenceMessenger.Default.Send<ClienteSeleccionadoMessage>();
 
+            
+
+
+
+
             ImagenCommand = new RelayCommand(AbrirImagen);
 
         }
