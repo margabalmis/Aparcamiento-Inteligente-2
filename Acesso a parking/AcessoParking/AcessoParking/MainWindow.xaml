@@ -8,24 +8,42 @@
         Title="MainWindow"
         Height="600"
         Width="600">
+    <Window.Resources>
+    </Window.Resources> 
+   
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="0"/>
+        
+        <Border Width="400"
+                Height="400"
+                BorderBrush="DarkCyan"
+                BorderThickness="2">
+            <Image Grid.Row="0"
+                   Source="{Binding Path=PathFoto}"
+                   Stretch="Fill"/>
+        </Border>
+
         <Button Grid.Row="1"
                 Content="Cargar Foto"
                 Width="100"
                 Margin="5"
-                Command="{Binding Path=AbrirFotoCommand}"/>
+                Command="{Binding Path=AbrirFotoCommand}"
+                IsDefault="True"/>
+        
         <Button Grid.Row="2"
                 Margin="15"
                 Height="100"
-                Width="300"/>
+                Width="300"
+                Content="Entrar"
+                FontSize="48"
+                FontWeight="Black"
+                Command="{Binding Path=EntraParkingCommand}"/>
     </Grid>
 </Window>
