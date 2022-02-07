@@ -11,15 +11,18 @@ namespace AcessoParking.Servicios
     {
         public string AbrirImagenDialog()
         {
-            string result = "";
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
+            OpenFileDialog dlg = new OpenFileDialog
             {
-                result = openFileDialog.FileName;
-            }
+                Filter = "Image files (*.png;*.jpeg, *.jpg)|*.png;*.jpeg; *.jpg|All files (*.*)|*.*",
+                FilterIndex = 0
+            };
+            string filename = "";
 
-            return result;
+            if (dlg.ShowDialog() == true)
+            {
+                filename = dlg.FileName;
+            }
+            return filename;
         }
     }
 }

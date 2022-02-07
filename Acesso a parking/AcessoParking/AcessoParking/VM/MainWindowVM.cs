@@ -11,11 +11,13 @@ namespace AcessoParking.VM
 {
     class MainWindowVM: ObservableObject
     {
-        private ServicioNavegacion navegacion;
+        private readonly ServicioNavegacion navegacion;
 
         public MainWindowVM()
         {
             AbrirFotoCommand = new RelayCommand(AbrirImagen);
+            EntraParkingCommand = new RelayCommand(CrearEstacionamiento);
+
             navegacion = new ServicioNavegacion();
         }
 
@@ -26,12 +28,20 @@ namespace AcessoParking.VM
 
         public RelayCommand AbrirFotoCommand { get; }
 
+        public RelayCommand EntraParkingCommand { get; }
+
+
         private string _pathFoto;
 
         public string PathFoto
         {
             get => _pathFoto;
             set { _ = SetProperty(ref _pathFoto, value); }
+        }
+
+        public void CrearEstacionamiento()
+        {
+            throw new NotSupportedException();
         }
     }
 }
