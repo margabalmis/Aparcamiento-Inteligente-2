@@ -23,15 +23,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             Marcas = new ObservableCollection<Marcas>();
             Marcas = baseDatos.MarcasGetAll();
 
+            //Añadir Marcas dialogo
             navegacion = new DialogosNavegacion();
-
             AñadirMarcaDialogo = new RelayCommand(DialogoAñadirMarca);
-
-            //Pasar al Combobox
-            MarcasNombre = new ObservableCollection<string>();
-            llenarListaNombreMarcas(Marcas);
-
-
+  
             //Comunicacion
             if (origen == "cliente") 
             {
@@ -58,14 +53,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         public RelayCommand AñadirMarcaDialogo { get; }
 
-
-        private void llenarListaNombreMarcas(ObservableCollection<Marcas> marcas)
-        {
-            foreach (Marcas m in Marcas) 
-            {
-                MarcasNombre.Add(m.Marca);
-            }
-        }
 
         private Vehiculo vehiculoSeleccionado;
 
@@ -100,14 +87,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref marcas, value); }
         }
         
-        private ObservableCollection<string> marcasNombre;
-
-        public ObservableCollection<string> MarcasNombre
-        {
-            get { return marcasNombre; }
-            set { SetProperty(ref marcasNombre, value); }
-        }
-
+        
         
 
     }

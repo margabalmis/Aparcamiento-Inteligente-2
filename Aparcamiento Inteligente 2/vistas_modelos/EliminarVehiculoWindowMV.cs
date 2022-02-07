@@ -14,14 +14,21 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
         //Servicios
         readonly DBServicio baseDatos;
-        public EliminarVehiculoWindowMV()
+        public EliminarVehiculoWindowMV(String origen)
         {
 
             //Cargar datos clientes
             baseDatos = new DBServicio();
 
             //Comunicacion
-             //VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+            if (origen == "cliente")
+            {
+                VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessageDesdeCliente>();
+            }
+            else
+            {
+                VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessageDesdeVehiculo>();
+            }
 
             marca = baseDatos.MarcasFindMarca(VehiculoSeleccionado.Id_marca);
 
@@ -36,7 +43,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private string marca;
 
-        public string Maraca
+        public string Marca
         {
             get { return marca; }
             set { SetProperty(ref marca, value); }

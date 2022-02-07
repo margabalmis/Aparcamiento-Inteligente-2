@@ -112,7 +112,7 @@
                 Width="240"
                 Hint="Marca">
                 <ComboBox
-                    ItemsSource="{Binding Path=Marcas.Marca, Converter={StaticResource toIEnumerable}}"
+                    ItemsSource="{Binding Path=Marcas.Marca}"
                     SelectedItem="{Binding Path= MarcaSeleccionada}" />
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv

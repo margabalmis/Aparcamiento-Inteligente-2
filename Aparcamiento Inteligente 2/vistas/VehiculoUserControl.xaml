@@ -62,6 +62,27 @@
                 Value="0,48,0,0" />
         </Style>
 
+        
+        <!--DataGrid Header-->
+        <Style
+            TargetType="syncfusion:GridHeaderCellControl"
+            >
+            <Setter
+                Property="Background"
+                Value="#deeeff"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="#000"></Setter>
+
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+        </Style>
+
     </UserControl.Resources>
 
     <Grid>
@@ -74,6 +95,7 @@
 
         <!--Vehículos-->
         <syncfusion:SfDataGrid
+            
             x:Name="VehiculosDataGrid"
             AutoGenerateColumns="True"
             ItemsSource="{Binding Path=Vehiculos}"

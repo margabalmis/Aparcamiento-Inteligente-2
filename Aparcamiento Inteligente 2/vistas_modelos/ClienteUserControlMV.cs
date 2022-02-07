@@ -76,8 +76,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void EliminarVehiculo()
         {
-
-            servicioDialogos.DialogoEliminarVehiculo();
+            servicioDialogos.DialogoEliminarVehiculoDesdeCliente();
         }
 
         private void EditarVehiculo()
