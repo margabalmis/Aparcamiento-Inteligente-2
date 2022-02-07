@@ -563,6 +563,7 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             if (lector.HasRows)
             {
+                lector.Read();
                     result= 
                          new Cliente(
                             Convert.ToInt32(lector["id_cliente"]),
@@ -579,6 +580,7 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             return result;
         }
+
         // Devuelve los estacionamientos en curso
         public ObservableCollection<Estacionamiento> EstacionamientosFindOngoing()
         {
@@ -627,6 +629,7 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             if (lector.HasRows)
             {
+                lector.Read();
                 result = (string)(lector["marca"]);
             }
 

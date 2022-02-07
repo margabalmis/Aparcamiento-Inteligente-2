@@ -52,7 +52,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
 
-          
+
             //Comunicación vistas modelo 
             WeakReferenceMessenger.Default.Register<ClienteUserControlMV, ClienteSeleccionadoMessage>
                 (this, (r, m) =>
