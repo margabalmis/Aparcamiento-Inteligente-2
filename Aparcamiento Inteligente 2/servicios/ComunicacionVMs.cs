@@ -12,15 +12,13 @@ namespace Aparcamiento_Inteligente_2.servicios
     {
 
     }
-    class VehiculoSeleccionadoMessage : RequestMessage<Vehiculo>
+    class VehiculoSeleccionadoMessageDesdeCliente : RequestMessage<Vehiculo>
     {
        
     }
-    class VehiculoSeleccionadoMessageDifuson : ValueChangedMessage<Vehiculo>
+    class VehiculoSeleccionadoMessageDesdeVehiculo : RequestMessage<Vehiculo>
     {
-        public VehiculoSeleccionadoMessageDifuson(Vehiculo vehiculoSeleccionado) : base(vehiculoSeleccionado) { }
+
     }
-
-
 
 }

@@ -21,7 +21,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             baseDatos = new DBServicio();
 
             //Comunicacion
-             VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
+             //VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessage>();
 
             marca = baseDatos.MarcasFindMarca(VehiculoSeleccionado.Id_marca);
 

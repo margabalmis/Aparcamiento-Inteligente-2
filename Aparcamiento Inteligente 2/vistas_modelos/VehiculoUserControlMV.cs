@@ -33,22 +33,26 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);
             Vehiculos = baseDatos.VehiculosGetAll();
-             
+
             
-            
+            WeakReferenceMessenger.Default.Register<VehiculoUserControlMV, VehiculoSeleccionadoMessageDesdeVehiculo>
+                (this, (r, m) =>
+                {
+                    m.Reply(r.VehiculoSeleccionado);
+                });
 
         }
 
         private void EditarVehiculo()
         {
-            servicioDialogos.DialogoEditarVehiculo();
-            WeakReferenceMessenger.Default.Send(new VehiculoSeleccionadoMessageDifuson(VehiculoSeleccionado));
+            servicioDialogos.DialogoEditarVehiculoDesdeVehiculo();
+            
         }
 
         private void EliminarVehiculo()
         {
             servicioDialogos.DialogoEliminarVehiculo();
-            WeakReferenceMessenger.Default.Send(new VehiculoSeleccionadoMessageDifuson(VehiculoSeleccionado));
+            
         }
 
         private ObservableCollection<Vehiculo> vehiculos;

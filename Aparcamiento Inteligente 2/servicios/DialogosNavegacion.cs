@@ -41,9 +41,17 @@ namespace Aparcamiento_Inteligente_2.servicios
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }
-        internal bool? DialogoEditarVehiculo()
+        internal bool? DialogoEditarVehiculoDesdeCliente()
         {
-            EditarVehiculoWindow nuevaVentana = new EditarVehiculoWindow();
+            string origen = "cliente";
+            EditarVehiculoWindow nuevaVentana = new EditarVehiculoWindow(origen);
+            nuevaVentana.ShowDialog();
+            return nuevaVentana.DialogResult;
+        }
+        internal bool? DialogoEditarVehiculoDesdeVehiculo()
+        {
+            string origen = "vehiculo";
+            EditarVehiculoWindow nuevaVentana = new EditarVehiculoWindow(origen);
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }

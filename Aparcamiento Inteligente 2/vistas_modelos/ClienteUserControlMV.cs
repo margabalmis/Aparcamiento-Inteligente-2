@@ -59,13 +59,12 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
                 {
                     m.Reply(r.ClienteSeleccionado);
                 });
-            WeakReferenceMessenger.Default.Register<ClienteUserControlMV, VehiculoSeleccionadoMessage>
+            WeakReferenceMessenger.Default.Register<ClienteUserControlMV, VehiculoSeleccionadoMessageDesdeCliente>
                 (this, (r, m) =>
                 {
                     m.Reply(r.VehiculoSeleccionado);
                 });
             
-
         }
 
         private ObservableCollection<Cliente> clientes;
@@ -83,7 +82,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void EditarVehiculo()
         {
-            servicioDialogos.DialogoEditarVehiculo();
+            servicioDialogos.DialogoEditarVehiculoDesdeCliente();
         }
 
         private void NuevoVehiculo()

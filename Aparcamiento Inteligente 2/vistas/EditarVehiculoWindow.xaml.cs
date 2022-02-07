@@ -21,10 +21,10 @@ namespace Aparcamiento_Inteligente_2.vistas
     public partial class EditarVehiculoWindow : Window
     {
         EditarVehiculoMV vm;
-        public EditarVehiculoWindow()
+        public EditarVehiculoWindow(String origen)
         {
             InitializeComponent();
-            vm = new EditarVehiculoMV();
+            vm = new EditarVehiculoMV(origen);
             this.DataContext = vm;
         }
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
