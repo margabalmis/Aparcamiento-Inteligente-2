@@ -23,6 +23,8 @@ namespace AcessoParking.VM
 
             navegacion = new ServicioNavegacion();
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
+
+            PathFoto = "";
         }
 
         private void AbrirImagen()

@@ -19,6 +19,15 @@
                     Value="300" />
             <Setter Property="FontSize"
                     Value="48" />
+            <Setter Property="FontWeight"
+                    Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=PathFoto}"
+                             Value="">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources> 
    
@@ -49,8 +58,8 @@
                 IsDefault="True"/>
         
         <Button Grid.Row="2"
+                Style="{StaticResource EntrarStyle}"
                 Content="Entrar"
-                FontWeight="Black"
                 Command="{Binding Path=EntraParkingCommand}"/>
     </Grid>
 </Window>
