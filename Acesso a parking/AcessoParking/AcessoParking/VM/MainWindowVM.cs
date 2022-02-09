@@ -22,7 +22,7 @@ namespace AcessoParking.VM
             EntraParkingCommand = new RelayCommand(CrearEstacionamiento);
 
             navegacion = new ServicioNavegacion();
-            baseDatos = new DBServicio("C:\\parking");
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
         }
 
         private void AbrirImagen()
@@ -45,9 +45,10 @@ namespace AcessoParking.VM
 
         public void CrearEstacionamiento()
         {
-           Estacionamiento test = new Estacionamiento(0, 21, "knowledge base", "07-02-2022-14:51", "07-02-2022-14:56", 3.20f, "coche");
+            Estacionamiento test = new Estacionamiento(0, 21, "knowledge base", "07-02-2022-14:51", "07-02-2022-14:56", 3.20f, "coche");
 
-            baseDatos.EstacionamientoInsertOne(test);
+            _ = baseDatos.EstacionamientoInsertOne(test);
+            PathFoto = "";
         }
     }
 }
