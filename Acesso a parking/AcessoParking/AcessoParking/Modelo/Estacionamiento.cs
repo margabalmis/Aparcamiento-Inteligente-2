@@ -20,6 +20,15 @@ namespace AcessoParcking.modelo
             Importe = importe;
             Tipo = tipo;
         }
+        
+        //Constructor para crear un estacionamiento
+        public Estacionamiento(int id_vehiculo, string matricula, string entrada, string tipo)
+        {
+            Id_vehiculo = id_vehiculo;
+            Matricula = matricula;
+            Entrada = entrada;
+            Tipo = tipo;
+        }
 
         private int id_estacionamiento;
 

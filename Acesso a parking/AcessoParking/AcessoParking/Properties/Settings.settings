@@ -5,5 +5,17 @@
     <Setting Name="Conexion" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\\parking\\parking.db</Value>
     </Setting>
+    <Setting Name="Conexion_Azure" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=storageaparcamiento;AccountKey=ubR0guLy+WGLMzsDrzAPlcSNcR51PLNEn/LUTQcCmKCf/aZ5JcgpsFVjSKc3+XVgCLT4pVtUHYk4073eF0scZg==;EndpointSuffix=core.windows.net</Value>
+    </Setting>
+    <Setting Name="Blob" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">blobaparcamiento</Value>
+    </Setting>
+    <Setting Name="SubscriptionKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">9a74130c56a54c57ac22bef76c1a5241</Value>
+    </Setting>
+    <Setting Name="SubscriptionKeyMatricula" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">a822ecfd08694897a7ba61a94af9fb0c</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

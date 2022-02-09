@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AcessoParcking.servicios
+namespace AcessoParcking.Servicios
 {
     class DBServicio
     {
@@ -509,7 +509,7 @@ namespace AcessoParcking.servicios
             return result;
         }
         #endregion
-        #region Finds()
+        #region Find()
         // Devuelve los vehiculos asociados al cliente 
         public ObservableCollection<Vehiculo> VehiculosFindByCliente(Cliente cliente)
         {
@@ -546,6 +546,37 @@ namespace AcessoParcking.servicios
             conexion.Close();
             return result;
         }
+
+        public Vehiculo VehiculosFindByMatricula(string matricula)
+        {
+            Vehiculo result = new Vehiculo();
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE matricula = @matricula", conexion);
+
+            _ = comando.Parameters.Add("@id_cliente", SqliteType.Text);
+
+            comando.Parameters["@id_cliente"].Value = matricula;
+
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                lector.Read();
+                    result = new Vehiculo(
+                            Convert.ToInt32(lector["id_vehiculo"]),
+                            Convert.ToInt32(lector["id_cliente"]),
+                            (string)lector["matricula"],
+                            Convert.ToInt32(lector["id_marca"]),
+                            (string)lector["modelo"],
+                            (string)lector["tipo"]
+                    );
+                
+            }
+            conexion.Close();
+            return result;
+        }
         public Cliente VehiculoFindCliente(Vehiculo vehiculo)
         {
             Cliente result =  null;
@@ -579,6 +610,7 @@ namespace AcessoParcking.servicios
 
             return result;
         }
+
         // Devuelve los estacionamientos en curso
         public ObservableCollection<Estacionamiento> EstacionamientosFindOngoing()
         {
@@ -610,6 +642,45 @@ namespace AcessoParcking.servicios
             conexion.Close();
             return result;
         }
+
+        public Boolean VehiculoEstacionado(Vehiculo vehiculo)
+        {
+            Boolean result = false;
+
+            return result;
+        }
+        #endregion
+
+        #region New()
+
+        public bool EstacionamientoNew(Estacionamiento estacionamiento)
+        {
+            bool result = false;
+
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (id_vehiculo, matricula, entrada, tipo) VALUES (@id_vehiculo, @matricula, @entrada, @tipo);", conexion);
+            comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
+            comando.Parameters.Add("@matricula", SqliteType.Text);
+            comando.Parameters.Add("@entrada", SqliteType.Text);
+            comando.Parameters.Add("@tipo", SqliteType.Text);
+
+            comando.Parameters["@id_vehiculo"].Value = estacionamiento.Id_vehiculo;
+            comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
+            comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
+            comando.Parameters["@tipo"].Value = estacionamiento.Tipo;
+
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                result = true;
+            }
+
+            conexion.Close();
+
+            return result;
+        }
+
         #endregion
         private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 

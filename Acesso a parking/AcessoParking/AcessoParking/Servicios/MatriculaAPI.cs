@@ -8,17 +8,16 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace AcessoParking.servicios
+namespace AcessoParking.Servicios
 {
     class MatriculaAPI
     {
-        static string subscriptionKey = "a822ecfd08694897a7ba61a94af9fb0c";
         public static string GetMatriculaCoche(string url)
         {
             var cliente = new RestClient("https://matriculaapi.cognitiveservices.azure.com/vision/v3.2/read");
             var request = new RestRequest("analyze", Method.POST);
 
-            request.AddHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            request.AddHeader("Ocp-Apim-Subscription-Key", Properties.Settings.Default.SubscriptionKeyMatricula);
             request.AddHeader("Content-Type", "application/json");
 
             request.AddJsonBody("{\u0022url\u0022:" + "\u0022" + url + "\u0022}");
@@ -31,7 +30,7 @@ namespace AcessoParking.servicios
 
             cliente = new RestClient(result);
             request = new RestRequest(Method.GET);
-            request.AddHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            request.AddHeader("Ocp-Apim-Subscription-Key", Properties.Settings.Default.SubscriptionKeyMatricula);
 
             response = cliente.Execute(request);
 
@@ -44,7 +43,7 @@ namespace AcessoParking.servicios
             var cliente = new RestClient("https://matriculaapi.cognitiveservices.azure.com/vision/v3.2/read");
             var request = new RestRequest("analyze", Method.POST);
 
-            request.AddHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            request.AddHeader("Ocp-Apim-Subscription-Key", Properties.Settings.Default.SubscriptionKeyMatricula);
             request.AddHeader("Content-Type", "application/json");
 
             request.AddJsonBody("{\u0022url\u0022:" + "\u0022" + url + "\u0022}");
@@ -57,7 +56,7 @@ namespace AcessoParking.servicios
 
             cliente = new RestClient(result);
             request = new RestRequest(Method.GET);
-            request.AddHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            request.AddHeader("Ocp-Apim-Subscription-Key", Properties.Settings.Default.SubscriptionKeyMatricula);
 
             response = cliente.Execute(request);
 

@@ -1,10 +1,11 @@
 ﻿using AcessoParcking.modelo;
-using AcessoParcking.servicios;
+using AcessoParcking.Servicios;
 using AcessoParking.Servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,9 +48,38 @@ namespace AcessoParking.VM
 
         public void CrearEstacionamiento()
         {
-            Estacionamiento test = new Estacionamiento(0, 21, "knowledge base", "07-02-2022-14:51", "07-02-2022-14:56", 3.20f, "coche");
+            string imagen = Nube.SubirImagen(PathFoto);
+            string tipo = VehiculoIdentificarAPI.Identificar(imagen);
+            string matricula;
 
-            _ = baseDatos.EstacionamientoInsertOne(test);
+            if(tipo == "moto")
+            {
+                matricula = MatriculaAPI.GetMatriculaMoto(imagen);
+            }
+            else
+            {
+                matricula = MatriculaAPI.GetMatriculaCoche(imagen);
+            }
+
+            Vehiculo vehiculo = baseDatos.VehiculosFindByMatricula(matricula);
+
+            if (baseDatos.VehiculoEstacionado(vehiculo))
+            {
+                navegacion.Alert("El vehículo ya esta dentro del parking, contacte con su supervisor");
+            }
+            else
+            {
+                DateTime fechaLocal = DateTime.Now;
+                var culture = new CultureInfo("es-ES");
+                string fechaEntrada = fechaLocal.ToString(culture);
+
+                Estacionamiento nuevo = new Estacionamiento(vehiculo.Id_vehiculo, matricula, fechaEntrada, tipo);
+
+                _ = baseDatos.EstacionamientoInsertOne(nuevo);
+            }
+
+
+           
             PathFoto = "";
         }
     }

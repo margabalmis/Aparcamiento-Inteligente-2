@@ -31,5 +31,43 @@ namespace AcessoParking.Properties {
                 return ((string)(this["Conexion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultEndpointsProtocol=https;AccountName=storageaparcamiento;AccountKey=ubR0guL" +
+            "y+WGLMzsDrzAPlcSNcR51PLNEn/LUTQcCmKCf/aZ5JcgpsFVjSKc3+XVgCLT4pVtUHYk4073eF0scZg=" +
+            "=;EndpointSuffix=core.windows.net")]
+        public string Conexion_Azure {
+            get {
+                return ((string)(this["Conexion_Azure"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("blobaparcamiento")]
+        public string Blob {
+            get {
+                return ((string)(this["Blob"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9a74130c56a54c57ac22bef76c1a5241")]
+        public string SubscriptionKey {
+            get {
+                return ((string)(this["SubscriptionKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("a822ecfd08694897a7ba61a94af9fb0c")]
+        public string SubscriptionKeyMatricula {
+            get {
+                return ((string)(this["SubscriptionKeyMatricula"]));
+            }
+        }
     }
 }
