@@ -76,6 +76,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void EliminarVehiculo()
         {
+
             servicioDialogos.DialogoEliminarVehiculoDesdeCliente();
         }
 
@@ -91,7 +92,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void EliminarCliente()
         {
-            servicioDialogos.DialogoEliminarCliente();
+            if (servicioDialogos.DialogoEliminarCliente() == true)
+            {
+                Clientes = baseDatos.ClientesGetAll();
+            }
         }
 
         private void EditarCliente()

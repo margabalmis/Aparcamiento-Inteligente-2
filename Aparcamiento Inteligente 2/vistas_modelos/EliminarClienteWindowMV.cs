@@ -28,6 +28,13 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref clienteSeleccionado, value); }
         }
 
+        public void DeleteCliente()
+        {
+            DBServicio db = new DBServicio();
+            db.ClienteDeleteOne(ClienteSeleccionado);
+        }
+
+
 
     }
 

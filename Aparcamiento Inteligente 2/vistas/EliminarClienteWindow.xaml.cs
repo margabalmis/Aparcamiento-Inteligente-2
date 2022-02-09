@@ -30,6 +30,7 @@ namespace Aparcamiento_Inteligente_2
 
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
         {
+            vm.DeleteCliente();
             DialogResult = true;
         }
     }
