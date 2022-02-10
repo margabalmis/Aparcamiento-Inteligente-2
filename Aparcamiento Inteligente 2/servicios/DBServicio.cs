@@ -118,7 +118,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM estacionamientos", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
@@ -588,7 +588,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE salida IS NULL OR salida = ''", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM estacionamientos WHERE salida IS NULL OR salida = ''", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
