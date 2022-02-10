@@ -677,6 +677,28 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             return result;
         }
+
+        public string MarcasFindMarca(int idMarca)
+        {
+            string result = "";
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("SELECT marca FROM marcas WHERE id_marca = @id_marca ", conexion);
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
+
+            comando.Parameters["@id_marca"].Value = idMarca;
+
+            if (lector.HasRows)
+            {
+                    result = (string)lector["marca"];
+            }
+
+            conexion.Close();
+            return result;
+        }
         #endregion
         #region New()
 
