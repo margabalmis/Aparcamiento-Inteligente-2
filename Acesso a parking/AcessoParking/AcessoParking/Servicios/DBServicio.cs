@@ -555,9 +555,9 @@ namespace AcessoParcking.Servicios
 
             SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE matricula = @matricula", conexion);
 
-            _ = comando.Parameters.Add("@id_cliente", SqliteType.Text);
+            _ = comando.Parameters.Add("@matricula", SqliteType.Text);
 
-            comando.Parameters["@id_cliente"].Value = matricula;
+            comando.Parameters["@matricula"].Value = matricula;
 
             SqliteDataReader lector = comando.ExecuteReader();
 
@@ -618,7 +618,7 @@ namespace AcessoParcking.Servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE salida IS NULL OR salida = ''", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM estacionamientos WHERE salida IS NULL", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
@@ -632,8 +632,8 @@ namespace AcessoParcking.Servicios
                             Convert.ToInt32(lector["id_vehiculo"]),
                             (string)lector["matricula"],
                             (string)lector["entrada"],
-                            (string)lector["salida"],
-                            (float)Convert.ToDouble(lector["importe"]),
+                            "",
+                            0,
                             (string)lector["tipo"]
                     ));
                 }
@@ -690,6 +690,32 @@ namespace AcessoParcking.Servicios
             return result;
         }
 
+
+        public bool EstacionamientoNewVehiculo(Estacionamiento estacionamiento)
+        {
+            bool result = false;
+
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (matricula, entrada, tipo) VALUES (@matricula, @entrada, @tipo);", conexion);
+            comando.Parameters.Add("@matricula", SqliteType.Text);
+            comando.Parameters.Add("@entrada", SqliteType.Text);
+            comando.Parameters.Add("@tipo", SqliteType.Text);
+
+            comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
+            comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
+            comando.Parameters["@tipo"].Value = estacionamiento.Tipo;
+
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                result = true;
+            }
+
+            conexion.Close();
+
+            return result;
+        }
         #endregion
         private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 

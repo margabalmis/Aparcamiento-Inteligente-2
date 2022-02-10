@@ -28,7 +28,7 @@ namespace AcessoParking.Servicios
 
         public void Alert(string mensaje)
         {
-            MessageBox.Show(mensaje, "Alerta",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            _ = MessageBox.Show(mensaje, "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }

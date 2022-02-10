@@ -52,7 +52,7 @@ namespace AcessoParking.VM
             string tipo = VehiculoIdentificarAPI.Identificar(imagen);
             string matricula;
 
-            if(tipo == "moto")
+            if(tipo == "Moto")
             {
                 matricula = MatriculaAPI.GetMatriculaMoto(imagen);
             }
@@ -72,14 +72,11 @@ namespace AcessoParking.VM
                 DateTime fechaLocal = DateTime.Now;
                 var culture = new CultureInfo("es-ES");
                 string fechaEntrada = fechaLocal.ToString(culture);
-
                 Estacionamiento nuevo = new Estacionamiento(vehiculo.Id_vehiculo, matricula, fechaEntrada, tipo);
 
-                _ = baseDatos.EstacionamientoInsertOne(nuevo);
+                _ = vehiculo.Id_vehiculo == 0 ? baseDatos.EstacionamientoNewVehiculo(nuevo) : baseDatos.EstacionamientoNew(nuevo);
+
             }
-
-
-           
             PathFoto = "";
         }
     }
