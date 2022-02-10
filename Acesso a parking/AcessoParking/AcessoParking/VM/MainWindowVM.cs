@@ -49,10 +49,10 @@ namespace AcessoParking.VM
         public void CrearEstacionamiento()
         {
             string imagen = Nube.SubirImagen(PathFoto);
-            string tipo = VehiculoIdentificarAPI.Identificar(imagen);
+            string tipo = VehiculoIdentificarAPI.Identificar(imagen).ToLower();
             string matricula;
 
-            if(tipo == "Moto")
+            if(tipo == "moto")
             {
                 matricula = MatriculaAPI.GetMatriculaMoto(imagen);
             }
@@ -63,7 +63,7 @@ namespace AcessoParking.VM
 
             Vehiculo vehiculo = baseDatos.VehiculosFindByMatricula(matricula);
 
-            if (baseDatos.VehiculoEstacionado(vehiculo))
+            if (baseDatos.VehiculoIsEstacionado(vehiculo))
             {
                 navegacion.Alert("El vehículo ya esta dentro del parking, contacte con su supervisor");
             }

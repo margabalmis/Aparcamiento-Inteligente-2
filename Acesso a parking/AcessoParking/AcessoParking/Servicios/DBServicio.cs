@@ -625,17 +625,33 @@ namespace AcessoParcking.Servicios
             {
                 while (lector.Read())
                 {
-                    //public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, string entrada, string salida, float importe, string tipo)
-                    result.Add(
-                        new Estacionamiento(
+                    var id = lector["id_vehiculo"];
+                    if (id is DBNull)
+                    {
+                        result.Add(new Estacionamiento(
                             Convert.ToInt32(lector["id_estacionamiento"]),
-                            Convert.ToInt32(lector["id_vehiculo"]),
+                            0,
                             (string)lector["matricula"],
                             (string)lector["entrada"],
                             "",
                             0,
                             (string)lector["tipo"]
-                    ));
+                            ));
+                    }
+                    else
+                    {
+                        var est = (string)lector["tipo"];
+                        result.Add(
+                            new Estacionamiento(
+                                Convert.ToInt32(lector["id_estacionamiento"]),
+                                Convert.ToInt32(id),
+                                (string)lector["matricula"],
+                                (string)lector["entrada"],
+                                "",
+                                0,
+                                (string)lector["tipo"]
+                        ));
+                    }
                 }
             }
 
@@ -643,23 +659,25 @@ namespace AcessoParcking.Servicios
             return result;
         }
 
-        public bool VehiculoEstacionado(Vehiculo vehiculo)
+        public bool VehiculoIsEstacionado(Vehiculo vehiculo)
         {
             bool result = false;
-            ObservableCollection<Estacionamiento> cochesParking = EstacionamientosFindOngoing();
-
-            foreach (Estacionamiento item in cochesParking)
+            if (vehiculo.Id_vehiculo != 0)
             {
-                if (item.Id_vehiculo == vehiculo.Id_vehiculo)
+                ObservableCollection<Estacionamiento> cochesParking = EstacionamientosFindOngoing();
+
+                foreach (Estacionamiento item in cochesParking)
                 {
-                    result = true;
+                    if (item.Id_vehiculo == vehiculo.Id_vehiculo)
+                    {
+                        result = true;
+                    }
                 }
             }
 
             return result;
         }
         #endregion
-
         #region New()
 
         public bool EstacionamientoNew(Estacionamiento estacionamiento)
