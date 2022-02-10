@@ -49,7 +49,7 @@ namespace AcessoParking.VM
         public void CrearEstacionamiento()
         {
             string imagen = Nube.SubirImagen(PathFoto);
-            string tipo = VehiculoIdentificarAPI.Identificar(imagen);
+            string tipo = VehiculoIdentificarAPI.Identificar(imagen).ToLower();
             string matricula;
 
             if(tipo == "moto")
@@ -63,7 +63,7 @@ namespace AcessoParking.VM
 
             Vehiculo vehiculo = baseDatos.VehiculosFindByMatricula(matricula);
 
-            if (baseDatos.VehiculoEstacionado(vehiculo))
+            if (baseDatos.VehiculoIsEstacionado(vehiculo))
             {
                 navegacion.Alert("El vehículo ya esta dentro del parking, contacte con su supervisor");
             }
@@ -72,14 +72,11 @@ namespace AcessoParking.VM
                 DateTime fechaLocal = DateTime.Now;
                 var culture = new CultureInfo("es-ES");
                 string fechaEntrada = fechaLocal.ToString(culture);
-
                 Estacionamiento nuevo = new Estacionamiento(vehiculo.Id_vehiculo, matricula, fechaEntrada, tipo);
 
-                _ = baseDatos.EstacionamientoInsertOne(nuevo);
+                _ = vehiculo.Id_vehiculo == 0 ? baseDatos.EstacionamientoNewVehiculo(nuevo) : baseDatos.EstacionamientoNew(nuevo);
+
             }
-
-
-           
             PathFoto = "";
         }
     }
