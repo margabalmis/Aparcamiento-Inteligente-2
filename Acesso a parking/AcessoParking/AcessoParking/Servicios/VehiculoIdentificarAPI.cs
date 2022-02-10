@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AcessoParking.Servicios
 {
-    class VehiculoIdentificarAPI
+    static  public class VehiculoIdentificarAPI
     {
         public static string Identificar(string url)
         {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AcessoParking.Servicios
 {
-    class MatriculaAPI
+    static public class MatriculaAPI
     {
         public static string GetMatriculaCoche(string url)
         {
