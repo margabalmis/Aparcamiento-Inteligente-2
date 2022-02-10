@@ -643,9 +643,18 @@ namespace AcessoParcking.Servicios
             return result;
         }
 
-        public Boolean VehiculoEstacionado(Vehiculo vehiculo)
+        public bool VehiculoEstacionado(Vehiculo vehiculo)
         {
-            Boolean result = false;
+            bool result = false;
+            ObservableCollection<Estacionamiento> cochesParking = EstacionamientosFindOngoing();
+
+            foreach (Estacionamiento item in cochesParking)
+            {
+                if (item.Id_vehiculo == vehiculo.Id_vehiculo)
+                {
+                    result = true;
+                }
+            }
 
             return result;
         }

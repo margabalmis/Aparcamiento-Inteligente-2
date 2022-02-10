@@ -15,7 +15,7 @@ namespace AcessoParking.Servicios
         {
             //Cliente del contenedor
             BlobServiceClient clienteBlobService = new BlobServiceClient(Properties.Settings.Default.Conexion_Azure);
-            BlobContainerClient clienteContenedor = clienteBlobService.GetBlobContainerClient(.Properties.Settings.Default.Blob);
+            BlobContainerClient clienteContenedor = clienteBlobService.GetBlobContainerClient(Properties.Settings.Default.Blob);
 
             //Leemos la imagen y la subimos al contenedor
             Stream streamImagen = File.OpenRead(path);
