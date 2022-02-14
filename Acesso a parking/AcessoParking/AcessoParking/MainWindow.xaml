@@ -7,8 +7,29 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="600"
-        Width="600">
+        Width="600"
+        ResizeMode="NoResize">
     <Window.Resources>
+        <Style TargetType="Button"
+               x:Key="EntrarStyle">
+            <Setter Property="Margin"
+                    Value="15" />
+            <Setter Property="Height"
+                    Value="100" />
+            <Setter Property="Width"
+                    Value="300" />
+            <Setter Property="FontSize"
+                    Value="48" />
+            <Setter Property="FontWeight"
+                    Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=PathFoto}"
+                             Value="">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources> 
    
     <Grid>
@@ -38,12 +59,8 @@
                 IsDefault="True"/>
         
         <Button Grid.Row="2"
-                Margin="15"
-                Height="100"
-                Width="300"
+                Style="{StaticResource EntrarStyle}"
                 Content="Entrar"
-                FontSize="48"
-                FontWeight="Black"
                 Command="{Binding Path=EntraParkingCommand}"/>
     </Grid>
 </Window>

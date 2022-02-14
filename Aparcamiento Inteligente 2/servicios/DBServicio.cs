@@ -11,11 +11,12 @@ namespace Aparcamiento_Inteligente_2.servicios
 {
     class DBServicio
     {
+
         public string Path { get; private set; }
 
         public DBServicio(string path)
         {
-            Path = "Data Source" + AbsolutePath(path);
+            Path = "Data Source=" + path;
         }
 
         public DBServicio()
@@ -92,7 +93,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM marcas", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
@@ -509,7 +510,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
         #endregion
-        #region Finds()
+        #region Find()
         // Devuelve los vehiculos asociados al cliente 
         public ObservableCollection<Vehiculo> VehiculosFindByCliente(Cliente cliente)
         {
@@ -518,7 +519,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Open();
 
             SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE id_cliente = @id_cliente", conexion);
-            
+
             _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
 
             comando.Parameters["@id_cliente"].Value = cliente.Id_cliente;
@@ -530,7 +531,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             {
                 while (lector.Read())
                 {
-                    
+
                     result.Add(
                         new Vehiculo(
                             Convert.ToInt32(lector["id_vehiculo"]),
@@ -546,9 +547,40 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Close();
             return result;
         }
+
+        public Vehiculo VehiculosFindByMatricula(string matricula)
+        {
+            Vehiculo result = new Vehiculo();
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE matricula = @matricula", conexion);
+
+            _ = comando.Parameters.Add("@matricula", SqliteType.Text);
+
+            comando.Parameters["@matricula"].Value = matricula;
+
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                lector.Read();
+                result = new Vehiculo(
+                        Convert.ToInt32(lector["id_vehiculo"]),
+                        Convert.ToInt32(lector["id_cliente"]),
+                        (string)lector["matricula"],
+                        Convert.ToInt32(lector["id_marca"]),
+                        (string)lector["modelo"],
+                        (string)lector["tipo"]
+                );
+
+            }
+            conexion.Close();
+            return result;
+        }
         public Cliente VehiculoFindCliente(Vehiculo vehiculo)
         {
-            Cliente result =  null;
+            Cliente result = null;
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
@@ -563,17 +595,16 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             if (lector.HasRows)
             {
-                lector.Read();
-                    result= 
-                         new Cliente(
-                            Convert.ToInt32(lector["id_cliente"]),
-                            (string)lector["nombre"],
-                            (string)lector["documento"],
-                            (string)lector["foto"],
-                            Convert.ToInt32(lector["edad"]),
-                            (string)lector["genero"],
-                            (string)lector["telefono"]
-                    );
+                result =
+                     new Cliente(
+                        Convert.ToInt32(lector["id_cliente"]),
+                        (string)lector["nombre"],
+                        (string)lector["documento"],
+                        (string)lector["foto"],
+                        Convert.ToInt32(lector["edad"]),
+                        (string)lector["genero"],
+                        (string)lector["telefono"]
+                );
             }
 
             conexion.Close();
@@ -588,49 +619,110 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos WHERE salida IS NULL OR salida = ''", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM estacionamientos WHERE salida IS NULL", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
             {
                 while (lector.Read())
                 {
-                    //public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, string entrada, string salida, float importe, string tipo)
-                    result.Add(
-                        new Estacionamiento(
+                    var id = lector["id_vehiculo"];
+                    if (id is DBNull)
+                    {
+                        result.Add(new Estacionamiento(
                             Convert.ToInt32(lector["id_estacionamiento"]),
-                            Convert.ToInt32(lector["id_vehiculo"]),
+                            0,
                             (string)lector["matricula"],
                             (string)lector["entrada"],
-                            (string)lector["salida"],
-                            (float)Convert.ToDouble(lector["importe"]),
+                            "",
+                            0,
                             (string)lector["tipo"]
-                    ));
+                            ));
+                    }
+                    else
+                    {
+                        result.Add(
+                            new Estacionamiento(
+                                Convert.ToInt32(lector["id_estacionamiento"]),
+                                Convert.ToInt32(id),
+                                (string)lector["matricula"],
+                                (string)lector["entrada"],
+                                "",
+                                0,
+                                (string)lector["tipo"]
+                        ));
+                    }
                 }
             }
 
             conexion.Close();
             return result;
         }
-        public string MarcasFindMarca(int marca)
+
+        public bool VehiculoIsEstacionado(Vehiculo vehiculo)
+        {
+            bool result = false;
+            if (vehiculo.Id_vehiculo != 0)
+            {
+                ObservableCollection<Estacionamiento> cochesParking = EstacionamientosFindOngoing();
+
+                foreach (Estacionamiento item in cochesParking)
+                {
+                    if (item.Id_vehiculo == vehiculo.Id_vehiculo)
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public string MarcasFindMarca(int idMarca)
         {
             string result = "";
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT marca FROM marcas WHERE id_marca = @id_marca", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT marca FROM marcas WHERE id_marca = @id_marca ", conexion);
+            SqliteDataReader lector = comando.ExecuteReader();
 
             _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
 
-            comando.Parameters["@id_marca"].Value = marca;
-
-
-            SqliteDataReader lector = comando.ExecuteReader();
+            comando.Parameters["@id_marca"].Value = idMarca;
 
             if (lector.HasRows)
             {
-                lector.Read();
-                result = (string)(lector["marca"]);
+                    result = (string)lector["marca"];
+            }
+
+            conexion.Close();
+            return result;
+        }
+        #endregion
+        #region New()
+
+        public bool EstacionamientoNew(Estacionamiento estacionamiento)
+        {
+            bool result = false;
+
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
+
+            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (id_vehiculo, matricula, entrada, tipo) VALUES (@id_vehiculo, @matricula, @entrada, @tipo);", conexion);
+            comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
+            comando.Parameters.Add("@matricula", SqliteType.Text);
+            comando.Parameters.Add("@entrada", SqliteType.Text);
+            comando.Parameters.Add("@tipo", SqliteType.Text);
+
+            comando.Parameters["@id_vehiculo"].Value = estacionamiento.Id_vehiculo;
+            comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
+            comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
+            comando.Parameters["@tipo"].Value = estacionamiento.Tipo;
+
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                result = true;
             }
 
             conexion.Close();
@@ -639,34 +731,33 @@ namespace Aparcamiento_Inteligente_2.servicios
         }
 
 
+        public bool EstacionamientoNewVehiculo(Estacionamiento estacionamiento)
+        {
+            bool result = false;
 
+            SqliteConnection conexion = new SqliteConnection(Path);
+            conexion.Open();
 
-        public int MarcasFindId(string marca)
+            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (matricula, entrada, tipo) VALUES (@matricula, @entrada, @tipo);", conexion);
+            comando.Parameters.Add("@matricula", SqliteType.Text);
+            comando.Parameters.Add("@entrada", SqliteType.Text);
+            comando.Parameters.Add("@tipo", SqliteType.Text);
+
+            comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
+            comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
+            comando.Parameters["@tipo"].Value = estacionamiento.Tipo;
+
+            if (comando.ExecuteNonQuery() == 1)
             {
-                int result = 0;
-                SqliteConnection conexion = new SqliteConnection(Path);
-                conexion.Open();
-
-                SqliteCommand comando = new SqliteCommand("SELECT * FROM marcas WHERE marca = @marca", conexion);
-
-                _ = comando.Parameters.Add("@marca", SqliteType.Text);
-
-                comando.Parameters["@marca"].Value = marca;
-
-
-                SqliteDataReader lector = comando.ExecuteReader();
-
-                if (lector.HasRows)
-                {
-                    result = Convert.ToInt32(lector["id_cliente"]);
-                }
-
-                conexion.Close();
-
-                return result;
+                result = true;
             }
-            #endregion
-            private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 
+            conexion.Close();
+
+            return result;
         }
+        #endregion
+        private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
+
+    }
 }

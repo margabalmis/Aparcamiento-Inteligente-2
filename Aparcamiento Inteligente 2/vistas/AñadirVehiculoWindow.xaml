@@ -11,6 +11,7 @@
     Title="Añadir Vehiculo"
     Height="450"
     Width="800"
+        
     ResizeMode="NoResize"
     ShowInTaskbar="False">
     <Window.Resources>
@@ -108,13 +109,14 @@
                 <TextBox
                     Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout
+            <syncfusion:ComboBoxAdv 
                 Width="240"
-                Hint="Marca">
-                <ComboBox
-                    ItemsSource="{Binding Path=Marcas.Marca, Converter={StaticResource toIEnumerable}}"
-                    SelectedItem="{Binding Path= MarcaSeleccionada}" />
-            </inputLayout:SfTextInputLayout>
+                Height="44"
+                Background="White"
+                Margin="12,0,16,18"
+                ItemsSource="{Binding Path=Marcas.Marca}"
+                SelectedItem="{Binding Path= MarcaSeleccionada}">
+            </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
                 Background="#c0dcfc"
                 SizeMode="Normal"

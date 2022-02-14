@@ -17,9 +17,7 @@
     ShowInTaskbar="False">
     <Window.Resources>
 
-        <!--Convertidores-->
-        <convertidores:CheckedToCoche x:Key="toCoche"></convertidores:CheckedToCoche>
-        <convertidores:CheckedToMoto x:Key="toMoto"></convertidores:CheckedToMoto>
+        
 
             <!--StackPanel-->
         <Style
@@ -110,7 +108,7 @@
                 <TextBox
                     Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout
+            <syncfusion:ComboBoxAdv
                 Width="240"
               >
                 <ComboBox
@@ -135,11 +133,11 @@
                 <RadioButton
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo"
-                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo, Converter={StaticResource toCoche}}">
+                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo}">
                     Coche</RadioButton>
                 <RadioButton
                     Margin="10,5,0,0"
-                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo, Converter= {StaticResource toMoto}}"
+                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo}"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>
         </StackPanel>

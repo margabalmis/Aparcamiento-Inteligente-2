@@ -214,8 +214,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="convertidores\CheckedToCoche.cs" />
-    <Compile Include="convertidores\CheckedToMoto.cs" />
+    <Compile Include="convertidores\CheckToCoche.cs" />
+    <Compile Include="convertidores\CheckToMoto.cs" />
     <Compile Include="convertidores\DataGridToCliente.cs" />
     <Compile Include="convertidores\DataGridToParking.cs" />
     <Compile Include="convertidores\DataGridToVehiculo.cs" />

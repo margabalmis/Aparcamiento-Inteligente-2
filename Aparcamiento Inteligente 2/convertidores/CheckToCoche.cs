@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aparcamiento_Inteligente_2.modelo;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,28 +9,24 @@ using System.Windows.Data;
 
 namespace Aparcamiento_Inteligente_2.convertidores
 {
-    class CheckedToMoto : IValueConverter
+    class CheckToCoche : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string tipo = (string)value;
-            if (tipo == "moto")
+            if (value != null && value is Cliente)
             {
-                return true;
+                return value as Cliente;
             }
-            else
-                return false;
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            bool coche = (bool)value;
-            if (coche)
+            if (value != null && value is Cliente)
             {
-                return "moto";
+                return value as Cliente;
             }
-            else
-                return null;
+            return null;
         }
     }
 }

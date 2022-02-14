@@ -20,10 +20,10 @@
                 Value="#c0dcfc"></Setter>
             <Setter
                 Property="Width"
-                Value="120"></Setter>
+                Value="140"></Setter>
             <Setter
                 Property="Height"
-                Value="25"></Setter>
+                Value="35"></Setter>
             <Setter
                 Property="Foreground"
                 Value="#000"></Setter>
@@ -33,6 +33,9 @@
             <Setter
                 Property="FontWeight"
                 Value="Bold"></Setter>
+            <Setter
+                Property="FontSize"
+                Value="18"></Setter>
 
         </Style>    
     </Window.Resources>

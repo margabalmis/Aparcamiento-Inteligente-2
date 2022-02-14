@@ -20,6 +20,35 @@
             x:Key="toVehiculo">
         </convertidores:DataGridToVehiculo>
 
+        <!--DataGrid Header-->
+        <Style
+            TargetType="syncfusion:GridHeaderCellControl">
+            <Setter
+                Property="Background"
+                Value="#deeeff"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="#000"></Setter>
+
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+        </Style>
+        
+        
+        <Style x:Key="ONSelected" TargetType="Button">
+            <Setter Property="IsEnabled" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ClienteSeleccionado, Converter={StaticResource toCliente}}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
 
         <!--Botones-->
         <Style
@@ -55,6 +84,7 @@
                 Property="FontSize"
                 Value="14"></Setter>
         </Style>
+    
 
         <!--StackPanel-->
         <Style
@@ -99,9 +129,10 @@
             <Button
                 x:Name="NuevoClienteButton"
                 Command="{Binding Path=DialogoNuevoCliente}">Nuevo Cliente</Button>
+            <!--<Style="{StaticResource ONSelected}"-->
             <Button
-                x:Name="EditarClienteButton"
-                Command="{Binding Path=DialogoEditarCliente}">Editar Cliente</Button>
+                x:Name="EditarClienteButton" 
+                Command="{Binding Path=DialogoEditarCliente}" IsEnabled="{Binding Path=ClienteSeleccionado }">Editar Cliente</Button>
             <Button
                 x:Name="EliminarClienteButton"
                 Command="{Binding Path=DialogoEliminarCliente}">Eliminar Cliente</Button>

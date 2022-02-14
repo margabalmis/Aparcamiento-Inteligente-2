@@ -104,8 +104,7 @@
         <StackPanel
             Style="{StaticResource ParaBotones}"
             HorizontalAlignment="Right">
-            <Button IsCancel="True"
-                >Cancelar</Button>
+            <Button IsCancel="True">Cancelar</Button>
             <Button Click="AceptarButton_Click" IsDefault="True" >Aceptar</Button>
         </StackPanel>
     </StackPanel>

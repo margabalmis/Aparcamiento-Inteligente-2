@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AcessoParking.Servicios
 {
@@ -23,6 +24,11 @@ namespace AcessoParking.Servicios
                 filename = dlg.FileName;
             }
             return filename;
+        }
+
+        public void Alert(string mensaje)
+        {
+            _ = MessageBox.Show(mensaje, "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }
