@@ -112,10 +112,10 @@
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Width="240"
-                Hint="Marca">
+              >
                 <ComboBox
-                    ItemsSource="{Binding Path=MarcasNombre}"
-                    SelectedItem="{Binding Path=MarcaSeleccionada.Marca}" />
+                    ItemsSource="{Binding Path=Marcas.Marca}"
+                    SelectedItem="{Binding Path=VehiculoSeleccionado.Id_marca}" SelectionChanged="ComboBox_SelectionChanged" />
             </inputLayout:SfTextInputLayout>
             <syncfusion:ButtonAdv
                 Command="{Binding Path=AñadirMarcaDialogo}"

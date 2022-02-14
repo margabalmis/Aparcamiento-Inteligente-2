@@ -36,5 +36,10 @@ namespace Aparcamiento_Inteligente_2.vistas
         {
 
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
