@@ -685,11 +685,12 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Open();
 
             SqliteCommand comando = new SqliteCommand("SELECT marca FROM marcas WHERE id_marca = @id_marca ", conexion);
-            SqliteDataReader lector = comando.ExecuteReader();
 
             _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
 
             comando.Parameters["@id_marca"].Value = idMarca;
+
+            SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
             {
@@ -757,6 +758,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
         #endregion
+
         private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 
     }
