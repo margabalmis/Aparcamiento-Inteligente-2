@@ -28,7 +28,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
             //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();
-            baseDatos = new DBServicio();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
 
             DialogoEliminarVehiculo = new RelayCommand(EliminarVehiculo);
             DialogoEditarVehiculo = new RelayCommand(EditarVehiculo);

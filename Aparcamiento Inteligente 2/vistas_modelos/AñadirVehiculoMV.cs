@@ -18,7 +18,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         {
 
             // Cargar datos Marcas
-            baseDatos = new DBServicio();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Marcas = new ObservableCollection<Marcas>();
             //Marcas = baseDatos.MarcasGetAll();
         }

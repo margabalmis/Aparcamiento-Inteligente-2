@@ -51,6 +51,14 @@
                 Property="FontSize"
                 Value="14"></Setter>
         </Style>
+        <Style x:Key="ONSelected" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="IsEnabled" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=VehiculoSeleccionado}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
         <!--StackPanel-->
         <Style
             TargetType="{x:Type StackPanel}">
@@ -107,10 +115,10 @@
             Grid.Column="1">
             <Button
                 x:Name="EditarVehiculoButton"
-                Command="{Binding Path=DialogoEditarVehiculo}">Editar Vehiculo</Button>
+                Command="{Binding Path=DialogoEditarVehiculo}" Style="{StaticResource ONSelected}">Editar Vehiculo</Button>
             <Button
                 x:Name="EliminarVehiculoButton"
-                Command="{Binding Path=DialogoEliminarVehiculo}">Eliminar Vehiculo</Button>
+                Command="{Binding Path=DialogoEliminarVehiculo}" Style="{StaticResource ONSelected}">Eliminar Vehiculo</Button>
 
         </StackPanel>
     </Grid>

@@ -34,7 +34,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public ClienteUserControlMV()
         {
             //Cargar datos clientes
-            baseDatos = new DBServicio();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Clientes = new ObservableCollection<Cliente>();
             Clientes = baseDatos.ClientesGetAll();
 
