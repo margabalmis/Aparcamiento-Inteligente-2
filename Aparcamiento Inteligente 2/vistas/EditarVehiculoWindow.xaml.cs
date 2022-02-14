@@ -32,14 +32,5 @@ namespace Aparcamiento_Inteligente_2.vistas
             DialogResult = true;
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

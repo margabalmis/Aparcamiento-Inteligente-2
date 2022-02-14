@@ -109,12 +109,11 @@
                     Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
             </inputLayout:SfTextInputLayout>
             <syncfusion:ComboBoxAdv
-                Width="240"
-              >
-                <ComboBox
-                    ItemsSource="{Binding Path=Marcas.Marca}"
-                    SelectedItem="{Binding Path=VehiculoSeleccionado.Id_marca}" SelectionChanged="ComboBox_SelectionChanged" />
-            </inputLayout:SfTextInputLayout>
+               Width="240"
+               ItemsSource="{Binding Path=Marcas.Marca}"
+               SelectedItem="{Binding Path=VehiculoSeleccionado.Id_marca}" 
+                >
+            </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
                 Command="{Binding Path=AñadirMarcaDialogo}"
                 Background="#c0dcfc"
@@ -123,7 +122,9 @@
                 Margin="0,0,0,16"
                 SmallIcon="/img/add.ico"
                 Width="48"
-                Height="34" />
+                Height="34">
+                
+            </syncfusion:ButtonAdv>
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Stretch">
