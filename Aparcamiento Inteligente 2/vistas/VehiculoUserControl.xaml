@@ -12,9 +12,9 @@
     
     <UserControl.Resources>
 
-        <convertidores:DataGridToVehiculo
-            x:Key="toVehiculo">
-        </convertidores:DataGridToVehiculo>
+        <convertidores:DataGridToVehiculo x:Key="toVehiculo"/>
+
+
 
 
         <!--Botones-->
@@ -80,7 +80,7 @@
                 Value="#deeeff"></Setter>
             <Setter
                 Property="Foreground"
-                Value="#000"></Setter>
+                Value="#000000"></Setter>
 
             <Setter
                 Property="FontWeight"
@@ -108,7 +108,9 @@
             AutoGenerateColumns="True"
             ItemsSource="{Binding Path=Vehiculos}"
             SelectedItem="{Binding Path=VehiculoSeleccionado, Converter={StaticResource toVehiculo}}" 
-            AllowFiltering="True" />
+            AllowFiltering="True">
+            
+        </syncfusion:SfDataGrid>
 
         <!--Botones Vehículos-->
         <StackPanel

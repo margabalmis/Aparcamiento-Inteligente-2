@@ -58,9 +58,9 @@ namespace Aparcamiento_Inteligente_2.modelo
             get { return salida; }
             set { SetProperty(ref salida, value); }
         }
-        private float importe;
+        private float? importe;
 
-        public float Importe
+        public float? Importe
         {
             get { return importe; }
             set { SetProperty(ref importe, value); }
