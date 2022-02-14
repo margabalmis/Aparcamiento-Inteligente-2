@@ -21,9 +21,9 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public EstacionamientosMV() 
         {
             //Cargar datos Estacionamientos
-            baseDatos = new DBServicio();
-            Estacionamientos = new ObservableCollection<Estacionamiento>();
-            //Estacionamientos = baseDatos.EstacionamientosGetAll();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
+            //Estacionamientos = new ObservableCollection<Estacionamiento>();
+            Estacionamientos = baseDatos.EstacionamientosGetAll();
 
             //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();

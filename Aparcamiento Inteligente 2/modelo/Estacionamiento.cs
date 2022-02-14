@@ -10,7 +10,8 @@ namespace Aparcamiento_Inteligente_2.modelo
     class Estacionamiento : ObservableObject
     {
 
-        public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, string entrada, string salida, float importe, string tipo)
+        public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, 
+            string entrada, string salida, float importe, string tipo)
         {
             Id_estacionamiento = id_estacionamiento;
             Id_vehiculo = id_vehiculo;

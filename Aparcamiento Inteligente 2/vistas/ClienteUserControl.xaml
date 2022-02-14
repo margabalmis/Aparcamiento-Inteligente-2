@@ -40,19 +40,12 @@
         </Style>
         
         
-        <Style x:Key="ONSelected" TargetType="Button">
-            <Setter Property="IsEnabled" Value="True"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=ClienteSeleccionado, Converter={StaticResource toCliente}}" Value="{x:Null}">
-                    <Setter Property="IsEnabled" Value="False"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
+        
 
 
         <!--Botones-->
         <Style
-            TargetType="{x:Type Button}">
+            TargetType="{x:Type Button}"  >
             <Setter
                 Property="Margin"
                 Value="8" />
@@ -83,6 +76,15 @@
             <Setter
                 Property="FontSize"
                 Value="14"></Setter>
+        </Style>
+        
+        <Style x:Key="ONSelected" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="IsEnabled" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ClienteSeleccionado}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     
 
@@ -120,7 +122,8 @@
             AllowFiltering="True"
             Grid.Row="0"
             Grid.Column="0"
-            SelectionChanged="ClientesdataGrid_SelectionChanged" />
+            SelectionChanged="ClientesdataGrid_SelectionChanged" 
+            />
         <!--Botones Clientes-->
         <StackPanel
             Grid.Row="0"
@@ -129,13 +132,12 @@
             <Button
                 x:Name="NuevoClienteButton"
                 Command="{Binding Path=DialogoNuevoCliente}">Nuevo Cliente</Button>
-            <!--<Style="{StaticResource ONSelected}"-->
             <Button
                 x:Name="EditarClienteButton" 
-                Command="{Binding Path=DialogoEditarCliente}" IsEnabled="{Binding Path=ClienteSeleccionado }">Editar Cliente</Button>
+                Command="{Binding Path=DialogoEditarCliente}" Style="{StaticResource ONSelected}">Editar Cliente</Button>
             <Button
                 x:Name="EliminarClienteButton"
-                Command="{Binding Path=DialogoEliminarCliente}">Eliminar Cliente</Button>
+                Command="{Binding Path=DialogoEliminarCliente}" Style="{StaticResource ONSelected}">Eliminar Cliente</Button>
         </StackPanel>
 
 
@@ -162,13 +164,13 @@
             Margin="0,32,0,0">
             <Button
                 x:Name="NuevoVehiculoButton"
-                Command="{Binding Path=DialogoNuevoVehiculo}">Nuevo Vehiculo</Button>
+                Command="{Binding Path=DialogoNuevoVehiculo}" Style="{StaticResource ONSelected}">Nuevo Vehiculo</Button>
             <Button
                 x:Name="EditarVehiculoButton"
-                Command="{Binding Path=DialogoEditarVehiculo}">Editar Vehiculo</Button>
+                Command="{Binding Path=DialogoEditarVehiculo}" Style="{StaticResource ONSelected}">Editar Vehiculo</Button>
             <Button
                 x:Name="EliminarVehiculoButton"
-                Command="{Binding Path=DialogoEliminarVehiculo}">Eliminar Vehiculo</Button>
+                Command="{Binding Path=DialogoEliminarVehiculo}" Style="{StaticResource ONSelected}">Eliminar Vehiculo</Button>
         </StackPanel>
     </Grid>
 </UserControl>

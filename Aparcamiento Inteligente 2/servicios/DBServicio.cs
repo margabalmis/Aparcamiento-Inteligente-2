@@ -93,7 +93,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM marcas", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
@@ -119,7 +119,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             SqliteConnection conexion = new SqliteConnection(Path);
             conexion.Open();
 
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM vehiculos", conexion);
+            SqliteCommand comando = new SqliteCommand("SELECT * FROM estacionamientos", conexion);
             SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
@@ -127,6 +127,7 @@ namespace Aparcamiento_Inteligente_2.servicios
                 while (lector.Read())
                 {
                     //public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, string entrada, string salida, float importe, string tipo)
+                    lector.Read();
                     result.Add(
                         new Estacionamiento(
                             Convert.ToInt32(lector["id_estacionamiento"]),
@@ -531,7 +532,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             {
                 while (lector.Read())
                 {
-
+                    lector.Read();
                     result.Add(
                         new Vehiculo(
                             Convert.ToInt32(lector["id_vehiculo"]),
@@ -595,6 +596,7 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             if (lector.HasRows)
             {
+                lector.Read();
                 result =
                      new Cliente(
                         Convert.ToInt32(lector["id_cliente"]),

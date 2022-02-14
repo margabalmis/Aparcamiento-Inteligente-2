@@ -17,7 +17,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public AñadirMarcaWindowMV()
         {
             //Servicios
-            baseDatos = new DBServicio();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
 
 
         }
