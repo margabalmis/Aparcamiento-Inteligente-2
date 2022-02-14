@@ -17,6 +17,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         {
 
             ClienteSeleccionado = WeakReferenceMessenger.Default.Send<ClienteSeleccionadoMessage>();
+            if (new DBServicio(Properties.Settings.Default.Conexion).ClienteHasVehiculos(ClienteSeleccionado))
+            {
+                new DialogosNavegacion().Alert("El cliente seleccionado tiene vehiculos asociados, si elimina el cliente se eliminaran los vehiculos asociados");
+            }
 
         }
 
@@ -31,7 +35,19 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public void DeleteCliente()
         {
             DBServicio db = new DBServicio(Properties.Settings.Default.Conexion);
-            db.ClienteDeleteOne(ClienteSeleccionado);
+
+            if (db.ClienteHasVehiculos(ClienteSeleccionado))
+            {
+                foreach(Vehiculo item in db.VehiculosFindByCliente(clienteSeleccionado)){
+                    db.VehiculoDeleteOne(item);
+                }
+
+                db.ClienteDeleteOne(clienteSeleccionado);
+            }
+            else
+            {
+                db.ClienteDeleteOne(ClienteSeleccionado);
+            }
         }
 
 

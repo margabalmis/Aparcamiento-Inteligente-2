@@ -113,37 +113,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-        public ObservableCollection<Estacionamiento> EstacionamientosGetAll()
-        {
-            ObservableCollection<Estacionamiento> result = new ObservableCollection<Estacionamiento>();
-            SqliteConnection conexion = new SqliteConnection(Path);
-            conexion.Open();
-
-            SqliteCommand comando = new SqliteCommand("SELECT * FROM estacionamientos", conexion);
-            SqliteDataReader lector = comando.ExecuteReader();
-
-            if (lector.HasRows)
-            {
-                while (lector.Read())
-                {
-                    //public Estacionamiento(int id_estacionamiento, int id_vehiculo, string matricula, string entrada, string salida, float importe, string tipo)
-                    lector.Read();
-                    result.Add(
-                        new Estacionamiento(
-                            Convert.ToInt32(lector["id_estacionamiento"]),
-                            Convert.ToInt32(lector["id_vehiculo"]),
-                            (string)lector["matricula"],
-                            (string)lector["entrada"],
-                            (string)lector["salida"],
-                            (float)Convert.ToDouble(lector["importe"]),
-                            (string)lector["tipo"]
-                    ));
-                }
-            }
-
-            conexion.Close();
-            return result;
-        }
         #endregion
         #region InsertOne()
         public bool ClienteInsertOne(Cliente cliente)
@@ -532,7 +501,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             {
                 while (lector.Read())
                 {
-                    lector.Read();
                     result.Add(
                         new Vehiculo(
                             Convert.ToInt32(lector["id_vehiculo"]),
@@ -680,6 +648,17 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        public bool ClienteHasVehiculos(Cliente cliente)
+        {
+            bool result = false;
+            if (VehiculosFindByCliente(cliente).Count != 0)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
         public string MarcasFindMarca(int idMarca)
         {
             string result = "";
@@ -687,11 +666,12 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Open();
 
             SqliteCommand comando = new SqliteCommand("SELECT marca FROM marcas WHERE id_marca = @id_marca ", conexion);
-            SqliteDataReader lector = comando.ExecuteReader();
 
             _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
 
             comando.Parameters["@id_marca"].Value = idMarca;
+
+            SqliteDataReader lector = comando.ExecuteReader();
 
             if (lector.HasRows)
             {
@@ -759,6 +739,7 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
         #endregion
+
         private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 
     }
