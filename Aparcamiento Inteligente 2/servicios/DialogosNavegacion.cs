@@ -71,7 +71,7 @@ namespace Aparcamiento_Inteligente_2.servicios
         }
         internal void MessageBoxFinalizarEstacionamiento()
         {
-            MessageBox.Show("¿Quieres eliminar el estacionamiento?", 
+            MessageBox.Show("¿Quieres finalizar el estacionamiento?", 
                 "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
         }
         internal string DialogoAbrirImagen()
