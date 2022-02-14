@@ -85,6 +85,10 @@ namespace Aparcamiento_Inteligente_2.servicios
             return foto;
 
         }
+        public void Alert(string mensaje)
+        {
+            _ = MessageBox.Show(mensaje, "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+        }
 
     }
 }
