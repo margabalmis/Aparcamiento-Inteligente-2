@@ -6,8 +6,15 @@
              xmlns:local="clr-namespace:Aparcamiento_Inteligente_2.vistas"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
+            xmlns:convertidores="clr-namespace:Aparcamiento_Inteligente_2.convertidores"
             xmlns:syncfusion="http://schemas.syncfusion.com/wpf">
     <UserControl.Resources>
+        <convertidores:DataGridToParking x:Key="toParking"/>
+
+        <Style TargetType="syncfusion:SfDataGrid" x:Key="letranegro">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
 
         <!--DataGrid Header-->
         <Style
@@ -46,7 +53,7 @@
                 Value="#c0dcfc"></Setter>
             <Setter
                 Property="Foreground"
-                Value="#000"></Setter>
+                Value="#000000"></Setter>
             <Setter
                 Property="Margin"
                 Value="8"></Setter>
@@ -90,8 +97,11 @@
             x:Name="ParkingDataGrid"
             AutoGenerateColumns="True"
             ItemsSource="{Binding Path=Estacionamientos}"
-            SelectedItem="{Binding Path=EstacionamientoSeleccionado}"
-            AllowFiltering="True" />
+            SelectedItem="{Binding Path=EstacionamientoSeleccionado ,Converter={StaticResource toParking}}"
+            AllowFiltering="True"
+            Style="{StaticResource letranegro}"
+            />
+
 
         <!--Botones Vehículos-->
         <StackPanel
