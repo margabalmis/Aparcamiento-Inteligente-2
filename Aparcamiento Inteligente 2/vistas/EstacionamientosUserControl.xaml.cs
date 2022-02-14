@@ -30,6 +30,5 @@ namespace Aparcamiento_Inteligente_2.vistas
 
         }
 
-
     }
 }
