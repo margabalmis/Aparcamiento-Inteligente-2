@@ -640,7 +640,6 @@ namespace AcessoParcking.Servicios
                     }
                     else
                     {
-                        var est = (string)lector["tipo"];
                         result.Add(
                             new Estacionamiento(
                                 Convert.ToInt32(lector["id_estacionamiento"]),
