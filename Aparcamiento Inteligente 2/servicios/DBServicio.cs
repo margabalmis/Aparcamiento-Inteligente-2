@@ -14,14 +14,13 @@ namespace Aparcamiento_Inteligente_2.servicios
 
         public string Path { get; private set; }
 
+        /// <summary>
+        /// Constructor del servicio
+        /// </summary>
+        /// <param name="path">Ruta en la que se encuentra la base de datos</param>
         public DBServicio(string path)
         {
             Path = "Data Source=" + path;
-        }
-
-        public DBServicio()
-        {
-            Path = string.Format("Data Source=" + AbsolutePath("parking.db"));
         }
 
         #region GetAll()
