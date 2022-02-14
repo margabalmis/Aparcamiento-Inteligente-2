@@ -32,5 +32,17 @@ namespace Aparcamiento_Inteligente_2.Properties {
                 return ((string)(this["claveSyncfusion"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\parking\\\\parking.db")]
+        public string Conexion {
+            get {
+                return ((string)(this["Conexion"]));
+            }
+            set {
+                this["Conexion"] = value;
+            }
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         public void DeleteCliente()
         {
-            DBServicio db = new DBServicio();
+            DBServicio db = new DBServicio(Properties.Settings.Default.Conexion);
             db.ClienteDeleteOne(ClienteSeleccionado);
         }
 

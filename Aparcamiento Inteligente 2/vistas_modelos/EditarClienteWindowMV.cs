@@ -19,7 +19,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public EditarClienteWindowMV()
         {
             //Instancia Servicios
-            baseDatos = new DBServicio();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             servicioDialogos = new DialogosNavegacion();
             //Comunicación
             ClienteSeleccionado = WeakReferenceMessenger.Default.Send<ClienteSeleccionadoMessage>();

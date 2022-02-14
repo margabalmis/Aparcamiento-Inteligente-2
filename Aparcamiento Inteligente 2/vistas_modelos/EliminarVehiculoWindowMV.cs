@@ -18,7 +18,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         {
 
             //Cargar datos clientes
-            baseDatos = new DBServicio();
+            baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
 
             //Comunicacion
             if (origen == "cliente")
