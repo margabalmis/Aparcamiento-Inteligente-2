@@ -24,6 +24,10 @@ namespace Aparcamiento_Inteligente_2.servicios
         }
 
         #region GetAll()
+        /// <summary>
+        /// Extrae todos los clientes de la base de datos
+        /// </summary>
+        /// <returns>Colección con los clientes de la base de datos</Cliente></returns>
         public ObservableCollection<Cliente> ClientesGetAll()
         {
             ObservableCollection<Cliente> result = new ObservableCollection<Cliente>();
@@ -55,7 +59,10 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-
+        /// <summary>
+        /// Extrae todos los vehículos de la base de datos
+        /// </summary>
+        /// <returns>Colección con los vehiculos de la base de datos</returns>
         public ObservableCollection<Vehiculo> VehiculosGetAll()
         {
             ObservableCollection<Vehiculo> result = new ObservableCollection<Vehiculo>();
@@ -86,6 +93,10 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        /// <summary>
+        /// Extrae todos las marcas de la base de datos
+        /// </summary>
+        /// <returns>Colección con las marcas de la base de datos</returns>
         public ObservableCollection<Marcas> MarcasGetAll()
         {
             ObservableCollection<Marcas> result = new ObservableCollection<Marcas>();
@@ -114,6 +125,11 @@ namespace Aparcamiento_Inteligente_2.servicios
 
         #endregion
         #region InsertOne()
+        /// <summary>
+        /// Inserta un registro en la tabla clientes
+        /// </summary>
+        /// <param name="cliente">Cliente a insertar</param>
+        /// <returns>devuelve true cuando la insercción es correcta</returns>
         public bool ClienteInsertOne(Cliente cliente)
         {
             bool result = false;
@@ -148,6 +164,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        /// <summary>
+        /// Inserta un registro en la tabla vehiculos
+        /// </summary>
+        /// <param name="vehiculo">Vehiculo a insertar</param>
+        /// <returns>devuelve true cuando la insercción es correcta</returns>
         public bool VehiculoInsertOne(Vehiculo vehiculo)
         {
             bool result = false;
@@ -177,7 +198,11 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             return result;
         }
-
+        /// <summary>
+        /// Inserta un registro en la tabla marcas
+        /// </summary>
+        /// <param name="marca">Marca a insertar</param>
+        /// <returns>devuelve true cuando la insercción es correcta</returns>
         public bool MarcaInsertOne(Marcas marca)
         {
             bool result = false;
@@ -190,38 +215,6 @@ namespace Aparcamiento_Inteligente_2.servicios
 
 
             comando.Parameters["@marca"].Value = marca.Marca;
-
-            if (comando.ExecuteNonQuery() == 1)
-            {
-                result = true;
-            }
-
-            conexion.Close();
-
-            return result;
-        }
-
-        public bool EstacionamientoInsertOne(Estacionamiento estacionamiento)
-        {
-            bool result = false;
-
-            SqliteConnection conexion = new SqliteConnection(Path);
-            conexion.Open();
-
-            SqliteCommand comando = new SqliteCommand("INSERT INTO estacionamientos (id_vehiculo, matricula, entrada, salida, importe, tipo) VALUES (@id_vehiculo, @matricula, @entrada, @salida, @importe, @tipo);", conexion);
-            comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
-            comando.Parameters.Add("@matricula", SqliteType.Text);
-            comando.Parameters.Add("@entrada", SqliteType.Text);
-            comando.Parameters.Add("@salida", SqliteType.Text);
-            comando.Parameters.Add("@importe", SqliteType.Real);
-            comando.Parameters.Add("@tipo", SqliteType.Text);
-
-            comando.Parameters["@id_vehiculo"].Value = estacionamiento.Id_vehiculo;
-            comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
-            comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
-            comando.Parameters["@salida"].Value = estacionamiento.Salida;
-            comando.Parameters["@importe"].Value = estacionamiento.Importe;
-            comando.Parameters["@tipo"].Value = estacionamiento.Tipo;
 
             if (comando.ExecuteNonQuery() == 1)
             {
@@ -387,6 +380,12 @@ namespace Aparcamiento_Inteligente_2.servicios
         }
         #endregion
         #region DeleteOne()
+
+        /// <summary>
+        /// Elimina un registro de la tabla clientes
+        /// </summary>
+        /// <param name="cliente">Cliente a eliminar</param>
+        /// <returns>Devuelve true cuando la eliminación es correcta</returns>
         public bool ClienteDeleteOne(Cliente cliente)
         {
             bool result = false;
@@ -410,6 +409,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        /// <summary>
+        /// Elimina un registro de la tabla vehiculo
+        /// </summary>
+        /// <param name="vehiculo">Vehiculo a eliminar</param>
+        /// <returns>Devuelve true cuando la eliminación es correcta</returns>
         public bool VehiculoDeleteOne(Vehiculo vehiculo)
         {
             bool result = false;
@@ -433,28 +437,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-        public bool MarcasDeleteOne(Marcas marcas)
-        {
-            bool result = false;
-
-            SqliteConnection conexion = new SqliteConnection(Path);
-            conexion.Open();
-
-            SqliteCommand comando = new SqliteCommand("DELETE FROM marcas WHERE id_marca = @id_marca;", conexion);
-
-            _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
-
-            comando.Parameters["@id_marca"].Value = marcas.Id_marcas;
-
-            if (comando.ExecuteNonQuery() == 1)
-            {
-                result = true;
-            }
-
-            conexion.Close();
-
-            return result;
-        }
 
         public bool EstacionamientoDeleteOne(Estacionamiento estacionamiento)
         {
