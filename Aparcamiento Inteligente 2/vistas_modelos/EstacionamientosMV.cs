@@ -32,8 +32,8 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void FinEstacionamiento()
         {
-            MessageBoxResult result = servicioDialogos.MessageBoxFinalizarEstacionamiento();
-            if (result == MessageBoxResult.Yes)
+            bool result = servicioDialogos.MessageBoxFinalizarEstacionamiento();
+            if (result)
             {
 
 
