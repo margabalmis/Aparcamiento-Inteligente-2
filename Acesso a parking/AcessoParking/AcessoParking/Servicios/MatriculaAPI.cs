@@ -12,6 +12,12 @@ namespace AcessoParking.Servicios
 {
     static public class MatriculaAPI
     {
+        /// <summary>
+        /// Extrae la matricula de una imagen que contiene un coche mediante con una IA alojada en Azure.
+        /// Los datos se pasan mediante una API. 
+        /// </summary>
+        /// <param name="url">Url de la imagen a analizar</param>
+        /// <returns>cadena con la matricula del véhículo</returns>
         public static string GetMatriculaCoche(string url)
         {
             var cliente = new RestClient("https://matriculaapi.cognitiveservices.azure.com/vision/v3.2/read");
@@ -38,6 +44,13 @@ namespace AcessoParking.Servicios
 
             return jt.ToString();
         }
+
+        /// <summary>
+        /// Extrae la matricula de una imagen que contiene una moto mediante con una IA alojada en Azure.
+        /// Los datos se pasan mediante una API. 
+        /// </summary>
+        /// <param name="url">Url de la imagen a analizar</param>
+        /// <returns>cadena con la matricula del véhículo</returns>
         public static string GetMatriculaMoto(string url)
         {
             var cliente = new RestClient("https://matriculaapi.cognitiveservices.azure.com/vision/v3.2/read");
