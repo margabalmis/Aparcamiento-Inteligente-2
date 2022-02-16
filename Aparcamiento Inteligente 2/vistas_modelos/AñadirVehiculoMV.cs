@@ -1,6 +1,7 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
 using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,23 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     class AñadirVehiculoMV : ObservableRecipient
     {
         DBServicio baseDatos;
+        DialogosNavegacion navegacion;
+        public RelayCommand AñadirMarcaDialogo { get; }
         public AñadirVehiculoMV()
         {
 
+            navegacion = new DialogosNavegacion();
+
+            AñadirMarcaDialogo = new RelayCommand(DialogoAñadirMarca);
             // Cargar datos Marcas
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Marcas = new ObservableCollection<Marcas>();
             Marcas = baseDatos.MarcasGetAll();
+        }
+
+        private void DialogoAñadirMarca()
+        {
+            navegacion.DialogoAñadirMarca();
         }
 
         private Vehiculo vehiculoNuevo;

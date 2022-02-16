@@ -163,6 +163,7 @@
                 SelectedValuePath="{Binding Path=VehiculoNuevo.Id_marca}">
             </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
+                Command="{Binding Path=AñadirMarcaDialogo}"
                 Background="#c0dcfc"
                 SizeMode="Normal"
                 Label=""
