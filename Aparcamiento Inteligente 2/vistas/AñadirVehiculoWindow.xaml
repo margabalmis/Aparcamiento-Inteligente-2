@@ -69,7 +69,7 @@
                 Value="Center"></Setter>
             <Setter
                 Property="Margin"
-                Value="12"></Setter>
+                Value="10"></Setter>
 
         </Style>
         <!--StackPanel poara los Botones-->
@@ -179,10 +179,11 @@
                 Margin="16,0,0,0">Tipo</TextBlock>
             <StackPanel>
                 <RadioButton
-                    IsChecked="True"
+                    IsChecked="{Binding Path=TipoCoche}"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Coche</RadioButton>
                 <RadioButton
+                    IsChecked="{Binding Path=TipoMoto}"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>
