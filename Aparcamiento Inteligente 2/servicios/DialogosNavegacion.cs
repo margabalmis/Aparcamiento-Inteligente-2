@@ -69,10 +69,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }
-        internal void MessageBoxFinalizarEstacionamiento()
+        internal MessageBoxResult MessageBoxFinalizarEstacionamiento()
         {
-            MessageBox.Show("¿Quieres finalizar el estacionamiento?", 
+            MessageBoxResult result =  MessageBox.Show("¿Quieres finalizar el estacionamiento?", 
                 "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            return result;
         }
         internal string DialogoAbrirImagen()
         {
