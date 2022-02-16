@@ -18,6 +18,9 @@
     <Window.Resources>
 
 
+        
+        
+
 
         <!--StackPanel-->
         <Style
@@ -65,7 +68,8 @@
 
         <!--RadioButton-->
         <Style
-            TargetType="{x:Type RadioButton}">
+            TargetType="{x:Type RadioButton}"
+            >
             <Setter
                 Property="FontSize"
                 Value="14"></Setter>
@@ -75,6 +79,43 @@
             <Setter
                 Property="Foreground"
                 Value="Black"></Setter>
+
+        </Style>
+
+        <!--RadioButton Coche-->
+        <Style
+            TargetType="{x:Type RadioButton}"
+            x:Key="CocheRadioButton"
+            BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter
+                Property="IsChecked"
+                Value="False"></Setter>
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=VehiculoSeleccionado.Tipo}"
+                    Value="coche">
+                    <Setter
+                        Property="IsChecked"
+                        Value="True"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <!--RadioButton Moto-->
+        <Style
+            TargetType="{x:Type RadioButton}"
+            x:Key="MotoRadioButton"
+            BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="IsChecked" Value="False"></Setter>
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=VehiculoSeleccionado.Tipo}" Value="moto">
+                    <Setter
+                        Property="IsChecked"
+                        Value="True"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
 
         </Style>
 
@@ -185,10 +226,12 @@
                 Margin="16,0,0,0">Tipo</TextBlock>
             <StackPanel>
                 <RadioButton
+                    Style="{StaticResource CocheRadioButton}"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">
                     Coche</RadioButton>
                 <RadioButton
+                    Style="{StaticResource MotoRadioButton}"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>

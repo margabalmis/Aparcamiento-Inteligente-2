@@ -41,13 +41,13 @@
             TargetType="{x:Type Button}">
             <Setter
                 Property="Margin"
-                Value="8" />
+                Value="8,40" />
             <Setter
                 Property="Template"
                 Value="{DynamicResource ButtonControlTemplate}" />
             <Setter
                 Property="Width"
-                Value="140" />
+                Value="160" />
             <Setter
                 Property="Background"
                 Value="#c0dcfc"></Setter>
@@ -65,22 +65,13 @@
                 Value="4"></Setter>
             <Setter
                 Property="Width"
-                Value="140"></Setter>
+                Value="180"></Setter>
             <Setter
                 Property="FontSize"
                 Value="14"></Setter>
         </Style>
 
-        <!--TextBlock-->
-        <Style
-            TargetType="{x:Type TextBlock}">
-            <Setter
-                Property="Margin"
-                Value="0,40" />
-            <Setter
-                Property="Width"
-                Value="140" />
-        </Style>
+        
 
     </UserControl.Resources>
 
@@ -89,7 +80,7 @@
             <ColumnDefinition
                 Width="*" />
             <ColumnDefinition
-                Width="200" />
+                Width="220" />
         </Grid.ColumnDefinitions>
         
         <!--Vehículos-->
@@ -105,11 +96,14 @@
 
         <!--Botones Vehículos-->
         <StackPanel
+            Margin="0,40"
             Grid.Column="1">
             <Button
                 x:Name="FinalizarEstacionamientoButton"
                 Command="{Binding Path=FinalizarEstacionamiento}">Finalizar Estacionamiento</Button>
-            <TextBlock>Precio:</TextBlock>
+            <TextBlock 
+                Margin="10,10,0,0"
+                FontSize="20">Precio:</TextBlock>
             <TextBlock x:Name="TotalAPagarPorEstacionamiento"></TextBlock>
         </StackPanel>
     </Grid>

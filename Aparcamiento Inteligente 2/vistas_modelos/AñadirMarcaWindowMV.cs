@@ -31,7 +31,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         internal void AñadirMarca()
         {
-            baseDatos.MarcaInsertOne(string Marca);
+            //baseDatos.MarcaInsertOne(string Marca);
         }
     }
 
