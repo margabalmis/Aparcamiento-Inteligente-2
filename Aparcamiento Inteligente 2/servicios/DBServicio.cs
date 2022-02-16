@@ -437,32 +437,14 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-
-        public bool EstacionamientoDeleteOne(Estacionamiento estacionamiento)
-        {
-            bool result = false;
-
-            SqliteConnection conexion = new SqliteConnection(Path);
-            conexion.Open();
-
-            SqliteCommand comando = new SqliteCommand("DELETE FROM estacionamientos WHERE id_estacionamiento = @id_estacionamiento;", conexion);
-
-            _ = comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
-
-            comando.Parameters["@id_estacionamiento"].Value = estacionamiento.Id_estacionamiento;
-
-            if (comando.ExecuteNonQuery() == 1)
-            {
-                result = true;
-            }
-
-            conexion.Close();
-
-            return result;
-        }
         #endregion
         #region Find()
-        // Devuelve los vehiculos asociados al cliente 
+
+        /// <summary>
+        /// Busca y devuelve los vehículos asociados al cliente que le pases
+        /// </summary>
+        /// <param name="cliente">Cliente para buscar</param>
+        /// <returns>Lista de Vehiculos</returns>
         public ObservableCollection<Vehiculo> VehiculosFindByCliente(Cliente cliente)
         {
             ObservableCollection<Vehiculo> result = new ObservableCollection<Vehiculo>();
@@ -497,7 +479,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Close();
             return result;
         }
-
+        /// <summary>
+        /// Busca y devuelve el vehículo por su matricula
+        /// </summary>
+        /// <param name="matricula">Matricula para buscar </param>
+        /// <returns>Vehículo con la matricula pasada</returns>
         public Vehiculo VehiculosFindByMatricula(string matricula)
         {
             Vehiculo result = new Vehiculo();
@@ -528,6 +514,12 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Close();
             return result;
         }
+        
+        /// <summary>
+        /// Devuelve el Cliente de un vehículo
+        /// </summary>
+        /// <param name="vehiculo">Vehiculo para buscar</param>
+        /// <returns>Cliente</returns>
         public Cliente VehiculoFindCliente(Vehiculo vehiculo)
         {
             Cliente result = null;
@@ -563,7 +555,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-        // Devuelve los estacionamientos en curso
+
+        /// <summary>
+        ///  Devuelve los estacionamientos en curso, aquellos cuya salida sea null
+        /// </summary>
+        /// <returns>Colección de Estacionamientos</returns>
         public ObservableCollection<Estacionamiento> EstacionamientosFindOngoing()
         {
             ObservableCollection<Estacionamiento> result = new ObservableCollection<Estacionamiento>();
@@ -610,6 +606,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        /// <summary>
+        /// Devuelve true si el vehículo que le pasa esta ya dentro del parking
+        /// </summary>
+        /// <param name="vehiculo">Vehiculo a comprobar</param>
+        /// <returns>Si el vehiculo esta estacionado en bool</returns>
         public bool VehiculoIsEstacionado(Vehiculo vehiculo)
         {
             bool result = false;
@@ -629,6 +630,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
+        /// <summary>
+        /// Devuelve true si el cliente tiene vehiculos
+        /// </summary>
+        /// <param name="cliente">Cliente para buscar</param>
+        /// <returns> Si el cliente tiene vehículos en bool</returns>
         public bool ClienteHasVehiculos(Cliente cliente)
         {
             bool result = false;
@@ -639,7 +645,12 @@ namespace Aparcamiento_Inteligente_2.servicios
 
             return result;
         }
-
+        
+        /// <summary>
+        /// Devuelve el nombre de la marca por su id 
+        /// </summary>
+        /// <param name="idMarca">Id de la marca en entero</param>
+        /// <returns>string nombre de la marca</returns>
         public string MarcasFindMarca(int idMarca)
         {
             string result = "";
@@ -665,6 +676,11 @@ namespace Aparcamiento_Inteligente_2.servicios
         #endregion
         #region New()
 
+        /// <summary>
+        /// Añade el estacionamiento a la base de datos para un estacionamiento con vehículo registrado
+        /// </summary>
+        /// <param name="estacionamiento">Estacionamiento a insertar</param>
+        /// <returns>True si la insercción ha sido correcta</returns>
         public bool EstacionamientoNew(Estacionamiento estacionamiento)
         {
             bool result = false;
@@ -693,7 +709,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
 
-
+        /// <summary>
+        /// Añade el estacionamiento a la base de datos para un estacionamiento con vehículo registrado
+        /// </summary>
+        /// <param name="estacionamiento">Estacionamiento a insertar</param>
+        /// <returns>True si la insercción ha sido correcta</returns>
         public bool EstacionamientoNewVehiculo(Estacionamiento estacionamiento)
         {
             bool result = false;
@@ -720,8 +740,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
         #endregion
-
-        private string AbsolutePath(string path) => System.IO.Path.Combine(Environment.CurrentDirectory, path);
 
     }
 }
