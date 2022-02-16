@@ -16,7 +16,49 @@
     ShowInTaskbar="False">
     <Window.Resources>
 
+        <!--TextBox-->
+        <Style
+            TargetType="{x:Type TextBox}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
 
+        </Style>
+        <!--TextBlock-->
+        <Style
+            TargetType="{x:Type TextBlock}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
+
+        <!--RadioButton-->
+        <Style
+            TargetType="{x:Type RadioButton}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Medium"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
 
 
         <!--StackPanel-->
@@ -99,7 +141,7 @@
             <inputLayout:SfTextInputLayout
                 Hint="Matricula">
                 <TextBox
-                    Text="{Binding Path=VehiculoSeleccionado.Matricula}" />
+                    Text="{Binding Path=VehiculoNuevo.Matricula}" />
             </inputLayout:SfTextInputLayout>
         </StackPanel>
         <StackPanel
@@ -107,15 +149,18 @@
             <inputLayout:SfTextInputLayout
                 Hint="Modelo">
                 <TextBox
-                    Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
+                    Text="{Binding Path=VehiculoNuevo.Modelo}" />
             </inputLayout:SfTextInputLayout>
-            <syncfusion:ComboBoxAdv 
+            <syncfusion:ComboBoxAdv
+                Text="hola"
+                FontSize="16"
+                FontWeight="Medium"
+                Margin="8,8,8,24"
                 Width="240"
-                Height="44"
                 Background="White"
-                Margin="12,0,16,18"
-                ItemsSource="{Binding Path=Marcas.Marca}"
-                SelectedItem="{Binding Path= MarcaSeleccionada}">
+                ItemsSource="{Binding Path=Marcas}"
+                DisplayMemberPath="Marca"
+                SelectedValuePath="{Binding Path=VehiculoNuevo.Id_marca}">
             </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
                 Background="#c0dcfc"

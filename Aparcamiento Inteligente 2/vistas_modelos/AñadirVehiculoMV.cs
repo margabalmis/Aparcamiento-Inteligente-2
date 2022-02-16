@@ -20,15 +20,15 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             // Cargar datos Marcas
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Marcas = new ObservableCollection<Marcas>();
-            //Marcas = baseDatos.MarcasGetAll();
+            Marcas = baseDatos.MarcasGetAll();
         }
 
-        private Vehiculo vehiculoSeleccionado;
+        private Vehiculo vehiculoNuevo;
 
-        public Vehiculo VehiculoSeleccionado
+        public Vehiculo VehiculoNuevo
         {
-            get { return vehiculoSeleccionado; }
-            set { SetProperty(ref vehiculoSeleccionado, value); }
+            get { return vehiculoNuevo; }
+            set { SetProperty(ref vehiculoNuevo, value); }
         }
 
         private Cliente propietario;

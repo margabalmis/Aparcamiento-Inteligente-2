@@ -16,7 +16,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
         DBServicio baseDatos;
         DialogosNavegacion navegacion;
-        public EditarVehiculoMV(String origen) 
+        public EditarVehiculoMV(String origen)
         {
             // Cargar datos Marcas
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
@@ -26,24 +26,24 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             //Añadir Marcas dialogo
             navegacion = new DialogosNavegacion();
             AñadirMarcaDialogo = new RelayCommand(DialogoAñadirMarca);
-  
+
             //Comunicacion
-            if (origen == "cliente") 
+            if (origen == "cliente")
             {
                 VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessageDesdeCliente>();
             }
-            else 
+            else
             {
                 VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessageDesdeVehiculo>();
             }
-             
+
 
             //Cliente Propietario
             if (VehiculoSeleccionado != null)
             {
                 Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
             }
-           
+
         }
 
         private void DialogoAñadirMarca()
@@ -86,9 +86,9 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get { return marcas; }
             set { SetProperty(ref marcas, value); }
         }
-        
-        
-        
+
+
+
 
     }
 }
