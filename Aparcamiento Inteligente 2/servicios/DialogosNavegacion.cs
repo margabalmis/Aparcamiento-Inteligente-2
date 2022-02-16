@@ -69,9 +69,10 @@ namespace Aparcamiento_Inteligente_2.servicios
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }
-        internal void MessageBoxFinalizarEstacionamiento()
+
+        internal bool? MessageBoxFinalizarEstacionamiento()
         {
-            MessageBox.Show("¿Quieres finalizar el estacionamiento?", 
+            return MessageBoxResult.Yes == MessageBox.Show("¿Quieres finalizar el estacionamiento?", 
                 "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
         }
         internal string DialogoAbrirImagen()
@@ -85,6 +86,11 @@ namespace Aparcamiento_Inteligente_2.servicios
             return foto;
 
         }
+
+        /// <summary>
+        /// Crea y muestra un MessageBox de Alerta con el mensaje que le pase al metodo
+        /// </summary>
+        /// <param name="mensaje">string mensaje a mostrar</param>
         public void Alert(string mensaje)
         {
             _ = MessageBox.Show(mensaje, "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
