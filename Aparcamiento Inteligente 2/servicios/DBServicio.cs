@@ -27,7 +27,7 @@ namespace Aparcamiento_Inteligente_2.servicios
         /// <summary>
         /// Extrae todos los clientes de la base de datos
         /// </summary>
-        /// <returns>Colección con los clientes de la base de datos</Cliente></returns>
+        /// <returns>Colección con los clientes de la base de datosCliente</returns>
         public ObservableCollection<Cliente> ClientesGetAll()
         {
             ObservableCollection<Cliente> result = new ObservableCollection<Cliente>();
@@ -740,6 +740,5 @@ namespace Aparcamiento_Inteligente_2.servicios
             return result;
         }
         #endregion
-
     }
 }

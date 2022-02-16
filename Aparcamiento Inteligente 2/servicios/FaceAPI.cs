@@ -9,12 +9,16 @@ using System.Threading.Tasks;
 
 namespace Aparcamiento_Inteligente_2.servicios
 {
-    class FaceAPI
-    {
-        const string SUBSCRIPTION_KEY = "fb99eeb905f441338b3ed4da2172a25f";
-        const string ENDPOINT = "https://faceaparcamiento.cognitiveservices.azure.com/";
-        const string URL = ENDPOINT + "face/v1.0/detect";
 
+    static class FaceAPI
+    {
+        const string ENDPOINT = "https://faceaparcamiento.cognitiveservices.azure.com/";
+
+        /// <summary>
+        /// Deduce la edad de la una foto retrato, mediante una llamada a una API de Azure. 
+        /// </summary>
+        /// <param name="url">Url en la que se encuentra la foto</param>
+        /// <returns>Devuelve una tupla con la edad y el genero de la persona en la foto</returns>
         public static (int age, string gender) GetAgeGender(string url)
         {
             var cliente = new RestClient("https://faceaparcamiento.cognitiveservices.azure.com/face/v1.0");
