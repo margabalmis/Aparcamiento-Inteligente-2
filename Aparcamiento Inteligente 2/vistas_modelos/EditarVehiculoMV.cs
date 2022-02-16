@@ -38,12 +38,34 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             }
 
 
-            //Cliente Propietario
+            //Seleccinar Tipo
             if (VehiculoSeleccionado != null)
             {
-                Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
-            }
+                if (VehiculoSeleccionado.Tipo.Equals("coche"))
+                {
+                    TipoCoche = true;
+                    TipoMoto = false;
+                }
+                else if (VehiculoSeleccionado.Tipo.Equals("moto"))
+                {
+                    TipoCoche = false;
+                    TipoMoto = true;
+                }
 
+                //Cliente Propietario
+                if (VehiculoSeleccionado != null)
+                {
+                    Propietario = baseDatos.VehiculoFindCliente(VehiculoSeleccionado);
+                }
+
+            }
+            
+        }
+
+        internal void EditarVehiculo()
+        {
+            //(int id_vehiculo, int id_cliente, string matricula, int id_marcas, string modelo, string tipo)
+            baseDatos.VehiculoUpateOne(new Vehiculo());
         }
 
         private void DialogoAñadirMarca()
@@ -61,6 +83,20 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get { return vehiculoSeleccionado; }
             set { SetProperty(ref vehiculoSeleccionado, value); }
         }
+        private bool tipoCoche;
+
+        public bool TipoCoche
+        {
+            get { return tipoCoche; }
+            set { SetProperty(ref tipoCoche, value); }
+        }
+        private bool tipoMoto;
+
+        public bool TipoMoto
+        {
+            get { return tipoMoto; }
+            set { SetProperty(ref tipoMoto, value); }
+        }
 
         private Cliente propietario;
 
@@ -69,7 +105,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get { return propietario; }
             set { SetProperty(ref propietario, value); }
         }
-
 
         private Marcas marcaSeleccionada;
 
@@ -86,9 +121,6 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             get { return marcas; }
             set { SetProperty(ref marcas, value); }
         }
-
-
-
 
     }
 }

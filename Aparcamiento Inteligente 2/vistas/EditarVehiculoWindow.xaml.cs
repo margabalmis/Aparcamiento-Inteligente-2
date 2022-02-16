@@ -29,6 +29,7 @@ namespace Aparcamiento_Inteligente_2.vistas
         }
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
         {
+            vm.EditarVehiculo();
             DialogResult = true;
         }
 

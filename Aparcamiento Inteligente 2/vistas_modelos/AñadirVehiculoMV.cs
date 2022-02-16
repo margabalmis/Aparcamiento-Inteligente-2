@@ -27,6 +27,44 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Marcas = new ObservableCollection<Marcas>();
             Marcas = baseDatos.MarcasGetAll();
+
+            //Seleccinar Tipo
+            if (VehiculoNuevo != null)
+            {
+                if (VehiculoNuevo.Tipo.Equals("coche"))
+                {
+                    TipoCoche = true;
+                    TipoMoto = false;
+                }
+                else if (VehiculoNuevo.Tipo.Equals("moto"))
+                {
+                    TipoCoche = false;
+                    TipoMoto = true;
+                }
+
+                //Cliente Propietario
+                if (VehiculoNuevo != null)
+                {
+                    Propietario = baseDatos.VehiculoFindCliente(VehiculoNuevo);
+                }
+
+            }
+
+        }
+
+        private bool tipoCoche;
+
+        public bool TipoCoche
+        {
+            get { return tipoCoche; }
+            set { SetProperty(ref tipoCoche, value); }
+        }
+        private bool tipoMoto;
+
+        public bool TipoMoto
+        {
+            get { return tipoMoto; }
+            set { SetProperty(ref tipoMoto, value); }
         }
 
         private void DialogoAñadirMarca()

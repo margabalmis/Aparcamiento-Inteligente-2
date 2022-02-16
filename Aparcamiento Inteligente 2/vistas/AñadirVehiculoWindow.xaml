@@ -69,7 +69,7 @@
                 Value="Center"></Setter>
             <Setter
                 Property="Margin"
-                Value="16"></Setter>
+                Value="12"></Setter>
 
         </Style>
         <!--StackPanel poara los Botones-->
