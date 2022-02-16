@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AcessoParking"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Entrada al parking"
+        Icon="assets/parking_locked.ico"
         Height="600"
         Width="600"
         ResizeMode="NoResize">

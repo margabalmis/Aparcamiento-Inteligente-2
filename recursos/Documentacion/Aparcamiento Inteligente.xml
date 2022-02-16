@@ -1,0 +1,440 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aparcamiento Inteligente 2</name>
+    </assembly>
+    <members>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.#ctor(System.String)">
+            <summary>
+            Constructor del servicio
+            </summary>
+            <param name="path">Ruta en la que se encuentra la base de datos</param>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.ClientesGetAll">
+            <summary>
+            Extrae todos los clientes de la base de datos
+            </summary>
+            <returns>Colección con los clientes de la base de datosCliente</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculosGetAll">
+            <summary>
+            Extrae todos los vehículos de la base de datos
+            </summary>
+            <returns>Colección con los vehiculos de la base de datos</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.MarcasGetAll">
+            <summary>
+            Extrae todos las marcas de la base de datos
+            </summary>
+            <returns>Colección con las marcas de la base de datos</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.ClienteInsertOne(Aparcamiento_Inteligente_2.modelo.Cliente)">
+            <summary>
+            Inserta un registro en la tabla clientes
+            </summary>
+            <param name="cliente">Cliente a insertar</param>
+            <returns>devuelve true cuando la insercción es correcta</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculoInsertOne(Aparcamiento_Inteligente_2.modelo.Vehiculo)">
+            <summary>
+            Inserta un registro en la tabla vehiculos
+            </summary>
+            <param name="vehiculo">Vehiculo a insertar</param>
+            <returns>devuelve true cuando la insercción es correcta</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.MarcaInsertOne(Aparcamiento_Inteligente_2.modelo.Marcas)">
+            <summary>
+            Inserta un registro en la tabla marcas
+            </summary>
+            <param name="marca">Marca a insertar</param>
+            <returns>devuelve true cuando la insercción es correcta</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.ClienteDeleteOne(Aparcamiento_Inteligente_2.modelo.Cliente)">
+            <summary>
+            Elimina un registro de la tabla clientes
+            </summary>
+            <param name="cliente">Cliente a eliminar</param>
+            <returns>Devuelve true cuando la eliminación es correcta</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculoDeleteOne(Aparcamiento_Inteligente_2.modelo.Vehiculo)">
+            <summary>
+            Elimina un registro de la tabla vehiculo
+            </summary>
+            <param name="vehiculo">Vehiculo a eliminar</param>
+            <returns>Devuelve true cuando la eliminación es correcta</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculosFindByCliente(Aparcamiento_Inteligente_2.modelo.Cliente)">
+            <summary>
+            Busca y devuelve los vehículos asociados al cliente que le pases
+            </summary>
+            <param name="cliente">Cliente para buscar</param>
+            <returns>Lista de Vehiculos</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculosFindByMatricula(System.String)">
+            <summary>
+            Busca y devuelve el vehículo por su matricula
+            </summary>
+            <param name="matricula">Matricula para buscar </param>
+            <returns>Vehículo con la matricula pasada</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculoFindCliente(Aparcamiento_Inteligente_2.modelo.Vehiculo)">
+            <summary>
+            Devuelve el Cliente de un vehículo
+            </summary>
+            <param name="vehiculo">Vehiculo para buscar</param>
+            <returns>Cliente</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.EstacionamientosFindOngoing">
+            <summary>
+             Devuelve los estacionamientos en curso, aquellos cuya salida sea null
+            </summary>
+            <returns>Colección de Estacionamientos</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.VehiculoIsEstacionado(Aparcamiento_Inteligente_2.modelo.Vehiculo)">
+            <summary>
+            Devuelve true si el vehículo que le pasa esta ya dentro del parking
+            </summary>
+            <param name="vehiculo">Vehiculo a comprobar</param>
+            <returns>Si el vehiculo esta estacionado en bool</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.ClienteHasVehiculos(Aparcamiento_Inteligente_2.modelo.Cliente)">
+            <summary>
+            Devuelve true si el cliente tiene vehiculos
+            </summary>
+            <param name="cliente">Cliente para buscar</param>
+            <returns> Si el cliente tiene vehículos en bool</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.MarcasFindMarca(System.Int32)">
+            <summary>
+            Devuelve el nombre de la marca por su id 
+            </summary>
+            <param name="idMarca">Id de la marca en entero</param>
+            <returns>string nombre de la marca</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.EstacionamientoNew(Aparcamiento_Inteligente_2.modelo.Estacionamiento)">
+            <summary>
+            Añade el estacionamiento a la base de datos para un estacionamiento con vehículo registrado
+            </summary>
+            <param name="estacionamiento">Estacionamiento a insertar</param>
+            <returns>True si la insercción ha sido correcta</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DBServicio.EstacionamientoNewVehiculo(Aparcamiento_Inteligente_2.modelo.Estacionamiento)">
+            <summary>
+            Añade el estacionamiento a la base de datos para un estacionamiento con vehículo registrado
+            </summary>
+            <param name="estacionamiento">Estacionamiento a insertar</param>
+            <returns>True si la insercción ha sido correcta</returns>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion">
+            <summary>
+            Servicio de navegación
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoAñadirCliente">
+            <summary>
+            Instancia y lanza el dialogo para añadir cliente
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoEditarCliente">
+            <summary>
+            Instancia y lanza el dialogo para editar un cliente
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoEliminarCliente">
+            <summary>
+            Instancia y lanza el dialogo para eliminar un  cliente
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoAñadirVehiculo">
+            <summary>
+            Instancia y lanza el dialogo para añadir un nuevo Cliente
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoAñadirMarca">
+            <summary>
+            Instancia y lanza el dialogo para añadir una nueva Marca
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoEditarVehiculoDesdeCliente">
+            <summary>
+            Instancia y lanza el dialogo para editar un vehículo desde la pestaña de clientes
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoEditarVehiculoDesdeVehiculo">
+            <summary>
+            Instancia y lanza el dialogo para editar un vehículo desde la pestaña de vehículo
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool?)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoEliminarVehiculoDesdeCliente">
+            <summary>
+            Instancia y lanza el dialogo para eliminar un vehiculo desde la pestaña de cliente
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool?)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoEliminarVehiculoDesdeVehiculo">
+            <summary>
+            Instancia y lanza el dialogo para  eliminar un vehiculo desde la pestaña de cliente
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool?)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.MessageBoxFinalizarEstacionamiento">
+            <summary>
+            Instancia y lanza el dialogo para finalizar un estacionamiento
+            </summary>
+            <returns>Devuelve el resultado del dialogo (bool?)</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.DialogoAbrirImagen">
+            <summary>
+            Instancia y lanza el dialogo para abrir una imagen
+            </summary>
+            <returns>Devuelve la ruta de la imagen en string4</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.DialogosNavegacion.Alert(System.String)">
+            <summary>
+            Crea y muestra un MessageBox de Alerta con el mensaje que le pase al metodo
+            </summary>
+            <param name="mensaje">string mensaje a mostrar</param>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.FaceAPI.GetAgeGender(System.String)">
+            <summary>
+            Deduce la edad de la una foto retrato, mediante una llamada a una API de Azure. 
+            </summary>
+            <param name="url">Url en la que se encuentra la foto</param>
+            <returns>Devuelve una tupla con la edad y el genero de la persona en la foto</returns>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.servicios.Nube.SubirImagen(System.String)">
+            <summary>
+            Sube la imagen proporcionada a un BlobStorage de Azure
+            </summary>
+            <param name="path">Ruta de la imagen a subir</param>
+            <returns>Url de la imagen subida</returns>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.AñadirMarcaW">
+            <summary>
+            Lógica de interacción para AñadirMarcaW.xaml
+            </summary>
+            <summary>
+            AñadirMarcaW
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.AñadirMarcaW.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.AñadirVehiculoWindow">
+            <summary>
+            Lógica de interacción para AñadirVehiculoWindow.xaml
+            </summary>
+            <summary>
+            AñadirVehiculoWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.AñadirVehiculoWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.EliminarVehiculoWindow">
+            <summary>
+            Lógica de interacción para EliminarVehiculoWindow.xaml
+            </summary>
+            <summary>
+            EliminarVehiculoWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.EliminarVehiculoWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.EstacionamientosUserControl">
+            <summary>
+            Lógica de interacción para EstacionamientosUserControl.xaml
+            </summary>
+            <summary>
+            EstacionamientosUserControl
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.EstacionamientosUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.VehiculoUserControl">
+            <summary>
+            Lógica de interacción para VehiculoUserControl.xaml
+            </summary>
+            <summary>
+            VehiculoUserControl
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.VehiculoUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.AñadirClienteWindow">
+            <summary>
+            Lógica de interacción para AñadirClienteWindow.xaml
+            </summary>
+            <summary>
+            AñadirClienteWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.AñadirClienteWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.ClienteUserControl">
+            <summary>
+            Lógica de interacción para ClienteUserControl.xaml
+            </summary>
+            <summary>
+            ClienteUserControl
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.ClienteUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.EditarClienteWindow">
+            <summary>
+            Lógica de interacción para EditarClienteWindow.xaml
+            </summary>
+            <summary>
+            EditarClienteWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.EditarClienteWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.vistas.EditarVehiculoWindow">
+            <summary>
+            Lógica de interacción para EditarVehiculoWindow.xaml
+            </summary>
+            <summary>
+            EditarVehiculoWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.vistas.EditarVehiculoWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.App">
+            <summary>
+            Lógica de interacción para App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.ParkingUserControl">
+            <summary>
+            Lógica de interacción para ParkingUserControl.xaml
+            </summary>
+            <summary>
+            ParkingUserControl
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.ParkingUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.EliminarClienteWindow">
+            <summary>
+            Lógica de interacción para EliminarClienteWindow.xaml
+            </summary>
+            <summary>
+            EliminarClienteWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.EliminarClienteWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.MainWindow">
+            <summary>
+            Lógica de interacción para MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Aparcamiento_Inteligente_2.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Aparcamiento_Inteligente_2.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Aparcamiento_Inteligente_2.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Aparcamiento_Inteligente_2.Properties.Resources.Culture">
+            <summary>
+              Invalida la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos usando esta clase de recursos fuertemente tipados.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
