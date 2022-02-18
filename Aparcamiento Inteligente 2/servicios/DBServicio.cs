@@ -346,7 +346,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Open();
 
             SqliteCommand comando = new SqliteCommand("UPDATE estacionamientos SET  " +
-                    "id_vehiculo = @id_vehiculo," +
                     "matricula = @matricula," +
                     "entrada = @entrada," +
                     "salida = @salida," +
@@ -355,7 +354,6 @@ namespace Aparcamiento_Inteligente_2.servicios
                     "WHERE id_estacionamiento = @id_estacionamiento;", conexion);
 
             comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
-            comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
             comando.Parameters.Add("@matricula", SqliteType.Text);
             comando.Parameters.Add("@entrada", SqliteType.Text);
             comando.Parameters.Add("@salida", SqliteType.Text);
@@ -363,7 +361,6 @@ namespace Aparcamiento_Inteligente_2.servicios
             comando.Parameters.Add("@tipo", SqliteType.Text);
 
             comando.Parameters["@id_estacionamiento"].Value = estacionamiento.Id_estacionamiento;
-            comando.Parameters["@id_vehiculo"].Value = estacionamiento.Id_vehiculo;
             comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
             comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
             comando.Parameters["@salida"].Value = estacionamiento.Salida;

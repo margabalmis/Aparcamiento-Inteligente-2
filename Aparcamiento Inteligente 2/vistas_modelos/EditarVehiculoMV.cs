@@ -14,8 +14,8 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
     class EditarVehiculoMV : ObservableRecipient
     {
-        DBServicio baseDatos;
-        DialogosNavegacion navegacion;
+        readonly DBServicio baseDatos;
+        readonly DialogosNavegacion navegacion;
         public EditarVehiculoMV(String origen)
         {
             // Cargar datos Marcas
