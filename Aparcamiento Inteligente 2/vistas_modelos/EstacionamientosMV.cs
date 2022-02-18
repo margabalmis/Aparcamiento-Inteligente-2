@@ -19,6 +19,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         readonly DialogosNavegacion servicioDialogos;
 
         public RelayCommand FinalizarEstacionamiento { get; }
+        public RelayCommand ActualizarEstacionamiento { get; }
         public EstacionamientosMV() 
         {
             //Cargar datos Estacionamientos
@@ -28,23 +29,35 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             //Servicios Navegación
             servicioDialogos = new DialogosNavegacion();
             FinalizarEstacionamiento = new RelayCommand(FinEstacionamiento);
+            ActualizarEstacionamiento = new RelayCommand(ActualizarEstacionamientos);
+            Precio = 0.0;
+
+        }
+        private void ActualizarEstacionamientos()
+        {
+            Estacionamientos = baseDatos.EstacionamientosFindOngoing();
         }
         private void FinEstacionamiento()
         {
             DateTime date = DateTime.Now;
-            DateTime entrada = DateTime.Parse(EstacionamientoSeleccionado.Entrada);
-            TimeSpan tiempo = date.Subtract(entrada);
-            int minutos = (int)tiempo.TotalMinutes;
-            double cantidadAbonar = EstacionamientoSeleccionado.Id_vehiculo != 0 ? minutos * 0.10 : minutos * 0.15;
-            bool result = servicioDialogos.MessageBoxFinalizarEstacionamiento(cantidadAbonar);
+            bool result = servicioDialogos.MessageBoxFinalizarEstacionamiento(Precio);
             if (result)
             {
-                EstacionamientoSeleccionado.Importe = (float)cantidadAbonar;
+                EstacionamientoSeleccionado.Importe = (float)Precio;
                 EstacionamientoSeleccionado.Salida = date.ToString();
                 baseDatos.EstacionamientoUpateOne(EstacionamientoSeleccionado);
             }
             Estacionamientos = baseDatos.EstacionamientosFindOngoing();
         }
+
+        private double precio;
+
+        public double Precio
+        {
+            get { return precio; }
+            set { SetProperty(ref precio, value); }
+        }
+
 
         private ObservableCollection<Estacionamiento> estacionamientos;
 
@@ -59,7 +72,19 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         public Estacionamiento EstacionamientoSeleccionado
         {
             get { return estacionamientoSeleccionado; }
-            set { SetProperty(ref estacionamientoSeleccionado, value); }
+            set { 
+                SetProperty(ref estacionamientoSeleccionado, value);
+                if(estacionamientoSeleccionado != null)
+                {
+                    DateTime date = DateTime.Now;
+                    DateTime entrada = DateTime.Parse(EstacionamientoSeleccionado.Entrada);
+                    TimeSpan tiempo = date.Subtract(entrada);
+                    int minutos = (int)tiempo.TotalMinutes;
+                    double cantidadAbonar = EstacionamientoSeleccionado.Id_vehiculo != 0 ? minutos * 0.10 : minutos * 0.15;
+                    Precio = cantidadAbonar;
+                }
+
+            }
         }
     }
 }
