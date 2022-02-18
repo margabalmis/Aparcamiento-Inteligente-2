@@ -71,6 +71,14 @@
                 Value="14"></Setter>
         </Style>
 
+        <Style x:Key="ONSelected" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="IsEnabled" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=EstacionamientoSeleccionado}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
         
 
     </UserControl.Resources>
@@ -100,10 +108,11 @@
             Grid.Column="1">
             <Button
                 x:Name="FinalizarEstacionamientoButton"
-                Command="{Binding Path=FinalizarEstacionamiento}">Finalizar Estacionamiento</Button>
+                Command="{Binding Path=FinalizarEstacionamiento}" Style="{StaticResource ONSelected}">Finalizar Estacionamiento</Button>
             <TextBlock 
                 Margin="10,10,0,0"
-                FontSize="20">Precio:</TextBlock>
+                FontSize="20"
+                x:Name="PrecioText">Precio:</TextBlock>
             <TextBlock x:Name="TotalAPagarPorEstacionamiento"></TextBlock>
         </StackPanel>
     </Grid>

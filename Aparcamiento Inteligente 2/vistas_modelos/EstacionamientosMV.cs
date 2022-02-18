@@ -32,12 +32,19 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void FinEstacionamiento()
         {
-            bool result = servicioDialogos.MessageBoxFinalizarEstacionamiento();
+            DateTime date = DateTime.Now;
+            DateTime entrada = DateTime.Parse(EstacionamientoSeleccionado.Entrada);
+            TimeSpan tiempo = date.Subtract(entrada);
+            int minutos = (int)tiempo.TotalMinutes;
+            double cantidadAbonar = EstacionamientoSeleccionado.Id_vehiculo != 0 ? minutos * 0.10 : minutos * 0.15;
+            bool result = servicioDialogos.MessageBoxFinalizarEstacionamiento(cantidadAbonar);
             if (result)
             {
-
-
+                EstacionamientoSeleccionado.Importe = (float)cantidadAbonar;
+                EstacionamientoSeleccionado.Salida = date.ToString();
+                baseDatos.EstacionamientoUpateOne(EstacionamientoSeleccionado);
             }
+            Estacionamientos = baseDatos.EstacionamientosFindOngoing();
         }
 
         private ObservableCollection<Estacionamiento> estacionamientos;
