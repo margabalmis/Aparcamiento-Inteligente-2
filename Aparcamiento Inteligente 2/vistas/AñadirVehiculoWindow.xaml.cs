@@ -1,4 +1,5 @@
-﻿using Aparcamiento_Inteligente_2.vistas_modelos;
+﻿using Aparcamiento_Inteligente_2.modelo;
+using Aparcamiento_Inteligente_2.vistas_modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,11 @@ namespace Aparcamiento_Inteligente_2.vistas
     public partial class AñadirVehiculoWindow : Window
     {
         AñadirVehiculoMV vm;
-        public AñadirVehiculoWindow()
+
+        public AñadirVehiculoWindow(Cliente prop)
         {
             InitializeComponent();
-            vm = new AñadirVehiculoMV();
+            vm = new AñadirVehiculoMV(prop);
             this.DataContext = vm;
         }
         private void AceptarButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using Aparcamiento_Inteligente_2.vistas;
+﻿using Aparcamiento_Inteligente_2.modelo;
+using Aparcamiento_Inteligente_2.vistas;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -49,9 +50,9 @@ namespace Aparcamiento_Inteligente_2.servicios
         /// Instancia y lanza el dialogo para añadir un nuevo Cliente
         /// </summary>
         /// <returns>Devuelve el resultado del dialogo (bool)</returns>
-        internal bool? DialogoAñadirVehiculo()
+        internal bool? DialogoAñadirVehiculo(Cliente ClienteSeleccionado)
         {
-            AñadirVehiculoWindow nuevaVentana = new AñadirVehiculoWindow();
+            AñadirVehiculoWindow nuevaVentana = new AñadirVehiculoWindow(ClienteSeleccionado);
             nuevaVentana.ShowDialog();
             return nuevaVentana.DialogResult;
         }
