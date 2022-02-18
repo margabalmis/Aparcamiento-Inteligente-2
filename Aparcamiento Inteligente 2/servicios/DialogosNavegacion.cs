@@ -119,10 +119,10 @@ namespace Aparcamiento_Inteligente_2.servicios
         /// Instancia y lanza el dialogo para finalizar un estacionamiento
         /// </summary>
         /// <returns>Devuelve el resultado del dialogo (bool?)</returns>
-        internal bool? MessageBoxFinalizarEstacionamiento()
+        internal bool MessageBoxFinalizarEstacionamiento(double cantidadAbonar)
         {
-            return MessageBoxResult.Yes == MessageBox.Show("¿Quieres finalizar el estacionamiento?", 
-                "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            return MessageBoxResult.Yes == MessageBox.Show($"¿Quieres finalizar el estacionamiento?\n Cantidad a abonar: {cantidadAbonar}€", 
+                "Finalizar estacionamiento", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
         }
         /// <summary>
         /// Instancia y lanza el dialogo para abrir una imagen
