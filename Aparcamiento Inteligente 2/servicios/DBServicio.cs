@@ -279,22 +279,19 @@ namespace Aparcamiento_Inteligente_2.servicios
             conexion.Open();
 
             SqliteCommand comando = new SqliteCommand("UPDATE vehiculos SET  " +
-                    "id_cliente = @id_cliente," +
                     "matricula = @matricula," +
-                    "id_marca = @edid_marcaad," +
+                    "id_marca = @id_marca," +
                     "modelo = @modelo," +
                     "tipo = @tipo " +
                     "WHERE id_vehiculo = @id_vehiculo;", conexion);
 
             _ = comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
-            _ = comando.Parameters.Add("@id_cliente", SqliteType.Integer);
             _ = comando.Parameters.Add("@matricula", SqliteType.Text);
             _ = comando.Parameters.Add("@id_marca", SqliteType.Integer);
             _ = comando.Parameters.Add("@modelo", SqliteType.Text);
             _ = comando.Parameters.Add("@tipo", SqliteType.Text);
 
             comando.Parameters["@id_vehiculo"].Value = vehiculo.Id_vehiculo;
-            comando.Parameters["@id_cliente"].Value = vehiculo.Id_cliente;
             comando.Parameters["@matricula"].Value = vehiculo.Matricula;
             comando.Parameters["@id_marca"].Value = vehiculo.Id_marca;
             comando.Parameters["@modelo"].Value = vehiculo.Modelo;

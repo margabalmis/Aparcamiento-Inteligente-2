@@ -64,8 +64,8 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         internal void EditarVehiculo()
         {
-            //(int id_vehiculo, int id_cliente, string matricula, int id_marcas, string modelo, string tipo)
-            baseDatos.VehiculoUpateOne(new Vehiculo());
+
+            _ = baseDatos.VehiculoUpateOne(VehiculoSeleccionado);
         }
 
         private void DialogoAñadirMarca()

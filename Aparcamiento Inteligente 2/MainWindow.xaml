@@ -7,7 +7,8 @@
         xmlns:vistas="clr-namespace:Aparcamiento_Inteligente_2.vistas"
     mc:Ignorable="d"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    Title="Aparcamiento" Height="800" Width="1320" >
+    Title="Gestor Parking 9000" Height="800" Width="1320"
+    Icon="assets/parking_locked.ico">
 
     <Window.Resources>
 

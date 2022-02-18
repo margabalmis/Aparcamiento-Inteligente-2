@@ -136,7 +136,7 @@
             <inputLayout:SfTextInputLayout
                 Hint="Cliente">
                 <TextBox
-                    Text="{Binding Path=Propietario.Nombre}" />
+                    IsEnabled="False" />
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Hint="Matricula">
@@ -160,7 +160,7 @@
                 Background="White"
                 ItemsSource="{Binding Path=Marcas}"
                 DisplayMemberPath="Marca"
-                SelectedValuePath="{Binding Path=VehiculoNuevo.Id_marca}">
+                SelectedValue="{Binding Path=MarcaSeleccionada}">
             </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
                 Command="{Binding Path=AñadirMarcaDialogo}"
@@ -183,7 +183,7 @@
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Coche</RadioButton>
                 <RadioButton
-                    IsChecked="{Binding Path=TipoMoto}"
+                    IsChecked="True"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>

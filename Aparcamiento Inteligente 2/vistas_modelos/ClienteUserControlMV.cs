@@ -92,7 +92,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void NuevoVehiculo()
         {
-           if (servicioDialogos.DialogoAñadirVehiculo() == true)
+           if (servicioDialogos.DialogoAñadirVehiculo(ClienteSeleccionado) == true)
             {
                 VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
             }

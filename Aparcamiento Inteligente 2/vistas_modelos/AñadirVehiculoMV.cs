@@ -17,59 +17,40 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         private readonly DBServicio baseDatos;
         readonly DialogosNavegacion navegacion;
         public RelayCommand AñadirMarcaDialogo { get; }
-        public AñadirVehiculoMV()
+        public AñadirVehiculoMV(Cliente propietario)
         {
 
             navegacion = new DialogosNavegacion();
-
             AñadirMarcaDialogo = new RelayCommand(DialogoAñadirMarca);
+
             // Cargar datos Marcas
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Marcas = new ObservableCollection<Marcas>();
             Marcas = baseDatos.MarcasGetAll();
-
-            //Seleccinar Tipo
-            if (VehiculoNuevo != null)
-            {
-                if (VehiculoNuevo.Tipo.Equals("coche"))
-                {
-                    TipoCoche = true;
-                    TipoMoto = false;
-                }
-                else if (VehiculoNuevo.Tipo.Equals("moto"))
-                {
-                    TipoCoche = false;
-                    TipoMoto = true;
-                }
-
-                //Cliente Propietario
-                if (VehiculoNuevo != null)
-                {
-                    Propietario = baseDatos.VehiculoFindCliente(VehiculoNuevo);
-                }
-
-            }
+            VehiculoNuevo = new Vehiculo();
+            VehiculoNuevo.Id_cliente = propietario.Id_cliente;
 
         }
 
-        private bool tipoCoche;
-
-        public bool TipoCoche
-        {
-            get { return tipoCoche; }
-            set { SetProperty(ref tipoCoche, value); }
-        }
-        private bool tipoMoto;
-
-        public bool TipoMoto
-        {
-            get { return tipoMoto; }
-            set { SetProperty(ref tipoMoto, value); }
-        }
+       
 
         private void DialogoAñadirMarca()
         {
             navegacion.DialogoAñadirMarca();
+        }
+
+        internal void AñadirVehiculo()
+        {
+            if (TipoCoche)
+            {
+                VehiculoNuevo.Tipo = "Coche";
+            }
+            else
+            {
+                VehiculoNuevo.Tipo = "Moto";
+            }
+            VehiculoNuevo.Id_marca = MarcaSeleccionada.Id_marcas;
+            baseDatos.VehiculoInsertOne(VehiculoNuevo);
         }
 
         private Vehiculo vehiculoNuevo;
@@ -80,26 +61,14 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref vehiculoNuevo, value); }
         }
 
-        private Cliente propietario;
-
-        internal void AñadirVehiculo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Cliente Propietario
-        {
-            get { return propietario; }
-            set { SetProperty(ref propietario, value); }
-        }
-
-
         private Marcas marcaSeleccionada;
 
         public Marcas MarcaSeleccionada
         {
             get { return marcaSeleccionada; }
-            set { SetProperty(ref marcaSeleccionada, value); }
+            set { 
+                SetProperty(ref marcaSeleccionada, value);
+            }
         }
 
         private ObservableCollection<Marcas> marcas;
@@ -110,7 +79,13 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             set { SetProperty(ref marcas, value); }
         }
 
+        private bool _tipoCoche;
 
+        public bool TipoCoche
+        {
+            get { return _tipoCoche; }
+            set { SetProperty(ref _tipoCoche, value); }
+        }
 
     }
 }

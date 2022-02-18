@@ -108,7 +108,7 @@
             Grid.Column="1">
             <Button x:Name="ActualizarEstacionamientoButton"
                 Command="{Binding Path=ActualizarEstacionamiento}">
-                Actualizar Estacionamientos
+                Refrescar Tabla
             </Button>
             <Button
                 x:Name="FinalizarEstacionamientoButton"
