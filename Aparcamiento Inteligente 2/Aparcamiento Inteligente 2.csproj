@@ -252,6 +252,7 @@
     <Compile Include="vistas_modelos\EliminarClienteWindowMV.cs" />
     <Compile Include="vistas_modelos\EliminarVehiculoWindowMV.cs" />
     <Compile Include="vistas_modelos\EstacionamientosMV.cs" />
+    <Compile Include="MainWindowVM.cs" />
     <Compile Include="vistas_modelos\VehiculoUserControlMV.cs" />
     <Page Include="ParkingUserControl.xaml">
       <SubType>Designer</SubType>
@@ -374,6 +375,10 @@
   <ItemGroup>
     <Resource Include="img\add.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\info.ico" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

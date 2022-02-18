@@ -20,9 +20,12 @@ namespace Aparcamiento_Inteligente_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowVM vm = new MainWindowVM();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = vm;
+            
         }
     }
 }
