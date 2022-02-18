@@ -182,8 +182,7 @@
                 Width="240"
                 Background="White"
                 ItemsSource="{Binding Path=Marcas}"
-                DisplayMemberPath="Marca"
-                SelectedValuePath="{Binding Path=VehiculoSeleccionado.Id_marca}">
+                DisplayMemberPath="Marca">
             </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
                 Command="{Binding Path=AñadirMarcaDialogo}"
@@ -222,7 +221,8 @@
             <Button
                 IsCancel="True">Cancelar</Button>
             <Button
-                IsDefault="True">Aceptar</Button>
+                IsDefault="True"
+                Click="AceptarButton_Click">Aceptar</Button>
         </StackPanel>
     </StackPanel>
 </Window>
