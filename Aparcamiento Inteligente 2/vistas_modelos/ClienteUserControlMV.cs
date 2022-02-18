@@ -76,18 +76,26 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void EliminarVehiculo()
         {
-
-            _ = servicioDialogos.DialogoEliminarVehiculoDesdeCliente();
+            if (servicioDialogos.DialogoEliminarVehiculoDesdeCliente() == true)
+            {
+                VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+            }
         }
 
         private void EditarVehiculo()
         {
-            _ = servicioDialogos.DialogoEditarVehiculoDesdeCliente();
+            if (servicioDialogos.DialogoEditarVehiculoDesdeCliente() == true)
+            {
+                VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+            } 
         }
 
         private void NuevoVehiculo()
         {
-            _ = servicioDialogos.DialogoAñadirVehiculo();
+           if (servicioDialogos.DialogoAñadirVehiculo() == true)
+            {
+                VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+            }
         }
 
         private void EliminarCliente()
