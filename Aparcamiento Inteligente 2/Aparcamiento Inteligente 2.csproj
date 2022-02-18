@@ -56,6 +56,9 @@
   <PropertyGroup>
     <StartupObject>Aparcamiento_Inteligente_2.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>assets\parking_locked.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Azure.Core, Version=1.22.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\Azure.Core.1.22.0\lib\net461\Azure.Core.dll</HintPath>
@@ -373,6 +376,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\parking_locked.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
