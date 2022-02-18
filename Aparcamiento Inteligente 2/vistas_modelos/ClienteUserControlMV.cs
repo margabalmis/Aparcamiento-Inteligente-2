@@ -76,18 +76,26 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         }
         private void EliminarVehiculo()
         {
-
-            servicioDialogos.DialogoEliminarVehiculoDesdeCliente();
+            if (servicioDialogos.DialogoEliminarVehiculoDesdeCliente() == true)
+            {
+                VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+            }
         }
 
         private void EditarVehiculo()
         {
-            servicioDialogos.DialogoEditarVehiculoDesdeCliente();
+            if (servicioDialogos.DialogoEditarVehiculoDesdeCliente() == true)
+            {
+                VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+            } 
         }
 
         private void NuevoVehiculo()
         {
-            servicioDialogos.DialogoAñadirVehiculo();
+           if (servicioDialogos.DialogoAñadirVehiculo() == true)
+            {
+                VehiculosAsociadosCliente = baseDatos.VehiculosFindByCliente(clienteSeleccionado);
+            }
         }
 
         private void EliminarCliente()
@@ -100,7 +108,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void EditarCliente()
         {
-            servicioDialogos.DialogoEditarCliente();
+            if (servicioDialogos.DialogoEditarCliente() == true)
+            {
+                Clientes = baseDatos.ClientesGetAll();
+            }
         }
 
         private void NuevoCliente()

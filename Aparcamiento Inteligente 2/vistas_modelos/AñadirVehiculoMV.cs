@@ -14,8 +14,8 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
     class AñadirVehiculoMV : ObservableRecipient
     {
-        DBServicio baseDatos;
-        DialogosNavegacion navegacion;
+        private readonly DBServicio baseDatos;
+        readonly DialogosNavegacion navegacion;
         public RelayCommand AñadirMarcaDialogo { get; }
         public AñadirVehiculoMV()
         {

@@ -21,15 +21,16 @@ namespace Aparcamiento_Inteligente_2.vistas
     public partial class EliminarVehiculoWindow : Window
     {
         readonly EliminarVehiculoWindowMV vm;
-        public EliminarVehiculoWindow(String origen)
+        public EliminarVehiculoWindow(string origen)
         {
             InitializeComponent();
             vm = new EliminarVehiculoWindowMV(origen);
-            this.DataContext = vm;
+            DataContext = vm;
         }
 
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
         {
+            vm.EliminarVehiculo();
             DialogResult = true;
         }
     }

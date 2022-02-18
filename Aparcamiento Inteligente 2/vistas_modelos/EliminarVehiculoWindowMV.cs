@@ -14,7 +14,7 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     {
         //Servicios
         readonly DBServicio baseDatos;
-        public EliminarVehiculoWindowMV(String origen)
+        public EliminarVehiculoWindowMV(string origen)
         {
 
             //Cargar datos clientes
@@ -30,23 +30,20 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
                 VehiculoSeleccionado = WeakReferenceMessenger.Default.Send<VehiculoSeleccionadoMessageDesdeVehiculo>();
             }
 
-            marca = baseDatos.MarcasFindMarca(VehiculoSeleccionado.Id_marca);
-
         }
+
+        public void EliminarVehiculo()
+        {
+            _ = baseDatos.VehiculoDeleteOne(VehiculoSeleccionado);
+        }
+
+
         private Vehiculo vehiculoSeleccionado;
 
         public Vehiculo VehiculoSeleccionado
         {
             get { return vehiculoSeleccionado; }
             set { SetProperty(ref vehiculoSeleccionado, value); }
-        }
-
-        private string marca;
-
-        public string Marca
-        {
-            get { return marca; }
-            set { SetProperty(ref marca, value); }
         }
 
     }
