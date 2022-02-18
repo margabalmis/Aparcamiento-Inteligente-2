@@ -106,6 +106,10 @@
         <StackPanel
             Margin="0,40"
             Grid.Column="1">
+            <Button x:Name="ActualizarEstacionamientoButton"
+                Command="{Binding Path=ActualizarEstacionamiento}">
+                Actualizar Estacionamientos
+            </Button>
             <Button
                 x:Name="FinalizarEstacionamientoButton"
                 Command="{Binding Path=FinalizarEstacionamiento}" Style="{StaticResource ONSelected}">Finalizar Estacionamiento</Button>
@@ -113,7 +117,7 @@
                 Margin="10,10,0,0"
                 FontSize="20"
                 x:Name="PrecioText">Precio:</TextBlock>
-            <TextBlock x:Name="TotalAPagarPorEstacionamiento"></TextBlock>
+            <TextBlock x:Name="TotalAPagarPorEstacionamiento" Text="{Binding Path=Precio}"></TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>
