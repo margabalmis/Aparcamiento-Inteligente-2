@@ -45,12 +45,18 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void EditarVehiculo()
         {
-            servicioDialogos.DialogoEditarVehiculoDesdeVehiculo();
+            if (servicioDialogos.DialogoEditarVehiculoDesdeVehiculo() == true)
+            {
+                Vehiculos = baseDatos.VehiculosGetAll();
+            }
         }
 
         private void EliminarVehiculo()
         {
-            servicioDialogos.DialogoEliminarVehiculoDesdeVehiculo();
+           if (servicioDialogos.DialogoEliminarVehiculoDesdeVehiculo() == true)
+            {
+                Vehiculos = baseDatos.VehiculosGetAll();
+            }
         }
 
         private ObservableCollection<Vehiculo> vehiculos;

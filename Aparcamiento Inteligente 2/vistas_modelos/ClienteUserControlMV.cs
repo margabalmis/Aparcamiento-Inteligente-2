@@ -77,17 +77,17 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
         private void EliminarVehiculo()
         {
 
-            servicioDialogos.DialogoEliminarVehiculoDesdeCliente();
+            _ = servicioDialogos.DialogoEliminarVehiculoDesdeCliente();
         }
 
         private void EditarVehiculo()
         {
-            servicioDialogos.DialogoEditarVehiculoDesdeCliente();
+            _ = servicioDialogos.DialogoEditarVehiculoDesdeCliente();
         }
 
         private void NuevoVehiculo()
         {
-            servicioDialogos.DialogoAñadirVehiculo();
+            _ = servicioDialogos.DialogoAñadirVehiculo();
         }
 
         private void EliminarCliente()
@@ -100,7 +100,10 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
 
         private void EditarCliente()
         {
-            servicioDialogos.DialogoEditarCliente();
+            if (servicioDialogos.DialogoEditarCliente() == true)
+            {
+                Clientes = baseDatos.ClientesGetAll();
+            }
         }
 
         private void NuevoCliente()
