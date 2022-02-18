@@ -47,13 +47,12 @@
         <syncfusion:TabControlExt
             Name="tabControlExt"
             CloseButtonType="Hide">
+            <syncfusion:TabItemExt Header="Parking">
+                <vistas:EstacionamientosUserControl></vistas:EstacionamientosUserControl>
+            </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
                 Header="Clientes">
                 <vistas:ClienteUserControl></vistas:ClienteUserControl>
-            </syncfusion:TabItemExt>
-            <syncfusion:TabItemExt
-                Header="ParKing">
-                <vistas:EstacionamientosUserControl></vistas:EstacionamientosUserControl>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt 
                 Header="Vehículos">
