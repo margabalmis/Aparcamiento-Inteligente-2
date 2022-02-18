@@ -17,9 +17,7 @@
     ShowInTaskbar="False">
     <Window.Resources>
 
-        
-
-            <!--StackPanel-->
+        <!--StackPanel-->
         <Style
             TargetType="{x:Type StackPanel}">
             <Setter
@@ -27,9 +25,77 @@
                 Value="Center"></Setter>
             <Setter
                 Property="Margin"
-                Value="16"></Setter>
+                Value="10"></Setter>
 
         </Style>
+
+
+        <!--TextBox-->
+        <Style
+            TargetType="{x:Type TextBox}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
+
+
+        <!--TextBlock-->
+        <Style
+            TargetType="{x:Type TextBlock}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
+
+        <!--RadioButton-->
+        <Style
+            TargetType="{x:Type RadioButton}"
+            >
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Medium"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
+
+        
+
+        <!--RadioButton Moto-->
+        <Style
+            TargetType="{x:Type RadioButton}"
+            x:Key="MotoRadioButton"
+            BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="IsChecked" Value="False"></Setter>
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=VehiculoSeleccionado.Tipo}" Value="moto">
+                    <Setter
+                        Property="IsChecked"
+                        Value="True"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+
+        </Style>
+
         <!--StackPanel poara los Botones-->
         <Style
             TargetType="{x:Type StackPanel}"
@@ -93,7 +159,8 @@
             Orientation="Horizontal">
             <inputLayout:SfTextInputLayout
                 Hint="Cliente">
-                <TextBox Text="{Binding Path=Propietario.Nombre}"/>
+                <TextBox
+                    Text="{Binding Path=Propietario.Nombre}" />
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout
                 Hint="Matricula">
@@ -109,10 +176,14 @@
                     Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
             </inputLayout:SfTextInputLayout>
             <syncfusion:ComboBoxAdv
-               Width="240"
-               ItemsSource="{Binding Path=Marcas.Marca}"
-               SelectedItem="{Binding Path=VehiculoSeleccionado.Id_marca}" 
-                >
+                FontSize="16"
+                FontWeight="Medium"
+                Margin="8,8,8,24"
+                Width="240"
+                Background="White"
+                ItemsSource="{Binding Path=Marcas}"
+                DisplayMemberPath="Marca"
+                SelectedValuePath="{Binding Path=VehiculoSeleccionado.Id_marca}">
             </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
                 Command="{Binding Path=AñadirMarcaDialogo}"
@@ -123,7 +194,7 @@
                 SmallIcon="/img/add.ico"
                 Width="48"
                 Height="34">
-                
+
             </syncfusion:ButtonAdv>
         </StackPanel>
         <StackPanel
@@ -132,13 +203,15 @@
                 Margin="16,0,0,0">Tipo</TextBlock>
             <StackPanel>
                 <RadioButton
+                    x:Name="CocheRadioButton"
+                    IsChecked="{Binding Path=TipoCoche}"
                     Margin="10,5,0,0"
-                    GroupName="TipoVehiculo"
-                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo}">
+                    GroupName="TipoVehiculo">
                     Coche</RadioButton>
                 <RadioButton
+                    x:Name="MotoRadioButton"
+                    IsChecked="{Binding Path=TipoMoto}"
                     Margin="10,5,0,0"
-                    IsChecked="{Binding Path=VehiculoSelecionado.Tipo}"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>
         </StackPanel>

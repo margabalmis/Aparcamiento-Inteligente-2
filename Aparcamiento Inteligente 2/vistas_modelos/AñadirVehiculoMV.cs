@@ -1,6 +1,7 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
 using Aparcamiento_Inteligente_2.servicios;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
@@ -14,21 +15,69 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
     class AñadirVehiculoMV : ObservableRecipient
     {
         DBServicio baseDatos;
+        DialogosNavegacion navegacion;
+        public RelayCommand AñadirMarcaDialogo { get; }
         public AñadirVehiculoMV()
         {
 
+            navegacion = new DialogosNavegacion();
+
+            AñadirMarcaDialogo = new RelayCommand(DialogoAñadirMarca);
             // Cargar datos Marcas
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
             Marcas = new ObservableCollection<Marcas>();
-            //Marcas = baseDatos.MarcasGetAll();
+            Marcas = baseDatos.MarcasGetAll();
+
+            //Seleccinar Tipo
+            if (VehiculoNuevo != null)
+            {
+                if (VehiculoNuevo.Tipo.Equals("coche"))
+                {
+                    TipoCoche = true;
+                    TipoMoto = false;
+                }
+                else if (VehiculoNuevo.Tipo.Equals("moto"))
+                {
+                    TipoCoche = false;
+                    TipoMoto = true;
+                }
+
+                //Cliente Propietario
+                if (VehiculoNuevo != null)
+                {
+                    Propietario = baseDatos.VehiculoFindCliente(VehiculoNuevo);
+                }
+
+            }
+
         }
 
-        private Vehiculo vehiculoSeleccionado;
+        private bool tipoCoche;
 
-        public Vehiculo VehiculoSeleccionado
+        public bool TipoCoche
         {
-            get { return vehiculoSeleccionado; }
-            set { SetProperty(ref vehiculoSeleccionado, value); }
+            get { return tipoCoche; }
+            set { SetProperty(ref tipoCoche, value); }
+        }
+        private bool tipoMoto;
+
+        public bool TipoMoto
+        {
+            get { return tipoMoto; }
+            set { SetProperty(ref tipoMoto, value); }
+        }
+
+        private void DialogoAñadirMarca()
+        {
+            navegacion.DialogoAñadirMarca();
+        }
+
+        private Vehiculo vehiculoNuevo;
+
+        public Vehiculo VehiculoNuevo
+        {
+            get { return vehiculoNuevo; }
+            set { SetProperty(ref vehiculoNuevo, value); }
         }
 
         private Cliente propietario;

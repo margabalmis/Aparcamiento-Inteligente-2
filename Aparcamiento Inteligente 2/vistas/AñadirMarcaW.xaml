@@ -89,7 +89,7 @@
             <inputLayout:SfTextInputLayout
                 Hint="Marca">
                 <TextBox
-                    Text="{Binding Path=NuevaMarca.Marca}" />
+                    Text="{Binding Path=NuevaMarca}" />
             </inputLayout:SfTextInputLayout>
 
         </StackPanel>

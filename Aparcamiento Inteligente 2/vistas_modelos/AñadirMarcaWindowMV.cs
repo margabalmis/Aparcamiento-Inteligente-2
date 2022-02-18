@@ -1,5 +1,6 @@
 ﻿using Aparcamiento_Inteligente_2.modelo;
 using Aparcamiento_Inteligente_2.servicios;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Aparcamiento_Inteligente_2.vistas_modelos
 {
-    class AñadirMarcaWindowMV
+    class AñadirMarcaWindowMV : ObservableObject
     {
         //Servicios
         DBServicio baseDatos;
@@ -19,19 +20,18 @@ namespace Aparcamiento_Inteligente_2.vistas_modelos
             //Servicios
             baseDatos = new DBServicio(Properties.Settings.Default.Conexion);
 
-
         }
-        private Marcas nuevaMarca;
+        private string nuevaMarca;
 
-        public Marcas NuevaMarca
+        public string NuevaMarca
         {
             get { return nuevaMarca; }
-            set { nuevaMarca = value; }
+            set { SetProperty( ref nuevaMarca, value); }
         }
 
         internal void AñadirMarca()
         {
-            throw new NotImplementedException();
+            //baseDatos.MarcaInsertOne(string Marca);
         }
     }
 

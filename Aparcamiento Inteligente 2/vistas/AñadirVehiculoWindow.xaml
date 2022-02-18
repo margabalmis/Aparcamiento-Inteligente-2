@@ -16,7 +16,49 @@
     ShowInTaskbar="False">
     <Window.Resources>
 
+        <!--TextBox-->
+        <Style
+            TargetType="{x:Type TextBox}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Bold"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
 
+        </Style>
+        <!--TextBlock-->
+        <Style
+            TargetType="{x:Type TextBlock}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
+
+        <!--RadioButton-->
+        <Style
+            TargetType="{x:Type RadioButton}">
+            <Setter
+                Property="FontSize"
+                Value="14"></Setter>
+            <Setter
+                Property="FontWeight"
+                Value="Medium"></Setter>
+            <Setter
+                Property="Foreground"
+                Value="Black"></Setter>
+
+        </Style>
 
 
         <!--StackPanel-->
@@ -27,7 +69,7 @@
                 Value="Center"></Setter>
             <Setter
                 Property="Margin"
-                Value="16"></Setter>
+                Value="10"></Setter>
 
         </Style>
         <!--StackPanel poara los Botones-->
@@ -99,7 +141,7 @@
             <inputLayout:SfTextInputLayout
                 Hint="Matricula">
                 <TextBox
-                    Text="{Binding Path=VehiculoSeleccionado.Matricula}" />
+                    Text="{Binding Path=VehiculoNuevo.Matricula}" />
             </inputLayout:SfTextInputLayout>
         </StackPanel>
         <StackPanel
@@ -107,17 +149,21 @@
             <inputLayout:SfTextInputLayout
                 Hint="Modelo">
                 <TextBox
-                    Text="{Binding Path=VehiculoSeleccionado.Modelo}" />
+                    Text="{Binding Path=VehiculoNuevo.Modelo}" />
             </inputLayout:SfTextInputLayout>
-            <syncfusion:ComboBoxAdv 
+            <syncfusion:ComboBoxAdv
+                Text="hola"
+                FontSize="16"
+                FontWeight="Medium"
+                Margin="8,8,8,24"
                 Width="240"
-                Height="44"
                 Background="White"
-                Margin="12,0,16,18"
-                ItemsSource="{Binding Path=Marcas.Marca}"
-                SelectedItem="{Binding Path= MarcaSeleccionada}">
+                ItemsSource="{Binding Path=Marcas}"
+                DisplayMemberPath="Marca"
+                SelectedValuePath="{Binding Path=VehiculoNuevo.Id_marca}">
             </syncfusion:ComboBoxAdv>
             <syncfusion:ButtonAdv
+                Command="{Binding Path=AñadirMarcaDialogo}"
                 Background="#c0dcfc"
                 SizeMode="Normal"
                 Label=""
@@ -133,10 +179,11 @@
                 Margin="16,0,0,0">Tipo</TextBlock>
             <StackPanel>
                 <RadioButton
-                    IsChecked="True"
+                    IsChecked="{Binding Path=TipoCoche}"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Coche</RadioButton>
                 <RadioButton
+                    IsChecked="{Binding Path=TipoMoto}"
                     Margin="10,5,0,0"
                     GroupName="TipoVehiculo">Moto</RadioButton>
             </StackPanel>
